@@ -408,6 +408,90 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why Orbit Section */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[1000px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="text-[13px] text-[#666] font-medium uppercase tracking-wider mb-6">
+              Why Orbit
+            </div>
+            <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-6">
+              Vendor dashboards show API usage.
+              <br />
+              <span className="text-[#555]">Orbit shows how your product uses AI.</span>
+            </h2>
+            <p className="text-[16px] text-[#666] max-w-[500px] mx-auto">
+              Use Orbit alongside OpenAI and Anthropic dashboards for product-level visibility.
+            </p>
+          </motion.div>
+
+          {/* Comparison Table */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden"
+          >
+            {/* Table Header */}
+            <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_120px_120px] border-b border-white/[0.06] bg-white/[0.02]">
+              <div className="px-6 py-4">
+                <span className="text-[13px] text-[#555] font-medium">Capability</span>
+              </div>
+              <div className="px-4 py-4 text-center border-l border-white/[0.06]">
+                <span className="text-[13px] text-[#555] font-medium">Providers</span>
+              </div>
+              <div className="px-4 py-4 text-center border-l border-white/[0.06] bg-violet-500/[0.05]">
+                <span className="text-[13px] text-violet-400 font-medium">Orbit</span>
+              </div>
+            </div>
+
+            {/* Table Rows */}
+            {[
+              { capability: "View AI usage by model", providers: true, orbit: true },
+              { capability: "View total cost", providers: true, orbit: true },
+              { capability: "Feature-level cost", providers: false, orbit: true },
+              { capability: "Feature-level latency", providers: false, orbit: true },
+              { capability: "Feature-level errors", providers: false, orbit: true },
+              { capability: "Product-centric view", providers: false, orbit: true },
+              { capability: "SDK-based runtime data", providers: false, orbit: true },
+            ].map((row, i) => (
+              <div
+                key={i}
+                className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_120px_120px] ${
+                  i !== 6 ? "border-b border-white/[0.04]" : ""
+                }`}
+              >
+                <div className="px-6 py-4">
+                  <span className="text-[14px] text-[#a1a1aa]">{row.capability}</span>
+                </div>
+                <div className="px-4 py-4 flex items-center justify-center border-l border-white/[0.04]">
+                  {row.providers ? (
+                    <svg className="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <span className="text-[#333] text-lg">—</span>
+                  )}
+                </div>
+                <div className="px-4 py-4 flex items-center justify-center border-l border-white/[0.04] bg-violet-500/[0.03]">
+                  <svg className="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
+
       {/* Integration Section */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
         <div className="max-w-[1000px] mx-auto px-6">
@@ -470,70 +554,6 @@ export default function Home() {
           >
             <IntegrationVisual />
           </motion.div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[900px] mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-4">
-              Simple pricing
-            </h2>
-            <p className="text-[16px] text-[#666]">
-              Start free. Upgrade when you need more.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Free Plan */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8"
-            >
-              <div className="text-[15px] text-white font-medium mb-6">Free</div>
-              <p className="text-[15px] text-[#666] mb-8 leading-relaxed">
-                Everything you need to understand your AI features in production.
-              </p>
-              <a
-                href="https://orbit-analytics.vercel.app/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-12 flex items-center justify-center bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
-              >
-                Get started
-              </a>
-            </motion.div>
-
-            {/* Pro Plan */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-transparent" />
-              <div className="relative">
-                <div className="text-[15px] text-[#666] font-medium mb-6">Pro</div>
-                <p className="text-[15px] text-[#555] mb-8 leading-relaxed">
-                  Higher limits, team features, and priority support.
-                </p>
-                <div className="block w-full h-12 flex items-center justify-center border border-white/[0.08] text-[#555] font-medium text-[14px] rounded-full">
-                  Coming soon
-                </div>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
