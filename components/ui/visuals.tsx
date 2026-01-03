@@ -454,7 +454,7 @@ export function IntegrationVisual() {
             <span className="text-violet-400">import</span>
             <span className="text-white"> {'{'} Orbit {'}'} </span>
             <span className="text-violet-400">from</span>
-            <span className="text-emerald-400"> &apos;@orbitai/sdk&apos;</span>
+            <span className="text-emerald-400"> &apos;@orbithq/sdk&apos;</span>
             <span className="text-white">;</span>
             {'\n'}
             <span className="text-violet-400">import</span>
