@@ -64,6 +64,8 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <a
                   href="https://orbit-analytics.vercel.app/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex items-center justify-center h-12 px-6 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
                 >
                   Start for free
@@ -426,6 +428,8 @@ export default function Home() {
               </p>
               <a
                 href="https://orbit-analytics.vercel.app/signup"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full h-12 flex items-center justify-center bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
               >
                 Get started
@@ -480,6 +484,8 @@ export default function Home() {
             </p>
             <a
               href="https://orbit-analytics.vercel.app/signup"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"
             >
               Start for free

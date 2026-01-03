@@ -59,6 +59,8 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <a
               href="https://orbit-analytics.vercel.app/signup"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary text-sm"
             >
               Get started free
@@ -122,6 +124,8 @@ export function Navbar() {
               </Link>
               <a
                 href="https://orbit-analytics.vercel.app/signup"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary text-sm text-center"
               >
                 Get started free

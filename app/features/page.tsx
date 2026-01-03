@@ -390,6 +390,8 @@ export default function FeaturesPage() {
             </p>
             <a
               href="https://orbit-analytics.vercel.app/signup"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary text-base px-8 py-3 inline-block"
             >
               Get started free

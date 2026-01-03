@@ -362,6 +362,8 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxx`}
             </p>
             <a
               href="https://orbit-analytics.vercel.app/signup"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-11 px-6 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
             >
               Get started free
