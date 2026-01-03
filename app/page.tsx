@@ -1,65 +1,493 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import {
+  HeroVisual,
+  FeatureAnalyticsVisual,
+  CostAnalyticsVisual,
+  ErrorTrackingVisual,
+  ModelAnalyticsVisual,
+  IntegrationVisual,
+} from "@/components/ui/visuals";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen bg-[#000000] overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[100vh] flex flex-col justify-center">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-gradient-to-b from-violet-600/15 via-violet-600/5 to-transparent blur-3xl" />
+        </div>
+
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-32 pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left - Copy */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 mr-3 animate-pulse" />
+                <span className="text-[13px] text-[#888]">Now in public beta</span>
+              </motion.div>
+
+              <h1 className="text-[clamp(40px,5.5vw,68px)] font-medium leading-[1.0] tracking-[-0.04em] text-white mb-8">
+                AI observability,
+                <br />
+                <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                  simplified
+                </span>
+              </h1>
+
+              <p className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[460px]">
+                Understand cost and performance across your AI-powered features.
+                Built on real runtime data from your application.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <a
+                  href="https://orbit-analytics.vercel.app/signup"
+                  className="group inline-flex items-center justify-center h-12 px-6 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
+                >
+                  Start for free
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+                <a
+                  href="/docs"
+                  className="inline-flex items-center justify-center h-12 px-6 text-[#888] font-medium text-[14px] hover:text-white transition-colors"
+                >
+                  View documentation
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right - Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative lg:pl-8"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <HeroVisual />
+            </motion.div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Section 1 - Feature Level Analytics */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left - Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="text-[13px] text-violet-400 font-medium uppercase tracking-wider mb-6">
+                Feature-level analytics
+              </div>
+              <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
+                Know exactly where
+                <br />
+                <span className="text-[#555]">your AI spend goes</span>
+              </h2>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
+                Vendor dashboards show usage by model or API key.
+                Orbit shows usage by feature — so you can see which parts of your product
+                are expensive, slow, or failing.
+              </p>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
+                Every AI call is tagged with the feature that made it.
+                Track costs, latency, and errors at the level that matters to your business.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  { label: "Cost per feature", desc: "See which features drive your AI spend" },
+                  { label: "Request volume", desc: "Track usage patterns across features" },
+                  { label: "Error attribution", desc: "Know which features are failing" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 mr-4 flex-shrink-0" />
+                    <div>
+                      <span className="text-[15px] text-white">{item.label}</span>
+                      <span className="text-[15px] text-[#444]"> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right - Visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <FeatureAnalyticsVisual />
+            </motion.div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Section 2 - Cost Intelligence */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left - Visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
+            >
+              <CostAnalyticsVisual />
+            </motion.div>
+
+            {/* Right - Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="text-[13px] text-emerald-400 font-medium uppercase tracking-wider mb-6">
+                Cost intelligence
+              </div>
+              <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
+                Track spend before
+                <br />
+                <span className="text-[#555]">it becomes a problem</span>
+              </h2>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
+                Monitor your AI costs in real-time with deterministic calculations.
+                No more waiting for monthly bills to understand your spend.
+              </p>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
+                See cost trends over time, break down by environment,
+                and identify the exact requests driving your usage.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  { label: "Real-time cost tracking", desc: "Updated as requests happen" },
+                  { label: "Environment breakdown", desc: "Separate prod, staging, dev costs" },
+                  { label: "Token-level detail", desc: "Input and output tokens per request" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 mr-4 flex-shrink-0" />
+                    <div>
+                      <span className="text-[15px] text-white">{item.label}</span>
+                      <span className="text-[15px] text-[#444]"> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3 - Error Tracking */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left - Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="text-[13px] text-red-400 font-medium uppercase tracking-wider mb-6">
+                Error visibility
+              </div>
+              <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
+                Debug failures
+                <br />
+                <span className="text-[#555]">before users notice</span>
+              </h2>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
+                See error rates by feature and model. Understand which parts of your product
+                are breaking and why — with detailed error logs and failure reasons.
+              </p>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
+                Track error trends over time. Catch regressions early.
+                Know exactly which model and feature combination is causing issues.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  { label: "Error rate by feature", desc: "See which features are failing" },
+                  { label: "Error type breakdown", desc: "Invalid models, rate limits, timeouts" },
+                  { label: "Recent error logs", desc: "Full context for debugging" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 mr-4 flex-shrink-0" />
+                    <div>
+                      <span className="text-[15px] text-white">{item.label}</span>
+                      <span className="text-[15px] text-[#444]"> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right - Visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <ErrorTrackingVisual />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 - Model Performance */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left - Visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
+            >
+              <ModelAnalyticsVisual />
+            </motion.div>
+
+            {/* Right - Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="text-[13px] text-amber-400 font-medium uppercase tracking-wider mb-6">
+                Model analytics
+              </div>
+              <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
+                Compare models
+                <br />
+                <span className="text-[#555]">across your product</span>
+              </h2>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
+                See which models power each feature. Compare cost, latency,
+                and error rates to make better decisions about model selection.
+              </p>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
+                Track cost per provider, performance by model,
+                and identify opportunities to optimize your model choices.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  { label: "Cost by provider", desc: "OpenAI, Anthropic, and more" },
+                  { label: "Latency comparison", desc: "Average response times by model" },
+                  { label: "Error rates", desc: "Reliability metrics per model" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-4 flex-shrink-0" />
+                    <div>
+                      <span className="text-[15px] text-white">{item.label}</span>
+                      <span className="text-[15px] text-[#444]"> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Integration Section */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[1000px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="text-[13px] text-[#666] font-medium uppercase tracking-wider mb-6">
+              Integration
+            </div>
+            <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-6">
+              Get started in minutes
+            </h2>
+            <p className="text-[16px] text-[#666] max-w-[400px] mx-auto">
+              One npm package. Wrap your OpenAI client. See your data instantly.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                num: "01",
+                title: "Install the SDK",
+                desc: "npm install @orbithq/sdk",
+              },
+              {
+                num: "02",
+                title: "Wrap your client",
+                desc: "One line to instrument OpenAI",
+              },
+              {
+                num: "03",
+                title: "See your data",
+                desc: "Real-time metrics in your dashboard",
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-[42px] font-medium text-[#1a1a1a] mb-3">{step.num}</div>
+                <h3 className="text-[16px] font-medium text-white mb-2">{step.title}</h3>
+                <p className="text-[14px] text-[#666]">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <IntegrationVisual />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="max-w-[900px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-4">
+              Simple pricing
+            </h2>
+            <p className="text-[16px] text-[#666]">
+              Start free. Upgrade when you need more.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Free Plan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8"
+            >
+              <div className="text-[15px] text-white font-medium mb-6">Free</div>
+              <p className="text-[15px] text-[#666] mb-8 leading-relaxed">
+                Everything you need to understand your AI features in production.
+              </p>
+              <a
+                href="https://orbit-analytics.vercel.app/signup"
+                className="block w-full h-12 flex items-center justify-center bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
+              >
+                Get started
+              </a>
+            </motion.div>
+
+            {/* Pro Plan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-transparent" />
+              <div className="relative">
+                <div className="text-[15px] text-[#666] font-medium mb-6">Pro</div>
+                <p className="text-[15px] text-[#555] mb-8 leading-relaxed">
+                  Higher limits, team features, and priority support.
+                </p>
+                <div className="block w-full h-12 flex items-center justify-center border border-white/[0.08] text-[#555] font-medium text-[14px] rounded-full">
+                  Coming soon
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        <div className="absolute inset-0">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-violet-600/10 via-violet-600/5 to-transparent blur-3xl" />
+        </div>
+
+        <div className="relative max-w-[800px] mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
+              AI usage,
+              <br />
+              <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                clearly
+              </span>
+            </h2>
+            <p className="text-[17px] text-[#666] mb-10 max-w-[380px] mx-auto">
+              Feature-level cost, latency, and error visibility using real runtime data.
+            </p>
+            <a
+              href="https://orbit-analytics.vercel.app/signup"
+              className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"
+            >
+              Start for free
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
