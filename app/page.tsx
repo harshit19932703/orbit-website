@@ -61,7 +61,7 @@ export default function Home() {
                 Built on real runtime data from your application.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="flex items-center gap-4">
                 <a
                   href="https://orbit-analytics.vercel.app/signup"
                   target="_blank"
@@ -71,12 +71,7 @@ export default function Home() {
                   Start for free
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
                 </a>
-                <a
-                  href="/docs"
-                  className="inline-flex items-center justify-center h-12 px-6 text-[#888] font-medium text-[14px] hover:text-white transition-colors"
-                >
-                  View documentation
-                </a>
+                <span className="text-[13px] text-[#555]">No credit card required</span>
               </div>
             </motion.div>
 
