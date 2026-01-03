@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,19 +39,25 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/features"
-              className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
+              className={`text-sm transition-colors ${
+                pathname === "/features" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+              }`}
             >
               Features
             </Link>
             <Link
               href="/pricing"
-              className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
+              className={`text-sm transition-colors ${
+                pathname === "/pricing" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+              }`}
             >
               Pricing
             </Link>
             <Link
               href="/docs"
-              className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
+              className={`text-sm transition-colors ${
+                pathname === "/docs" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+              }`}
             >
               Docs
             </Link>
@@ -103,21 +111,27 @@ export function Navbar() {
             <div className="flex flex-col space-y-4">
               <Link
                 href="/features"
-                className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${
+                  pathname === "/features" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Features
               </Link>
               <Link
                 href="/pricing"
-                className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${
+                  pathname === "/pricing" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Pricing
               </Link>
               <Link
                 href="/docs"
-                className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${
+                  pathname === "/docs" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Docs
