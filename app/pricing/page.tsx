@@ -75,22 +75,49 @@ export default function PricingPage() {
               </div>
             </motion.div>
 
-            {/* Pro Plan - Smaller horizontal card attached to right */}
+            {/* Pro Plan */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-6 md:-ml-4 mt-4 md:mt-0 w-full md:w-auto md:min-w-[280px]"
+              className="rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-500/[0.04] to-blue-500/[0.04] p-8 mt-6 md:mt-0 w-full md:w-[380px] flex-shrink-0 relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-semibold text-[#555]">Pro</h3>
-                <span className="text-[10px] text-[#666] uppercase tracking-wider bg-white/[0.05] border border-white/[0.08] px-2.5 py-1 rounded-full">
-                  Coming Soon
-                </span>
+              {/* Subtle gradient glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.08] to-transparent opacity-50 pointer-events-none" />
+
+              <div className="relative">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-semibold text-white">Pro</h3>
+                  <span className="text-[10px] font-medium text-purple-300 uppercase tracking-wider bg-purple-500/20 border border-purple-500/30 px-3 py-1.5 rounded-full">
+                    Coming Soon
+                  </span>
+                </div>
+                <p className="text-[#888] text-[15px] mb-8">
+                  Higher limits, team features, and priority support.
+                </p>
+
+                <button
+                  disabled
+                  className="block w-full h-12 flex items-center justify-center bg-white/10 text-white/40 font-medium text-[14px] rounded-full cursor-not-allowed mb-8 border border-white/10"
+                >
+                  Coming soon
+                </button>
+
+                <div>
+                  <p className="text-[13px] font-medium text-[#666] uppercase tracking-wider mb-5">Includes</p>
+                  <ul className="space-y-4">
+                    {[1, 2, 3, 4, 5, 6].map((_, index) => (
+                      <li key={index} className="flex items-center">
+                        <div className="w-4 h-4 rounded-full bg-white/[0.06] mr-3 flex-shrink-0" />
+                        <div
+                          className="h-3 rounded-full bg-white/[0.06]"
+                          style={{ width: `${60 + (index % 3) * 20}%` }}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <p className="text-[#444] text-[14px]">
-                Higher limits, team features, and priority support.
-              </p>
             </motion.div>
           </div>
         </div>
