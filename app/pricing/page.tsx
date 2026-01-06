@@ -44,7 +44,7 @@ export default function PricingPage() {
               </div>
 
               <a
-                href="https://orbit-analytics.vercel.app/signup"
+                href="https://app.withorbit.io/signup"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full h-12 flex items-center justify-center bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all mb-8"
@@ -191,7 +191,7 @@ export default function PricingPage() {
               No credit card required. Get started in minutes.
             </p>
             <a
-              href="https://orbit-analytics.vercel.app/signup"
+              href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-12 px-8 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"

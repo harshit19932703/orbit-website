@@ -66,7 +66,7 @@ export function Navbar() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://orbit-analytics.vercel.app/signup"
+              href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm"
@@ -137,7 +137,7 @@ export function Navbar() {
                 Docs
               </Link>
               <a
-                href="https://orbit-analytics.vercel.app/signup"
+                href="https://app.withorbit.io/signup"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-sm text-center"

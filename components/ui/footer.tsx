@@ -55,7 +55,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://www.npmjs.com/package/@orbithq/sdk"
+                  href="https://www.npmjs.com/package/@with-orbit/sdk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-[#71717a] hover:text-white transition-colors"
@@ -65,7 +65,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://pypi.org/project/orbithq-sdk/"
+                  href="https://pypi.org/project/withorbit-sdk/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-[#71717a] hover:text-white transition-colors"

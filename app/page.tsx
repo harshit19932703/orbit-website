@@ -63,7 +63,7 @@ export default function Home() {
 
               <div className="flex items-center gap-4">
                 <a
-                  href="https://orbit-analytics.vercel.app/signup"
+                  href="https://app.withorbit.io/signup"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-center h-12 px-6 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
@@ -518,7 +518,7 @@ export default function Home() {
               {
                 num: "01",
                 title: "Install the SDK",
-                desc: "npm install @orbithq/sdk",
+                desc: "npm install @with-orbit/sdk",
               },
               {
                 num: "02",
@@ -581,7 +581,7 @@ export default function Home() {
               Feature-level cost, latency, and error visibility using real runtime data.
             </p>
             <a
-              href="https://orbit-analytics.vercel.app/signup"
+              href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"

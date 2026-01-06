@@ -60,9 +60,9 @@ export default function DocsPage() {
   const [activeTab, setActiveTab] = useState<"node" | "python">("node");
 
   // Node.js code examples
-  const nodeInstallCode = `npm install @orbithq/sdk`;
+  const nodeInstallCode = `npm install @with-orbit/sdk`;
 
-  const nodeInitCode = `import { Orbit } from '@orbithq/sdk';
+  const nodeInitCode = `import { Orbit } from '@with-orbit/sdk';
 import OpenAI from 'openai';
 
 const orbit = new Orbit({
@@ -85,9 +85,9 @@ const response = await chatClient.chat.completions.create({
 });`;
 
   // Python code examples
-  const pythonInstallCode = `pip install orbithq-sdk`;
+  const pythonInstallCode = `pip install withorbit-sdk`;
 
-  const pythonInitCode = `from orbithq_sdk import Orbit
+  const pythonInitCode = `from withorbit_sdk import Orbit
 from openai import OpenAI
 import os
 
@@ -137,7 +137,7 @@ response = openai.chat.completions.create(
             className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12"
           >
             <a
-              href="https://www.npmjs.com/package/@orbithq/sdk"
+              href="https://www.npmjs.com/package/@with-orbit/sdk"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
@@ -147,13 +147,13 @@ response = openai.chat.completions.create(
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[14px] text-white font-medium">Node.js SDK</div>
-                <div className="text-[12px] text-[#555]">@orbithq/sdk</div>
+                <div className="text-[12px] text-[#555]">@with-orbit/sdk</div>
               </div>
               <ExternalLink className="w-4 h-4 text-[#444] group-hover:text-[#666] transition-colors" />
             </a>
 
             <a
-              href="https://pypi.org/project/orbithq-sdk/"
+              href="https://pypi.org/project/withorbit-sdk/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
@@ -163,13 +163,13 @@ response = openai.chat.completions.create(
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[14px] text-white font-medium">Python SDK</div>
-                <div className="text-[12px] text-[#555]">orbithq-sdk</div>
+                <div className="text-[12px] text-[#555]">withorbit-sdk</div>
               </div>
               <ExternalLink className="w-4 h-4 text-[#444] group-hover:text-[#666] transition-colors" />
             </a>
 
             <a
-              href="https://orbit-analytics.vercel.app/settings"
+              href="https://app.withorbit.io/settings"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
@@ -236,7 +236,7 @@ response = openai.chat.completions.create(
               <p className="text-[13px] text-[#555] mt-3">
                 Get your API key from{" "}
                 <a
-                  href="https://orbit-analytics.vercel.app/settings"
+                  href="https://app.withorbit.io/settings"
                   className="text-violet-400 hover:text-violet-300 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -361,7 +361,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxx`}
               Create your account and get your API key in seconds.
             </p>
             <a
-              href="https://orbit-analytics.vercel.app/signup"
+              href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-11 px-6 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
