@@ -83,9 +83,20 @@ export function Footer() {
             <p className="text-xs text-[#52525b]">
               © {new Date().getFullYear()} Orbit. All rights reserved.
             </p>
-            <p className="text-xs text-[#52525b]">
-              Costs shown are estimated based on standard model pricing.
-            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/privacy"
+                className="text-xs text-[#52525b] hover:text-[#71717a] transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-xs text-[#52525b] hover:text-[#71717a] transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>
