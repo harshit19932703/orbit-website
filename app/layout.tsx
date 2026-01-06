@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     title: "Orbit - AI Cost & Performance Analytics",
     description: "Feature-level AI observability using real runtime data.",
     type: "website",
+    url: "https://withorbit.io",
+    siteName: "Orbit",
+  },
+  twitter: {
+    card: "summary",
+    title: "Orbit - AI Cost & Performance Analytics",
+    description: "Feature-level AI observability using real runtime data.",
   },
 };
 
