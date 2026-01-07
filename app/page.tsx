@@ -49,16 +49,17 @@ export default function Home() {
               </motion.div>
 
               <h1 className="text-[clamp(40px,5.5vw,68px)] font-medium leading-[1.0] tracking-[-0.04em] text-white mb-8">
-                AI observability,
+                Understand how AI
                 <br />
                 <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                  simplified
+                  actually behaves
                 </span>
+                <br />
+                inside your product
               </h1>
 
               <p className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[460px]">
-                Understand cost and performance across your AI-powered features.
-                Built on real runtime data from your application.
+                See cost, latency, and errors <span className="text-white font-medium">per product feature</span>, using real runtime data from your application.
               </p>
 
               <div className="flex items-center gap-4">
@@ -103,25 +104,25 @@ export default function Home() {
                 Feature-level analytics
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                Know exactly where
+                Know exactly which AI features
                 <br />
-                <span className="text-[#555]">your AI spend goes</span>
+                <span className="text-[#555]">drive cost and risk</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
                 Vendor dashboards show usage by model or API key.
-                Orbit shows usage by feature — so you can see which parts of your product
-                are expensive, slow, or failing.
+                Orbit shows usage by <span className="text-white font-medium">product feature</span> — so you can understand which parts of your product
+                are expensive, slow, or failing in production.
               </p>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                Every AI call is tagged with the feature that made it.
-                Track costs, latency, and errors at the level that matters to your business.
+                Every AI call is tagged with the feature that triggered it.
+                This lets you see cost, latency, and errors in the <span className="text-white font-medium">product context where decisions are made</span>.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { label: "Cost per feature", desc: "See which features drive your AI spend" },
-                  { label: "Request volume", desc: "Track usage patterns across features" },
-                  { label: "Error attribution", desc: "Know which features are failing" },
+                  { label: "Cost per feature", desc: "Identify the features driving most of your AI spend" },
+                  { label: "Request volume", desc: "Understand usage patterns and changes across features" },
+                  { label: "Error attribution", desc: "Pinpoint which product features are failing" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 mr-4 flex-shrink-0" />
@@ -174,24 +175,22 @@ export default function Home() {
                 Cost intelligence
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                Track spend before
+                See which AI costs matter
                 <br />
-                <span className="text-[#555]">it becomes a problem</span>
+                <span className="text-[#555]">before they escalate</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
-                Monitor your AI costs in real-time with deterministic calculations.
-                No more waiting for monthly bills to understand your spend.
+                Understand AI spend as it happens using deterministic calculations from real runtime data — not delayed invoices or estimates.
               </p>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                See cost trends over time, break down by environment,
-                and identify the exact requests driving your usage.
+                View cost trends over time, break down spend by environment, and pinpoint the specific requests and features driving usage.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { label: "Real-time cost tracking", desc: "Updated as requests happen" },
-                  { label: "Environment breakdown", desc: "Separate prod, staging, dev costs" },
-                  { label: "Token-level detail", desc: "Input and output tokens per request" },
+                  { label: "Real-time cost visibility", desc: "Updated as requests occur" },
+                  { label: "Environment breakdown", desc: "Clearly separate prod, staging, and dev spend" },
+                  { label: "Token-level detail", desc: "See input and output tokens per request" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 mr-4 flex-shrink-0" />
@@ -571,14 +570,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
-              AI usage,
+              Understand AI behavior
               <br />
               <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                clearly
+                at the feature level
               </span>
             </h2>
-            <p className="text-[17px] text-[#666] mb-10 max-w-[380px] mx-auto">
-              Feature-level cost, latency, and error visibility using real runtime data.
+            <p className="text-[17px] text-[#666] mb-10 max-w-[450px] mx-auto">
+              Feature-level cost, latency, and error visibility from real runtime data — so you know what to fix and optimize.
             </p>
             <a
               href="https://app.withorbit.io/signup"
