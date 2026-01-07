@@ -507,8 +507,14 @@ export default function Home() {
             <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-6">
               Get started in minutes
             </h2>
-            <p className="text-[16px] text-[#666] max-w-[400px] mx-auto">
-              One npm package. Wrap your OpenAI client. See your data instantly.
+            <p className="text-[16px] text-[#666] max-w-[400px] mx-auto mb-4">
+              One npm package. Wrap your AI client. See your data instantly.
+            </p>
+            <p className="text-[13px]">
+              <span className="text-white">Supported:</span>{" "}
+              <span className="text-violet-400">OpenAI, Anthropic</span>
+              <span className="mx-3 text-[#333]">|</span>
+              <span className="text-[#555]">Coming soon: Gemini, Mistral, Groq, DeepSeek</span>
             </p>
           </motion.div>
 

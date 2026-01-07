@@ -184,6 +184,19 @@ response = openai.chat.completions.create(
               <ExternalLink className="w-4 h-4 text-[#444] group-hover:text-[#666] transition-colors" />
             </a>
           </motion.div>
+
+          {/* Supported Providers */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center text-[13px]"
+          >
+            <span className="text-white">Supported:</span>{" "}
+            <span className="text-violet-400">OpenAI, Anthropic</span>
+            <span className="mx-3 text-[#333]">|</span>
+            <span className="text-[#555]">Coming soon: Gemini, Mistral, Groq, DeepSeek</span>
+          </motion.div>
         </div>
       </section>
 
