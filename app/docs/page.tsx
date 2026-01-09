@@ -193,9 +193,9 @@ response = openai.chat.completions.create(
             className="text-center text-[13px]"
           >
             <span className="text-white">Supported:</span>{" "}
-            <span className="text-violet-400">OpenAI, Anthropic</span>
+            <span className="text-violet-400">OpenAI, Anthropic, Gemini</span>
             <span className="mx-3 text-[#333]">|</span>
-            <span className="text-[#555]">Coming soon: Gemini, Mistral, Groq, DeepSeek</span>
+            <span className="text-[#555]">Coming soon: Mistral, Groq, DeepSeek</span>
           </motion.div>
         </div>
       </section>
