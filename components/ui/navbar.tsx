@@ -20,8 +20,8 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-black/40 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+        scrolled || mobileMenuOpen
+          ? "bg-black/80 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       }`}
     >
@@ -107,7 +107,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-[#27272a]">
+          <div className="md:hidden py-4 border-t border-white/[0.08]">
             <div className="flex flex-col space-y-4">
               <Link
                 href="/features"
