@@ -15,10 +15,10 @@ export default function PricingPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6 text-white">
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4 text-white">
               Pricing
             </h1>
-            <p className="text-lg text-[#a1a1aa]">
+            <p className="text-[17px] text-[#666]">
               Start free. Scale as you grow.
             </p>
           </motion.div>
@@ -184,17 +184,21 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
-              Start tracking your AI features today
+            <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
+              Start tracking your
+              <br />
+              <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                AI features today
+              </span>
             </h2>
-            <p className="text-[#666] mb-8">
+            <p className="text-[17px] text-[#666] mb-10 max-w-[450px] mx-auto">
               No credit card required. Get started in minutes.
             </p>
             <a
               href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-12 px-8 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
+              className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"
             >
               Get started free
             </a>

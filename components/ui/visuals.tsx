@@ -2,277 +2,328 @@
 
 import { motion } from "framer-motion";
 
-// Hero Visual - Multiple layered cards like Linear
+// Hero Visual - 3D layered cards with depth effect
 export function HeroVisual() {
   return (
-    <div className="relative w-full h-[500px] md:h-[600px]">
+    <div className="relative w-full min-w-[550px] h-[500px] md:h-[540px]">
       {/* Glow effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-violet-500/20 rounded-full blur-[100px]" />
-      <div className="absolute top-1/3 right-1/4 w-[200px] h-[200px] bg-fuchsia-500/20 rounded-full blur-[80px]" />
+      <div className="absolute top-1/4 right-0 w-[200px] h-[200px] bg-emerald-500/15 rounded-full blur-[80px]" />
 
-      {/* Background card - Features list */}
-      <motion.div
-        initial={{ opacity: 0, y: 40, rotateX: 10 }}
-        animate={{ opacity: 1, y: 0, rotateX: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="absolute top-8 right-0 w-[320px] rounded-2xl border border-white/[0.08] bg-[#0c0c0e] p-5 shadow-2xl"
-        style={{ transform: 'perspective(1000px) rotateY(-8deg)' }}
-      >
-        <div className="text-[11px] text-[#666] uppercase tracking-wider mb-4">Features tracked</div>
-        <div className="space-y-3">
-          {[
-            { name: "chat-assistant", cost: "$0.0037", status: "green" },
-            { name: "code-generator", cost: "$0.0042", status: "green" },
-            { name: "summarizer", cost: "$0.0018", status: "yellow" },
-          ].map((f, i) => (
-            <div key={i} className="flex items-center justify-between py-2 border-b border-white/[0.04] last:border-0">
-              <div className="flex items-center">
-                <div className={`w-2 h-2 rounded-full mr-3 ${f.status === 'green' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
-                <span className="text-[13px] text-white">{f.name}</span>
+      {/* 3D Layered Cards Container */}
+      <div className="relative w-full h-full" style={{ perspective: '1200px' }}>
+
+        {/* Back Card - Features Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 60, rotateX: 10 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="absolute top-0 left-0 right-0 w-full rounded-2xl border border-white/[0.06] bg-[#08080a] p-5 shadow-2xl"
+          style={{ transform: 'translateZ(-60px) translateY(20px)' }}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-[11px] text-[#555]">Features · 4 tracked</span>
+            <span className="text-[10px] text-[#444]">Last 7 days</span>
+          </div>
+          <div className="grid grid-cols-4 gap-3">
+            {[
+              { name: 'chat', cost: '$0.083', score: 92, color: 'emerald' },
+              { name: 'summarize', cost: '$0.027', score: 88, color: 'emerald' },
+              { name: 'test-chat', cost: '$0.025', score: 76, color: 'amber' },
+              { name: 'autocomplete', cost: '$0.004', score: 94, color: 'emerald' },
+            ].map((f, i) => (
+              <div key={i} className="rounded-lg bg-white/[0.02] border border-white/[0.04] p-3">
+                <div className="flex items-center gap-1.5 mb-2">
+                  <div className={`w-1.5 h-1.5 rounded-full ${f.color === 'emerald' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                  <span className="text-[11px] text-white font-medium truncate">{f.name}</span>
+                </div>
+                <div className="text-[14px] text-white font-medium mb-1">{f.cost}</div>
+                <div className="flex items-center gap-1">
+                  <div className="flex-1 h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+                    <div className={`h-full rounded-full ${f.color === 'emerald' ? 'bg-emerald-500' : 'bg-amber-500'}`} style={{ width: `${f.score}%` }} />
+                  </div>
+                  <span className={`text-[9px] ${f.color === 'emerald' ? 'text-emerald-400' : 'text-amber-400'}`}>{f.score}</span>
+                </div>
               </div>
-              <span className="text-[13px] text-[#888]">{f.cost}</span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Middle Card - Scaling Health */}
+        <motion.div
+          initial={{ opacity: 0, y: 50, rotateX: 8 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="absolute top-[130px] left-0 w-[58%] rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-5 shadow-2xl"
+          style={{ transform: 'translateZ(-30px)' }}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-[#666]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+              </svg>
+              <span className="text-[12px] text-[#666]">Scaling Health</span>
             </div>
-          ))}
-        </div>
-      </motion.div>
+            <span className="text-[10px] text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">Efficient</span>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-3">
+            <div>
+              <div className="text-[26px] font-semibold text-emerald-400">+275%</div>
+              <div className="text-[11px] text-[#555]">Usage Growth</div>
+            </div>
+            <div>
+              <div className="text-[26px] font-semibold text-emerald-400">-50.9%</div>
+              <div className="text-[11px] text-[#555]">Cost Change</div>
+            </div>
+          </div>
+          <div className="border-t border-white/[0.06] pt-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] text-[#555]">Net efficiency</span>
+              <span className="text-[20px] font-semibold text-emerald-400">+325.9%</span>
+            </div>
+          </div>
+        </motion.div>
 
-      {/* Main card - Cost overview */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="absolute top-20 left-0 w-[380px] rounded-2xl border border-white/[0.1] bg-[#0c0c0e] p-6 shadow-2xl"
-        style={{ transform: 'perspective(1000px) rotateY(5deg)' }}
-      >
-        <div className="flex items-center justify-between mb-6">
-          <div className="text-[13px] text-[#888]">Total AI Cost</div>
-          <div className="text-[11px] text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full">Live</div>
-        </div>
-        <div className="text-[42px] font-medium text-white tracking-tight mb-2">$127.43</div>
-        <div className="text-[13px] text-[#666] mb-6">This month · 4 features</div>
+        {/* Front Card - Efficiency Score (main focus) */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="absolute top-[190px] right-0 w-[55%] rounded-2xl border border-violet-500/20 bg-[#0c0c0e] p-6 shadow-2xl"
+          style={{ transform: 'translateZ(0px)' }}
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <svg className="w-4 h-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            <span className="text-[12px] text-violet-400">Efficiency Score</span>
+          </div>
+          <div className="flex items-end gap-3 mb-5">
+            <span className="text-[52px] font-semibold text-emerald-400 leading-none">90</span>
+            <span className="text-[14px] text-emerald-400/70 mb-2">Excellent</span>
+          </div>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] text-[#555] w-18">Reliability</span>
+              <div className="flex-1 h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+                <div className="h-full bg-emerald-500 rounded-full" style={{ width: '93%' }} />
+              </div>
+              <span className="text-[11px] text-emerald-400 w-10 text-right">93%</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] text-[#555] w-18">Speed</span>
+              <div className="flex-1 h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+                <div className="h-full bg-amber-500 rounded-full" style={{ width: '75%' }} />
+              </div>
+              <span className="text-[11px] text-amber-400 w-10 text-right">2.0s</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] text-[#555] w-18">Efficiency</span>
+              <div className="flex-1 h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+                <div className="h-full bg-emerald-500 rounded-full" style={{ width: '100%' }} />
+              </div>
+              <span className="text-[11px] text-emerald-400 w-10 text-right">100%</span>
+            </div>
+          </div>
+        </motion.div>
 
-        {/* Mini chart */}
-        <div className="h-[80px] flex items-end gap-1">
-          {[35, 42, 28, 55, 48, 62, 45, 70, 58, 82, 75, 90].map((h, i) => (
-            <div
-              key={i}
-              className="flex-1 bg-gradient-to-t from-violet-500/40 to-violet-500/10 rounded-sm"
-              style={{ height: `${h}%` }}
-            />
-          ))}
-        </div>
-        <div className="flex justify-between mt-2 text-[10px] text-[#444]">
-          <span>Jan 1</span>
-          <span>Jan 12</span>
-        </div>
-      </motion.div>
-
-      {/* Floating metric card - Latency */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="absolute bottom-16 left-[200px] rounded-xl border border-white/[0.1] bg-[#0c0c0e]/90 backdrop-blur-xl px-5 py-4 shadow-2xl"
-      >
-        <div className="text-[10px] text-[#666] uppercase tracking-wider mb-1">Avg Latency</div>
-        <div className="text-[24px] font-medium text-white">1.2s</div>
-        <div className="text-[11px] text-emerald-400">↓ 18% from last week</div>
-      </motion.div>
-
-      {/* Floating metric card - Requests */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-        className="absolute bottom-32 right-[40px] rounded-xl border border-white/[0.1] bg-[#0c0c0e]/90 backdrop-blur-xl px-5 py-4 shadow-2xl"
-      >
-        <div className="text-[10px] text-[#666] uppercase tracking-wider mb-1">Total Requests</div>
-        <div className="text-[24px] font-medium text-white">12.4k</div>
-        <div className="text-[11px] text-[#888]">Last 30 days</div>
-      </motion.div>
-
-      {/* Error indicator */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="absolute top-[280px] right-[60px] rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3"
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-          <span className="text-[12px] text-red-400">3 errors detected</span>
-        </div>
-      </motion.div>
+        {/* Floating Quick Stats */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="absolute bottom-8 left-0 flex gap-4"
+        >
+          <div className="rounded-xl border border-white/[0.08] bg-[#0a0a0c]/95 backdrop-blur px-6 py-4">
+            <div className="text-[20px] font-semibold text-white">$0.0031</div>
+            <div className="text-[11px] text-[#666]">Avg Cost/Request</div>
+          </div>
+          <div className="rounded-xl border border-white/[0.08] bg-[#0a0a0c]/95 backdrop-blur px-6 py-4">
+            <div className="text-[20px] font-semibold text-emerald-400">2.4M</div>
+            <div className="text-[11px] text-[#666]">Total Tokens</div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
 
-// Feature Analytics Visual
+// Feature Analytics Visual - Based on actual Features page
 export function FeatureAnalyticsVisual() {
   return (
-    <div className="relative w-full h-[450px]">
+    <div className="relative w-full h-[480px]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-violet-500/15 rounded-full blur-[80px]" />
 
-      {/* Main features grid */}
+      {/* Main features dashboard */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="absolute top-0 left-0 right-0 rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-6"
+        className="absolute top-0 left-0 right-0 rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-5"
       >
-        <div className="text-[13px] text-[#888] mb-6">Features · 7 tracked</div>
-        <div className="grid grid-cols-2 gap-4">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-5">
+          <div>
+            <div className="text-[15px] text-white font-medium">Features</div>
+            <div className="text-[11px] text-[#555]">Feature-level analytics</div>
+          </div>
+          <div className="text-[10px] text-[#444] border border-white/[0.08] px-2 py-1 rounded">Last 30 days</div>
+        </div>
+
+        {/* KPI Row */}
+        <div className="grid grid-cols-4 gap-3 mb-5">
           {[
-            { name: "chat-assistant", cost: "$12.84", requests: "2.4k", latency: "1.8s", error: "2.1%", color: "emerald" },
-            { name: "code-generator", cost: "$45.20", requests: "890", latency: "3.2s", error: "0.8%", color: "violet" },
-            { name: "content-writer", cost: "$8.90", requests: "1.2k", latency: "2.1s", error: "1.2%", color: "amber" },
-            { name: "summarizer", cost: "$3.45", requests: "3.1k", latency: "0.9s", error: "0.3%", color: "blue" },
+            { label: "Total Features", value: "7", icon: "grid" },
+            { label: "Total Cost", value: "$0.0074", icon: "dollar" },
+            { label: "Total Requests", value: "34", icon: "zap" },
+            { label: "Avg Latency", value: "1254ms", icon: "clock" },
+          ].map((kpi, i) => (
+            <div key={i} className="rounded-lg bg-white/[0.02] border border-white/[0.04] p-3">
+              <div className="text-[9px] text-[#555] uppercase mb-1">{kpi.label}</div>
+              <div className="text-[18px] font-semibold text-white">{kpi.value}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Features label */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="text-[12px] text-[#666]">Features</div>
+          <div className="text-[10px] text-[#444]">7 features tracked</div>
+        </div>
+
+        {/* Features grid */}
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            { name: "code-generator", cost: "$0.0037", requests: "8", latency: "1067ms", errors: "12.5%", success: 100, color: "emerald" },
+            { name: "chat-assistant", cost: "$0.0037", requests: "8", latency: "1849ms", errors: "12.5%", success: 100, color: "emerald" },
+            { name: "content-writer", cost: "$0.0000", requests: "2", latency: "1122ms", errors: "0.0%", success: 100, color: "emerald" },
+            { name: "document-summarizer", cost: "$0.0000", requests: "2", latency: "1121ms", errors: "0.0%", success: 100, color: "emerald" },
+            { name: "error-test-model", cost: "$0.0000", requests: "6", latency: "1163ms", errors: "50.0%", success: 100, color: "amber" },
+            { name: "error-test-valid", cost: "$0.0000", requests: "6", latency: "1162ms", errors: "50.0%", success: 100, color: "amber" },
           ].map((f, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 hover:bg-white/[0.04] transition-colors"
+              transition={{ duration: 0.3, delay: i * 0.05 }}
+              className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3"
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center">
-                  <div className={`w-2 h-2 rounded-full mr-2 ${f.color === 'emerald' ? 'bg-emerald-400' : f.color === 'violet' ? 'bg-violet-400' : f.color === 'amber' ? 'bg-amber-400' : 'bg-blue-400'}`} />
-                  <span className="text-[13px] text-white font-medium">{f.name}</span>
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1.5">
+                  <div className={`w-1.5 h-1.5 rounded-full ${f.color === 'emerald' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                  <span className="text-[11px] text-white font-medium truncate max-w-[100px]">{f.name}</span>
                 </div>
-                <span className="text-[12px] text-emerald-400">↗ 100%</span>
+                <span className={`text-[10px] ${f.color === 'emerald' ? 'text-emerald-400' : 'text-amber-400'}`}>↗ {f.success}%</span>
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="text-[16px] font-semibold text-white mb-2">{f.cost}</div>
+              <div className="grid grid-cols-2 gap-2 text-[10px]">
                 <div>
-                  <div className="text-[10px] text-[#555] uppercase">Cost</div>
-                  <div className="text-[15px] text-white">{f.cost}</div>
+                  <span className="text-[#555]">{f.requests}</span>
+                  <span className="text-[#444] ml-1">Requests</span>
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#555] uppercase">Requests</div>
-                  <div className="text-[15px] text-white">{f.requests}</div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-[#555] uppercase">Latency</div>
-                  <div className="text-[15px] text-[#888]">{f.latency}</div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-[#555] uppercase">Errors</div>
-                  <div className={`text-[15px] ${parseFloat(f.error) > 1 ? 'text-red-400' : 'text-emerald-400'}`}>{f.error}</div>
+                  <span className={`${parseFloat(f.errors) > 10 ? 'text-red-400' : 'text-[#555]'}`}>{f.errors}</span>
+                  <span className="text-[#444] ml-1">Errors</span>
                 </div>
               </div>
+              <div className="text-[10px] text-[#555] mt-1">{f.latency} <span className="text-[#444]">Latency</span></div>
             </motion.div>
           ))}
         </div>
       </motion.div>
-
-      {/* Floating detail */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="absolute -bottom-4 -right-4 rounded-xl border border-violet-500/20 bg-[#0c0c0e] px-4 py-3 shadow-2xl"
-      >
-        <div className="text-[10px] text-violet-400 uppercase tracking-wider mb-1">Top Feature</div>
-        <div className="text-[16px] font-medium text-white">code-generator</div>
-        <div className="text-[11px] text-[#666]">64% of total cost</div>
-      </motion.div>
     </div>
   );
 }
 
-// Cost Analytics Visual
+// Cost Analytics Visual - Scaling Health focused
 export function CostAnalyticsVisual() {
   return (
-    <div className="relative w-full h-[450px]">
+    <div className="relative w-full h-[480px]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-emerald-500/10 rounded-full blur-[80px]" />
 
-      {/* Main cost card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="absolute top-0 left-0 w-[340px] rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-6"
-      >
-        <div className="flex items-center justify-between mb-4">
-          <div className="text-[13px] text-[#888]">Cost Trend</div>
-          <div className="text-[11px] text-[#555] border border-white/[0.08] px-2 py-1 rounded">Last 30 days</div>
-        </div>
-
-        {/* Chart */}
-        <div className="h-[140px] flex items-end gap-[6px] mb-4">
-          {[20, 35, 28, 45, 38, 52, 48, 65, 58, 72, 68, 85, 78, 92].map((h, i) => (
-            <div
-              key={i}
-              className="flex-1 bg-gradient-to-t from-emerald-500/50 to-emerald-500/10 rounded-sm hover:from-emerald-400/60 hover:to-emerald-400/20 transition-colors cursor-pointer"
-              style={{ height: `${h}%` }}
-            />
-          ))}
-        </div>
-
-        <div className="flex justify-between text-[10px] text-[#444]">
-          <span>Dec 4</span>
-          <span>Jan 3</span>
-        </div>
-      </motion.div>
-
-      {/* Environment breakdown */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute top-4 right-0 w-[260px] rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-5"
-      >
-        <div className="text-[13px] text-[#888] mb-4">By Environment</div>
-
-        {/* Donut chart representation */}
-        <div className="flex items-center gap-4 mb-4">
-          <div className="relative w-[80px] h-[80px]">
-            <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
-              <circle cx="18" cy="18" r="14" fill="none" stroke="#1a1a1a" strokeWidth="4" />
-              <circle cx="18" cy="18" r="14" fill="none" stroke="#22c55e" strokeWidth="4" strokeDasharray="75 25" strokeLinecap="round" />
-              <circle cx="18" cy="18" r="14" fill="none" stroke="#8b5cf6" strokeWidth="4" strokeDasharray="20 80" strokeDashoffset="-75" strokeLinecap="round" />
-            </svg>
+      {/* Top Row - Trend Chart (left) + Scaling Health (right) */}
+      <div className="flex gap-4">
+        {/* Left - Cost Trend Chart */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex-1 rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-5"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-[14px] text-white font-medium">Cost Trend</span>
+            <span className="text-[10px] text-[#444] border border-white/[0.08] px-2 py-1 rounded">Last 30 days</span>
           </div>
-          <div className="space-y-2">
+          <div className="h-[200px] flex items-end gap-[6px]">
+            {[25, 30, 28, 35, 32, 38, 36, 42, 40, 45, 43, 48, 46, 52, 50, 55, 53, 58, 56, 60, 58, 62, 60, 65].map((h, i) => (
+              <div
+                key={i}
+                className="flex-1 bg-gradient-to-t from-emerald-500/60 to-emerald-500/10 rounded-sm hover:from-emerald-400/70 hover:to-emerald-400/20 transition-colors"
+                style={{ height: `${h}%` }}
+              />
+            ))}
+          </div>
+          <div className="flex justify-between text-[9px] text-[#444] mt-3">
+            <span>Dec 10</span>
+            <span>Dec 25</span>
+            <span>Jan 10</span>
+          </div>
+        </motion.div>
+
+        {/* Right - Scaling Health Widget */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="w-[200px] rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-5"
+        >
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span className="text-[12px] text-[#888]">Production</span>
-              <span className="text-[12px] text-white ml-auto">75%</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-violet-500" />
-              <span className="text-[12px] text-[#888]">Staging</span>
-              <span className="text-[12px] text-white ml-auto">20%</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#333]" />
-              <span className="text-[12px] text-[#888]">Dev</span>
-              <span className="text-[12px] text-white ml-auto">5%</span>
+              <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+              </svg>
+              <span className="text-[12px] text-[#666]">Scaling Health</span>
             </div>
           </div>
-        </div>
-      </motion.div>
+          <div className="text-center mb-4">
+            <span className="text-[10px] text-emerald-400 bg-emerald-400/10 px-3 py-1.5 rounded-full">Efficient</span>
+          </div>
+          <div className="space-y-4">
+            <div>
+              <div className="text-[24px] font-semibold text-emerald-400">+275%</div>
+              <div className="text-[10px] text-[#555]">Usage Growth</div>
+            </div>
+            <div>
+              <div className="text-[24px] font-semibold text-emerald-400">-50.9%</div>
+              <div className="text-[10px] text-[#555]">Cost Change</div>
+            </div>
+            <div className="border-t border-white/[0.06] pt-4">
+              <div className="text-[10px] text-[#555] mb-1">Net Efficiency</div>
+              <div className="text-[22px] font-semibold text-emerald-400">+325.9%</div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
-      {/* KPI cards */}
+      {/* Bottom KPI cards */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="absolute bottom-0 left-0 flex gap-3"
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="absolute bottom-0 left-0 right-0 flex gap-4"
       >
-        <div className="rounded-xl border border-white/[0.08] bg-[#0a0a0c] px-5 py-4">
-          <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Avg / Request</div>
-          <div className="text-[20px] font-medium text-white">$0.0024</div>
+        <div className="flex-1 rounded-xl border border-white/[0.08] bg-[#0a0a0c] px-5 py-4">
+          <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Avg Cost / Request</div>
+          <div className="text-[22px] font-semibold text-white">$0.0002</div>
         </div>
-        <div className="rounded-xl border border-white/[0.08] bg-[#0a0a0c] px-5 py-4">
+        <div className="flex-1 rounded-xl border border-white/[0.08] bg-[#0a0a0c] px-5 py-4">
           <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Total Tokens</div>
-          <div className="text-[20px] font-medium text-white">2.4M</div>
+          <div className="text-[22px] font-semibold text-white">1.2k</div>
         </div>
       </motion.div>
     </div>

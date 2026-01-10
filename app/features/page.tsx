@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { DollarSign, BarChart3, Clock, AlertTriangle, Cpu, Shield, Code, Gauge } from "lucide-react";
+import { DollarSign, BarChart3, Clock, AlertTriangle, Shield, Code, Gauge } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -22,10 +22,10 @@ export default function FeaturesPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6 text-white">
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4 text-white">
               Features
             </h1>
-            <p className="text-lg text-[#a1a1aa]">
+            <p className="text-[17px] text-[#666]">
               Everything you need to understand your AI features in production.
             </p>
           </motion.div>
@@ -73,7 +73,7 @@ export default function FeaturesPage() {
               <div className="screenshot-container glow-sm">
                 <div className="screenshot-inner">
                   <Image
-                    src="/screenshots/features-cropped.png"
+                    src="/screenshots/features 2.png"
                     alt="Feature Analytics"
                     width={600}
                     height={375}
@@ -99,7 +99,7 @@ export default function FeaturesPage() {
               <div className="screenshot-container glow-sm">
                 <div className="screenshot-inner">
                   <Image
-                    src="/screenshots/usage-cropped.png"
+                    src="/screenshots/usage 2.png"
                     alt="Cost & Usage Analytics"
                     width={600}
                     height={375}
@@ -183,7 +183,7 @@ export default function FeaturesPage() {
               <div className="screenshot-container glow-sm">
                 <div className="screenshot-inner">
                   <Image
-                    src="/screenshots/errors-cropped.png"
+                    src="/screenshots/errors.png"
                     alt="Error Tracking"
                     width={600}
                     height={375}
@@ -196,7 +196,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Feature 4: Model Performance */}
+      {/* Feature 4: Scaling Health & Efficiency */}
       <section className="section border-t border-[#27272a] bg-gradient-to-b from-[#111113] to-[#0a0a0a]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -209,8 +209,8 @@ export default function FeaturesPage() {
               <div className="screenshot-container glow-sm">
                 <div className="screenshot-inner">
                   <Image
-                    src="/screenshots/models-cropped.png"
-                    alt="Model Performance"
+                    src="/screenshots/overview.png"
+                    alt="Scaling Health & Efficiency"
                     width={600}
                     height={375}
                     className="w-full h-auto"
@@ -225,21 +225,21 @@ export default function FeaturesPage() {
               className="order-1 lg:order-2"
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium mb-6">
-                <Cpu className="w-3 h-3 mr-2" />
-                Model Analytics
+                <Gauge className="w-3 h-3 mr-2" />
+                Scaling Health & Efficiency
               </div>
               <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
-                Model performance
+                Scaling health & efficiency score
               </h2>
               <p className="text-[#a1a1aa] text-lg mb-8">
-                Compare performance across different AI models. See which models are cost-effective and which are causing issues.
+                Know if your AI features are ready to scale. Track unit economics with usage vs. cost correlation, plus a composite efficiency score.
               </p>
               <ul className="space-y-4">
                 {[
-                  "Cost by provider breakdown",
-                  "Model-wise latency comparison",
-                  "Token efficiency metrics",
-                  "Error rate per model",
+                  "Usage growth vs. cost change tracking",
+                  "Net efficiency calculation",
+                  "Weighted efficiency score (reliability, speed, cost)",
+                  "Account-level health indicators",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center text-[#a1a1aa]">
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-400 mr-3" />
@@ -382,17 +382,21 @@ export default function FeaturesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
-              Ready to see your AI features clearly?
+            <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
+              Ready to see your AI
+              <br />
+              <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                features clearly?
+              </span>
             </h2>
-            <p className="text-[#71717a] mb-8">
+            <p className="text-[17px] text-[#666] mb-10 max-w-[450px] mx-auto">
               Get started in minutes with our SDK.
             </p>
             <a
               href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base px-8 py-3 inline-block"
+              className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"
             >
               Get started free
             </a>

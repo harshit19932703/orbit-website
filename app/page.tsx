@@ -1,17 +1,45 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import {
   HeroVisual,
   FeatureAnalyticsVisual,
   CostAnalyticsVisual,
   ErrorTrackingVisual,
-  ModelAnalyticsVisual,
   IntegrationVisual,
 } from "@/components/ui/visuals";
 
+// Hero headlines configuration
+const heroContent = [
+  {
+    line1: "Scale AI usage",
+    line2: "without scaling",
+    line3: "your bill",
+    subtitle: "Go beyond vendor dashboards. Track feature-level cost, reliability, and scaling health.",
+  },
+  {
+    line1: "Understand how AI",
+    line2: "actually behaves",
+    line3: "inside your product",
+    subtitle: "See cost, latency, and errors per product feature, using real runtime data from your application.",
+  },
+];
+
 export default function Home() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Rotate headlines every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroContent.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const current = heroContent[currentIndex];
+
   return (
     <div className="min-h-screen bg-[#000000] overflow-hidden">
       {/* Hero Section */}
@@ -48,19 +76,41 @@ export default function Home() {
                 <span className="text-[13px] text-[#888]">Now in public beta</span>
               </motion.div>
 
-              <h1 className="text-[clamp(40px,5.5vw,68px)] font-medium leading-[1.0] tracking-[-0.04em] text-white mb-8">
-                Understand how AI
-                <br />
-                <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                  actually behaves
-                </span>
-                <br />
-                inside your product
-              </h1>
+              {/* Rotating Headlines - fixed height container */}
+              <div className="relative h-[180px] md:h-[200px] mb-8">
+                <AnimatePresence mode="wait">
+                  <motion.h1
+                    key={currentIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 text-[clamp(40px,5.5vw,68px)] font-medium leading-[1.05] tracking-[-0.04em] text-white"
+                  >
+                    {current.line1}
+                    <br />
+                    <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                      {current.line2}
+                    </span>
+                    <br />
+                    {current.line3}
+                  </motion.h1>
+                </AnimatePresence>
+              </div>
 
-              <p className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[460px]">
-                See cost, latency, and errors <span className="text-white font-medium">per product feature</span>, using real runtime data from your application.
-              </p>
+              {/* Rotating Subtitle */}
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[460px]"
+                >
+                  {current.subtitle}
+                </motion.p>
+              </AnimatePresence>
 
               <div className="flex items-center gap-4">
                 <a
@@ -73,6 +123,19 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
                 </a>
                 <span className="text-[13px] text-[#555]">No credit card required</span>
+              </div>
+
+              {/* Headline indicators */}
+              <div className="flex items-center gap-2 mt-8">
+                {heroContent.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      i === currentIndex ? 'w-8 bg-white' : 'w-2 bg-white/20 hover:bg-white/40'
+                    }`}
+                  />
+                ))}
               </div>
             </motion.div>
 
@@ -101,28 +164,25 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className="text-[13px] text-violet-400 font-medium uppercase tracking-wider mb-6">
-                Feature-level analytics
+                Feature-Level Analytics
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                Know exactly which AI features
+                See exactly which features
                 <br />
-                <span className="text-[#555]">drive cost and risk</span>
+                <span className="text-[#555]">are costing you money</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
-                Vendor dashboards show usage by model or API key.
-                Orbit shows usage by <span className="text-white font-medium">product feature</span> — so you can understand which parts of your product
-                are expensive, slow, or failing in production.
+                Vendor dashboards show you totals. Orbit shows you <span className="text-white font-medium">which features</span> are costing you money, which are failing, and which are slow.
               </p>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                Every AI call is tagged with the feature that triggered it.
-                This lets you see cost, latency, and errors in the <span className="text-white font-medium">product context where decisions are made</span>.
+                Tag any LLM call with a feature name. Get cost, latency, and error rate <span className="text-white font-medium">per feature</span> — calculated from real production data.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { label: "Cost per feature", desc: "Identify the features driving most of your AI spend" },
-                  { label: "Request volume", desc: "Understand usage patterns and changes across features" },
-                  { label: "Error attribution", desc: "Pinpoint which product features are failing" },
+                  { label: "Per-feature cost", desc: "Know exactly what each AI feature costs" },
+                  { label: "Per-feature latency", desc: "Track response times for every feature" },
+                  { label: "Per-feature errors", desc: "Success rates and error patterns broken down" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 mr-4 flex-shrink-0" />
@@ -172,25 +232,25 @@ export default function Home() {
               className="order-1 lg:order-2"
             >
               <div className="text-[13px] text-emerald-400 font-medium uppercase tracking-wider mb-6">
-                Cost intelligence
+                Scaling Health
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                See which AI costs matter
+                Prevent the cost-usage gap
                 <br />
-                <span className="text-[#555]">before they escalate</span>
+                <span className="text-[#555]">before it hurts margins</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
-                Understand AI spend as it happens using deterministic calculations from real runtime data — not delayed invoices or estimates.
+                Are your costs growing faster than your traffic? Orbit&apos;s Scaling Health widget alerts you the moment a prompt change or model swap makes your features less profitable.
               </p>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                View cost trends over time, break down spend by environment, and pinpoint the specific requests and features driving usage.
+                Track traffic vs. spend correlation in real-time. Know exactly when unit economics shift — and why.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { label: "Real-time cost visibility", desc: "Updated as requests occur" },
-                  { label: "Environment breakdown", desc: "Clearly separate prod, staging, and dev spend" },
-                  { label: "Token-level detail", desc: "See input and output tokens per request" },
+                  { label: "Usage vs. cost correlation", desc: "See if growth is profitable" },
+                  { label: "Net efficiency tracking", desc: "One metric for scaling health" },
+                  { label: "Cost trend analysis", desc: "Visualize spend over time" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 mr-4 flex-shrink-0" />
@@ -259,66 +319,6 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <ErrorTrackingVisual />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4 - Model Performance */}
-      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left - Visual */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="order-2 lg:order-1"
-            >
-              <ModelAnalyticsVisual />
-            </motion.div>
-
-            {/* Right - Copy */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="order-1 lg:order-2"
-            >
-              <div className="text-[13px] text-amber-400 font-medium uppercase tracking-wider mb-6">
-                Model analytics
-              </div>
-              <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                Compare models
-                <br />
-                <span className="text-[#555]">across your product</span>
-              </h2>
-              <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
-                See which models power each feature. Compare cost, latency,
-                and error rates to make better decisions about model selection.
-              </p>
-              <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                Track cost per provider, performance by model,
-                and identify opportunities to optimize your model choices.
-              </p>
-
-              <div className="space-y-4">
-                {[
-                  { label: "Cost by provider", desc: "OpenAI, Anthropic, and more" },
-                  { label: "Latency comparison", desc: "Average response times by model" },
-                  { label: "Error rates", desc: "Reliability metrics per model" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start">
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-4 flex-shrink-0" />
-                    <div>
-                      <span className="text-[15px] text-white">{item.label}</span>
-                      <span className="text-[15px] text-[#444]"> — {item.desc}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </motion.div>
           </div>
         </div>
@@ -458,13 +458,14 @@ export default function Home() {
               { capability: "Feature-level cost", providers: false, orbit: true },
               { capability: "Feature-level latency", providers: false, orbit: true },
               { capability: "Feature-level errors", providers: false, orbit: true },
-              { capability: "Product-centric view", providers: false, orbit: true },
+              { capability: "Unit economics (traffic vs. spend)", providers: false, orbit: true },
+              { capability: "Account-level Efficiency Score", providers: false, orbit: true },
               { capability: "SDK-based runtime data", providers: false, orbit: true },
             ].map((row, i) => (
               <div
                 key={i}
                 className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_120px_120px] ${
-                  i !== 6 ? "border-b border-white/[0.04]" : ""
+                  i !== 7 ? "border-b border-white/[0.04]" : ""
                 }`}
               >
                 <div className="px-6 py-4">
@@ -576,14 +577,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
-              Understand AI behavior
+              Own the unit economics
               <br />
               <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                at the feature level
+                of your AI features
               </span>
             </h2>
             <p className="text-[17px] text-[#666] mb-10 max-w-[450px] mx-auto">
-              Feature-level cost, latency, and error visibility from real runtime data — so you know what to fix and optimize.
+              Efficiency scores, scaling health, and feature-level cost visibility — so you can scale AI without scaling your bill.
             </p>
             <a
               href="https://app.withorbit.io/signup"

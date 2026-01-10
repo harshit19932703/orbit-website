@@ -57,12 +57,18 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
 }
 
 export default function DocsPage() {
-  const [activeTab, setActiveTab] = useState<"node" | "python">("node");
+  const [langTab, setLangTab] = useState<"node" | "python">("node");
+  const [providerTab, setProviderTab] = useState<"openai" | "anthropic" | "gemini">("openai");
 
-  // Node.js code examples
-  const nodeInstallCode = `npm install @with-orbit/sdk`;
+  // Install commands
+  const installCode = {
+    node: `npm install @with-orbit/sdk`,
+    python: `pip install withorbit-sdk`,
+  };
 
-  const nodeInitCode = `import { Orbit } from '@with-orbit/sdk';
+  // Node.js code examples by provider
+  const nodeInitCode = {
+    openai: `import { Orbit } from '@with-orbit/sdk';
 import OpenAI from 'openai';
 
 const orbit = new Orbit({
@@ -70,9 +76,30 @@ const orbit = new Orbit({
 });
 
 // Wrap your OpenAI client
-const openai = orbit.wrapOpenAI(new OpenAI());`;
+const openai = orbit.wrapOpenAI(new OpenAI());`,
+    anthropic: `import { Orbit } from '@with-orbit/sdk';
+import Anthropic from '@anthropic-ai/sdk';
 
-  const nodeFeatureCode = `// Track usage by feature
+const orbit = new Orbit({
+  apiKey: process.env.ORBIT_API_KEY,
+});
+
+// Wrap your Anthropic client
+const anthropic = orbit.wrapAnthropic(new Anthropic());`,
+    gemini: `import { Orbit } from '@with-orbit/sdk';
+import { GoogleGenAI } from '@google/genai';
+
+const orbit = new Orbit({
+  apiKey: process.env.ORBIT_API_KEY,
+});
+
+// Wrap your Google GenAI client
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const wrappedAI = orbit.wrapGoogle(ai);`,
+  };
+
+  const nodeFeatureCode = {
+    openai: `// Track usage by feature
 const chatClient = orbit.wrapOpenAI(new OpenAI(), {
   feature: 'chat-assistant',
   environment: 'production',
@@ -82,12 +109,35 @@ const chatClient = orbit.wrapOpenAI(new OpenAI(), {
 const response = await chatClient.chat.completions.create({
   model: 'gpt-4o',
   messages: [{ role: 'user', content: 'Hello!' }],
-});`;
+});`,
+    anthropic: `// Track usage by feature
+const chatClient = orbit.wrapAnthropic(new Anthropic(), {
+  feature: 'chat-assistant',
+  environment: 'production',
+});
 
-  // Python code examples
-  const pythonInstallCode = `pip install withorbit-sdk`;
+// Make API calls as normal
+const response = await chatClient.messages.create({
+  model: 'claude-3-5-sonnet-20241022',
+  max_tokens: 1024,
+  messages: [{ role: 'user', content: 'Hello!' }],
+});`,
+    gemini: `// Track usage by feature
+const wrappedAI = orbit.wrapGoogle(ai, {
+  feature: 'chat-assistant',
+  environment: 'production',
+});
 
-  const pythonInitCode = `from withorbit_sdk import Orbit
+// Make API calls as normal
+const response = await wrappedAI.models.generateContent({
+  model: 'gemini-2.0-flash',
+  contents: 'Hello!',
+});`,
+  };
+
+  // Python code examples by provider
+  const pythonInitCode = {
+    openai: `from withorbit_sdk import Orbit
 from openai import OpenAI
 import os
 
@@ -96,9 +146,32 @@ orbit = Orbit(
 )
 
 # Wrap your OpenAI client
-openai = orbit.wrap_openai(OpenAI())`;
+openai = orbit.wrap_openai(OpenAI())`,
+    anthropic: `from withorbit_sdk import Orbit
+from anthropic import Anthropic
+import os
 
-  const pythonFeatureCode = `# Track usage by feature
+orbit = Orbit(
+    api_key=os.environ.get("ORBIT_API_KEY"),
+)
+
+# Wrap your Anthropic client
+anthropic = orbit.wrap_anthropic(Anthropic())`,
+    gemini: `from withorbit_sdk import Orbit
+from google import genai
+import os
+
+orbit = Orbit(
+    api_key=os.environ.get("ORBIT_API_KEY"),
+)
+
+# Wrap your Google GenAI client
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+wrapped = orbit.wrap_google(client)`,
+  };
+
+  const pythonFeatureCode = {
+    openai: `# Track usage by feature
 openai = orbit.wrap_openai(OpenAI(),
     feature="chat-assistant",
     environment="production",
@@ -108,7 +181,32 @@ openai = orbit.wrap_openai(OpenAI(),
 response = openai.chat.completions.create(
     model="gpt-4o",
     messages=[{"role": "user", "content": "Hello!"}],
-)`;
+)`,
+    anthropic: `# Track usage by feature
+anthropic = orbit.wrap_anthropic(Anthropic(),
+    feature="chat-assistant",
+    environment="production",
+)
+
+# Make API calls as normal
+response = anthropic.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Hello!"}],
+)`,
+    gemini: `# Track usage by feature
+from withorbit_sdk import WrapperOptions
+
+wrapped = orbit.wrap_google(client,
+    WrapperOptions(feature="chat-assistant", environment="production")
+)
+
+# Make API calls as normal
+response = wrapped.models.generate_content(
+    model="gemini-2.0-flash",
+    contents="Hello!",
+)`,
+  };
 
   return (
     <div className="min-h-screen pt-24">
@@ -208,15 +306,30 @@ response = openai.chat.completions.create(
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
               <h2 className="text-2xl font-semibold text-white">Quick Start</h2>
-              <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-                <TabButton active={activeTab === "node"} onClick={() => setActiveTab("node")}>
-                  Node.js
-                </TabButton>
-                <TabButton active={activeTab === "python"} onClick={() => setActiveTab("python")}>
-                  Python
-                </TabButton>
+              <div className="flex flex-wrap items-center gap-3">
+                {/* Language tabs */}
+                <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                  <TabButton active={langTab === "node"} onClick={() => setLangTab("node")}>
+                    Node.js
+                  </TabButton>
+                  <TabButton active={langTab === "python"} onClick={() => setLangTab("python")}>
+                    Python
+                  </TabButton>
+                </div>
+                {/* Provider tabs */}
+                <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                  <TabButton active={providerTab === "openai"} onClick={() => setProviderTab("openai")}>
+                    OpenAI
+                  </TabButton>
+                  <TabButton active={providerTab === "anthropic"} onClick={() => setProviderTab("anthropic")}>
+                    Anthropic
+                  </TabButton>
+                  <TabButton active={providerTab === "gemini"} onClick={() => setProviderTab("gemini")}>
+                    Gemini
+                  </TabButton>
+                </div>
               </div>
             </div>
 
@@ -229,7 +342,7 @@ response = openai.chat.completions.create(
                 <h3 className="text-[17px] font-medium text-white">Install the SDK</h3>
               </div>
               <CodeBlock
-                code={activeTab === "node" ? nodeInstallCode : pythonInstallCode}
+                code={installCode[langTab]}
                 language="bash"
               />
             </div>
@@ -243,8 +356,8 @@ response = openai.chat.completions.create(
                 <h3 className="text-[17px] font-medium text-white">Initialize and wrap your client</h3>
               </div>
               <CodeBlock
-                code={activeTab === "node" ? nodeInitCode : pythonInitCode}
-                language={activeTab === "node" ? "javascript" : "python"}
+                code={langTab === "node" ? nodeInitCode[providerTab] : pythonInitCode[providerTab]}
+                language={langTab === "node" ? "javascript" : "python"}
               />
               <p className="text-[13px] text-[#555] mt-3">
                 Get your API key from{" "}
@@ -269,8 +382,8 @@ response = openai.chat.completions.create(
                 <h3 className="text-[17px] font-medium text-white">Add feature tracking</h3>
               </div>
               <CodeBlock
-                code={activeTab === "node" ? nodeFeatureCode : pythonFeatureCode}
-                language={activeTab === "node" ? "javascript" : "python"}
+                code={langTab === "node" ? nodeFeatureCode[providerTab] : pythonFeatureCode[providerTab]}
+                language={langTab === "node" ? "javascript" : "python"}
               />
             </div>
           </motion.div>
@@ -367,17 +480,21 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxx`}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3">
-              Ready to start?
+            <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
+              Ready to
+              <br />
+              <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                start?
+              </span>
             </h2>
-            <p className="text-[#555] mb-6">
+            <p className="text-[17px] text-[#666] mb-10 max-w-[450px] mx-auto">
               Create your account and get your API key in seconds.
             </p>
             <a
               href="https://app.withorbit.io/signup"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-11 px-6 bg-white text-black font-medium text-[14px] rounded-full hover:bg-white/90 transition-all"
+              className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"
             >
               Get started free
             </a>
