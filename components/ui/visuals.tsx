@@ -97,10 +97,10 @@ export function HeroVisual() {
       </div>
 
       {/* Desktop version - 3D layered cards */}
-      <div className="relative w-full h-[540px] hidden lg:block">
+      <div className="relative w-full h-[480px] hidden lg:block">
         {/* Glow effects */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-violet-500/20 rounded-full blur-[100px]" />
-        <div className="absolute top-1/4 right-0 w-[200px] h-[200px] bg-emerald-500/15 rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-violet-500/20 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 right-0 w-[180px] h-[180px] bg-emerald-500/15 rounded-full blur-[80px]" />
 
         {/* 3D Layered Cards Container */}
         <div className="relative w-full h-full" style={{ perspective: '1200px' }}>

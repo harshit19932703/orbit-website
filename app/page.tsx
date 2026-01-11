@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import {
   HeroVisual,
@@ -11,34 +10,7 @@ import {
   IntegrationVisual,
 } from "@/components/ui/visuals";
 
-// Hero headlines configuration
-const heroContent = [
-  {
-    line1: "Scale AI usage",
-    line2: "without scaling",
-    line3: "your bill",
-    subtitle: "Go beyond vendor dashboards. Track feature-level cost, reliability, and scaling health.",
-  },
-  {
-    line1: "Understand how AI",
-    line2: "actually behaves",
-    line3: "inside your product",
-    subtitle: "See cost, latency, and errors per product feature, using real runtime data from your application.",
-  },
-];
-
 export default function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Rotate headlines every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroContent.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const current = heroContent[currentIndex];
 
   return (
     <div className="min-h-screen bg-[#000000] overflow-hidden">
@@ -58,7 +30,7 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-32 pb-20">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-32 pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left - Copy */}
             <motion.div
@@ -76,41 +48,29 @@ export default function Home() {
                 <span className="text-[13px] text-[#888]">Now in public beta</span>
               </motion.div>
 
-              {/* Rotating Headlines - fixed height container */}
-              <div className="relative h-[180px] md:h-[200px] mb-8">
-                <AnimatePresence mode="wait">
-                  <motion.h1
-                    key={currentIndex}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 text-[clamp(40px,5.5vw,68px)] font-medium leading-[1.05] tracking-[-0.04em] text-white"
-                  >
-                    {current.line1}
-                    <br />
-                    <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                      {current.line2}
-                    </span>
-                    <br />
-                    {current.line3}
-                  </motion.h1>
-                </AnimatePresence>
-              </div>
+              {/* Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8"
+              >
+                Know exactly how your AI features
+                <br />
+                <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
+                  perform and spend
+                </span>
+              </motion.h1>
 
-              {/* Rotating Subtitle */}
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={currentIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[460px]"
-                >
-                  {current.subtitle}
-                </motion.p>
-              </AnimatePresence>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[480px]"
+              >
+                See which specific features are slow, failing, or over-budget. Orbit connects runtime performance to real AI spend, so product and engineering see the same truth.
+              </motion.p>
 
               <div className="flex items-center gap-4">
                 <a
@@ -124,19 +84,6 @@ export default function Home() {
                 </a>
                 <span className="text-[13px] text-[#555]">No credit card required</span>
               </div>
-
-              {/* Headline indicators */}
-              <div className="flex items-center gap-2 mt-8">
-                {heroContent.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentIndex(i)}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      i === currentIndex ? 'w-8 bg-white' : 'w-2 bg-white/20 hover:bg-white/40'
-                    }`}
-                  />
-                ))}
-              </div>
             </motion.div>
 
             {/* Right - Visual */}
@@ -144,7 +91,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative lg:pl-8"
+              className="relative"
             >
               <HeroVisual />
             </motion.div>
@@ -154,7 +101,7 @@ export default function Home() {
 
       {/* Section 1 - Feature Level Analytics */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left - Copy */}
             <motion.div
@@ -210,7 +157,7 @@ export default function Home() {
 
       {/* Section 2 - Cost Intelligence */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left - Visual */}
             <motion.div
@@ -268,7 +215,7 @@ export default function Home() {
 
       {/* Section 3 - Error Tracking */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left - Copy */}
             <motion.div
@@ -409,7 +356,7 @@ export default function Home() {
 
       {/* Why Orbit Section */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[1000px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -494,7 +441,7 @@ export default function Home() {
 
       {/* Integration Section */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        <div className="max-w-[1000px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
