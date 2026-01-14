@@ -54,6 +54,14 @@ export function Footer() {
             <h4 className="text-sm font-medium text-white mb-4">Resources</h4>
             <ul className="space-y-3">
               <li>
+                <Link
+                  href="/blog"
+                  className="text-sm text-[#71717a] hover:text-white transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://www.npmjs.com/package/@with-orbit/sdk"
                   target="_blank"

@@ -10,6 +10,57 @@ const inter = Inter({
   variable: "--font-geist-sans",
 });
 
+// JSON-LD Schema for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://withorbit.io/#organization",
+      name: "Orbit",
+      url: "https://withorbit.io",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://withorbit.io/orbit-logo.svg",
+      },
+      description: "AI cost and performance analytics platform",
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://withorbit.io/#website",
+      url: "https://withorbit.io",
+      name: "Orbit",
+      publisher: {
+        "@id": "https://withorbit.io/#organization",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://withorbit.io/#software",
+      name: "Orbit",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Web, Node.js, Python",
+      description:
+        "Track AI costs per feature with a one-line SDK. Monitor OpenAI, Anthropic, and Gemini usage in real-time.",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Free tier - 10,000 events/month",
+        availability: "https://schema.org/InStock",
+      },
+      featureList: [
+        "Feature-level cost tracking",
+        "Real-time analytics dashboard",
+        "Error and latency monitoring",
+        "Multi-provider support (OpenAI, Anthropic, Gemini)",
+        "One-line SDK integration",
+      ],
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://withorbit.io"),
   title: {
@@ -58,6 +109,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} antialiased bg-[#0a0a0a] text-white`}>
         <Navbar />
         <main>{children}</main>

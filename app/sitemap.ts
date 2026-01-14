@@ -3,6 +3,20 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://withorbit.io";
 
+  // Blog posts
+  const blogPosts = [
+    "how-to-track-openai-api-costs-by-feature",
+    "llm-cost-optimization-5-ways-to-reduce-ai-spend",
+    "openai-vs-anthropic-vs-gemini-pricing-comparison-2025",
+  ];
+
+  const blogEntries = blogPosts.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -28,6 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...blogEntries,
     {
       url: `${baseUrl}/privacy`,
       lastModified: new Date(),
