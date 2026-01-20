@@ -55,10 +55,10 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8"
               >
-                Know exactly how your AI features
+                Your AI is already
                 <br />
                 <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                  perform and spend
+                  spending money you can&apos;t explain.
                 </span>
               </motion.h1>
 
@@ -69,7 +69,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-[17px] md:text-[19px] text-[#666] leading-[1.65] mb-10 max-w-[480px]"
               >
-                See which specific features are slow, failing, or over-budget. Orbit connects runtime performance to real AI spend, so product and engineering see the same truth.
+                In production, AI doesn&apos;t fail loudly. It fails expensively — through silent loops, prompt changes, and features that look fine but quietly burn margin.
               </motion.p>
 
               <div className="flex items-center gap-4">
@@ -99,6 +99,186 @@ export default function Home() {
         </div>
       </section>
 
+      {/* The Moment Section - Terminal/Console Style */}
+      <section className="relative py-24 lg:py-32 border-t border-white/[0.04] overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-r from-red-600/8 via-orange-600/5 to-transparent blur-3xl" />
+        </div>
+
+        <div className="relative max-w-[700px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.15] tracking-[-0.03em] text-white">
+              The moment every AI team hits
+            </h2>
+          </motion.div>
+
+          {/* Console/Notification Window */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="rounded-xl border border-white/[0.08] bg-[#0c0c0c] overflow-hidden"
+          >
+            {/* Window header */}
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+              </div>
+              <span className="text-[12px] text-[#555] ml-2 font-mono">#alerts</span>
+            </div>
+
+            {/* Messages */}
+            <div className="p-4 space-y-4">
+              {/* Alert message */}
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="flex gap-3"
+              >
+                <div className="w-9 h-9 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-red-400 text-lg">!</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[13px] font-semibold text-red-400">OpenAI Alert</span>
+                    <span className="text-[11px] text-[#444]">9:14 AM</span>
+                  </div>
+                  <p className="text-[14px] text-[#999]">
+                    Usage spike detected: <span className="text-red-400 font-medium">$2,847</span> in the last 24h <span className="text-[#555]">(+312%)</span>
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Finance message */}
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className="flex gap-3"
+              >
+                <div className="w-9 h-9 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
+                  💰
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[13px] font-semibold text-white">Sarah (Finance)</span>
+                    <span className="text-[11px] text-[#444]">9:22 AM</span>
+                  </div>
+                  <p className="text-[14px] text-[#999]">
+                    Why is our AI bill 3x higher this month? We need answers before the board meeting.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Engineering message */}
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+                className="flex gap-3"
+              >
+                <div className="w-9 h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
+                  👨‍💻
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[13px] font-semibold text-white">Mike (Engineering)</span>
+                    <span className="text-[11px] text-[#444]">9:31 AM</span>
+                  </div>
+                  <p className="text-[14px] text-[#999]">
+                    Checked the logs. We made 847k API calls yesterday, mostly to gpt-4o. But the logs don&apos;t tie back to features — I&apos;d have to dig through code paths manually.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Product message */}
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.8 }}
+                className="flex gap-3"
+              >
+                <div className="w-9 h-9 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
+                  📊
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[13px] font-semibold text-white">Priya (Product)</span>
+                    <span className="text-[11px] text-[#444]">9:45 AM</span>
+                  </div>
+                  <p className="text-[14px] text-[#999]">
+                    Was it the new summarization feature? The chat widget? A looping workflow? <span className="text-[#555] italic">I genuinely don&apos;t know.</span>
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Typing indicator / gap */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 1.0 }}
+                className="flex items-center gap-2 pt-2 border-t border-white/[0.04]"
+              >
+                <div className="flex gap-1 px-3 py-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" style={{ animationDelay: '0.2s' }} />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" style={{ animationDelay: '0.4s' }} />
+                </div>
+                <span className="text-[12px] text-[#444] italic">No one has the answer...</span>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Closing statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <p className="text-[18px] md:text-[20px] text-white font-medium">
+              Orbit exists for this exact moment.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Transition to Features */}
+      <section className="relative py-16 lg:py-20">
+        <div className="max-w-[800px] mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-[15px] text-[#555] mb-4">Here&apos;s how we solve it</p>
+            <div className="flex justify-center">
+              <svg className="w-6 h-6 text-[#444] animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Section 1 - Feature Level Analytics */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto px-6">
@@ -114,15 +294,15 @@ export default function Home() {
                 Feature-Level Analytics
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                See exactly which features
+                Stop losing money
                 <br />
-                <span className="text-[#555]">are costing you money</span>
+                <span className="text-[#555]">in the dark</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
-                Vendor dashboards show you totals. Orbit shows you <span className="text-white font-medium">which features</span> are costing you money, which are failing, and which are slow.
+                Vendor dashboards show totals. Logs show requests. Neither tells you <span className="text-white font-medium">which feature</span> is burning margin or why.
               </p>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                Tag any LLM call with a feature name. Get cost, latency, and error rate <span className="text-white font-medium">per feature</span> — calculated from real production data.
+                Orbit ties every LLM call to a <span className="text-white font-medium">product feature</span> — and soon, to entire workflows — so you can see what is expensive, slow, or failing in production.
               </p>
 
               <div className="space-y-4">
@@ -182,22 +362,22 @@ export default function Home() {
                 Scaling Health
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
-                Prevent the cost-usage gap
+                Catch margin collapse
                 <br />
-                <span className="text-[#555]">before it hurts margins</span>
+                <span className="text-[#555]">before it happens</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
-                Are your costs growing faster than your traffic? Orbit&apos;s Scaling Health widget alerts you the moment a prompt change or model swap makes your features less profitable.
+                AI spend rarely grows linearly. One <span className="text-white font-medium">prompt tweak</span> or <span className="text-white font-medium">model swap</span> can turn a healthy feature into a loss overnight — and as systems become more workflow- and agent-driven, cost can explode in minutes.
               </p>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
-                Track traffic vs. spend correlation in real-time. Know exactly when unit economics shift — and why.
+                Orbit tracks <span className="text-white font-medium">traffic vs. spend</span> in real time and warns you the moment your unit economics break.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { label: "Usage vs. cost correlation", desc: "See if growth is profitable" },
-                  { label: "Net efficiency tracking", desc: "One metric for scaling health" },
-                  { label: "Cost trend analysis", desc: "Visualize spend over time" },
+                  { label: "Usage vs. cost correlation", desc: "Is growth actually profitable?" },
+                  { label: "Net efficiency", desc: "One number that tells you if AI is scaling safely" },
+                  { label: "Cost trend analysis", desc: "See spend drift before finance does" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 mr-4 flex-shrink-0" />
@@ -524,14 +704,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-white mb-6">
-              Own the unit economics
+              Don&apos;t wait for your first
               <br />
               <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                of your AI features
+                AI bill shock.
               </span>
             </h2>
             <p className="text-[17px] text-[#666] mb-10 max-w-[450px] mx-auto">
-              Efficiency scores, scaling health, and feature-level cost visibility — so you can scale AI without scaling your bill.
+              See what your AI is really costing you in production — feature by feature, workflow by workflow.
             </p>
             <a
               href="https://app.withorbit.io/signup"
@@ -539,7 +719,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center h-14 px-8 bg-white text-black font-medium text-[15px] rounded-full hover:bg-white/90 transition-all"
             >
-              Start for free
+              Expose Hidden AI Spend
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </motion.div>
