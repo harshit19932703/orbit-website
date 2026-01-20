@@ -45,7 +45,7 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 text-[13px] font-medium rounded-lg transition-colors ${
+      className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[12px] sm:text-[13px] font-medium rounded-lg transition-colors whitespace-nowrap ${
         active
           ? "bg-white/[0.1] text-white"
           : "text-[#666] hover:text-[#888]"
@@ -208,6 +208,125 @@ response = wrapped.models.generate_content(
 )`,
   };
 
+  // Task tracking code examples
+  const nodeTaskCode = {
+    openai: `// Group LLM calls by task and customer
+const agent = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'ai-agent',
+  task_id: 'task_abc123',      // Groups all calls for this task
+  customer_id: 'cust_xyz789',  // Attributes cost to this customer
+});
+
+// All calls with this client are tracked together
+await agent.chat.completions.create({
+  model: 'gpt-4o',
+  messages: [{ role: 'user', content: 'Step 1: Analyze data...' }],
+});
+
+await agent.chat.completions.create({
+  model: 'gpt-4o',
+  messages: [{ role: 'user', content: 'Step 2: Generate report...' }],
+});`,
+    anthropic: `// Group LLM calls by task and customer
+const agent = orbit.wrapAnthropic(new Anthropic(), {
+  feature: 'ai-agent',
+  task_id: 'task_abc123',      // Groups all calls for this task
+  customer_id: 'cust_xyz789',  // Attributes cost to this customer
+});
+
+// All calls with this client are tracked together
+await agent.messages.create({
+  model: 'claude-3-5-sonnet-20241022',
+  max_tokens: 1024,
+  messages: [{ role: 'user', content: 'Step 1: Analyze data...' }],
+});
+
+await agent.messages.create({
+  model: 'claude-3-5-sonnet-20241022',
+  max_tokens: 1024,
+  messages: [{ role: 'user', content: 'Step 2: Generate report...' }],
+});`,
+    gemini: `// Group LLM calls by task and customer
+const agent = orbit.wrapGoogle(ai, {
+  feature: 'ai-agent',
+  task_id: 'task_abc123',      // Groups all calls for this task
+  customer_id: 'cust_xyz789',  // Attributes cost to this customer
+});
+
+// All calls with this client are tracked together
+await agent.models.generateContent({
+  model: 'gemini-2.0-flash',
+  contents: 'Step 1: Analyze data...',
+});
+
+await agent.models.generateContent({
+  model: 'gemini-2.0-flash',
+  contents: 'Step 2: Generate report...',
+});`,
+  };
+
+  const pythonTaskCode = {
+    openai: `# Group LLM calls by task and customer
+from withorbit_sdk import WrapperOptions
+
+agent = orbit.wrap_openai(OpenAI(), WrapperOptions(
+    feature="ai-agent",
+    task_id="task_abc123",      # Groups all calls for this task
+    customer_id="cust_xyz789",  # Attributes cost to this customer
+))
+
+# All calls with this client are tracked together
+agent.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Step 1: Analyze data..."}],
+)
+
+agent.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Step 2: Generate report..."}],
+)`,
+    anthropic: `# Group LLM calls by task and customer
+from withorbit_sdk import WrapperOptions
+
+agent = orbit.wrap_anthropic(Anthropic(), WrapperOptions(
+    feature="ai-agent",
+    task_id="task_abc123",      # Groups all calls for this task
+    customer_id="cust_xyz789",  # Attributes cost to this customer
+))
+
+# All calls with this client are tracked together
+agent.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Step 1: Analyze data..."}],
+)
+
+agent.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Step 2: Generate report..."}],
+)`,
+    gemini: `# Group LLM calls by task and customer
+from withorbit_sdk import WrapperOptions
+
+agent = orbit.wrap_google(client, WrapperOptions(
+    feature="ai-agent",
+    task_id="task_abc123",      # Groups all calls for this task
+    customer_id="cust_xyz789",  # Attributes cost to this customer
+))
+
+# All calls with this client are tracked together
+agent.models.generate_content(
+    model="gemini-2.0-flash",
+    contents="Step 1: Analyze data...",
+)
+
+agent.models.generate_content(
+    model="gemini-2.0-flash",
+    contents="Step 2: Generate report...",
+)`,
+  };
+
   return (
     <div className="min-h-screen pt-24">
       {/* Hero */}
@@ -306,10 +425,9 @@ response = wrapped.models.generate_content(
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
               <h2 className="text-2xl font-semibold text-white">Quick Start</h2>
-              <div className="flex flex-wrap items-center gap-3">
-                {/* Language tabs */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
                 <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
                   <TabButton active={langTab === "node"} onClick={() => setLangTab("node")}>
                     Node.js
@@ -318,7 +436,6 @@ response = wrapped.models.generate_content(
                     Python
                   </TabButton>
                 </div>
-                {/* Provider tabs */}
                 <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
                   <TabButton active={providerTab === "openai"} onClick={() => setProviderTab("openai")}>
                     OpenAI
@@ -333,59 +450,115 @@ response = wrapped.models.generate_content(
               </div>
             </div>
 
-            {/* Step 1 - Install */}
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-7 h-7 rounded-full bg-violet-500/10 flex items-center justify-center text-[13px] font-medium text-violet-400">
-                  1
-                </div>
-                <h3 className="text-[17px] font-medium text-white">Install the SDK</h3>
+            {/* Steps */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-[15px] font-medium text-white mb-3">1. Install the SDK</h3>
+                <CodeBlock
+                  code={installCode[langTab]}
+                  language="bash"
+                />
               </div>
-              <CodeBlock
-                code={installCode[langTab]}
-                language="bash"
-              />
+
+              <div>
+                <h3 className="text-[15px] font-medium text-white mb-3">2. Initialize and wrap your client</h3>
+                <CodeBlock
+                  code={langTab === "node" ? nodeInitCode[providerTab] : pythonInitCode[providerTab]}
+                  language={langTab === "node" ? "javascript" : "python"}
+                />
+                <p className="text-[13px] text-[#555] mt-3">
+                  Get your API key from{" "}
+                  <a
+                    href="https://app.withorbit.io/settings"
+                    className="text-violet-400 hover:text-violet-300 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Settings
+                  </a>
+                  {" "}in your dashboard.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-[15px] font-medium text-white mb-3">3. Add feature tracking</h3>
+                <CodeBlock
+                  code={langTab === "node" ? nodeFeatureCode[providerTab] : pythonFeatureCode[providerTab]}
+                  language={langTab === "node" ? "javascript" : "python"}
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Agentic Task Tracking */}
+      <section className="py-12 border-t border-white/[0.04]">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-3">
+              <div className="flex items-center gap-3">
+                <h2 className="text-2xl font-semibold text-white">Agentic Task Tracking</h2>
+                <span className="px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+                  New
+                </span>
+              </div>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                  <TabButton active={langTab === "node"} onClick={() => setLangTab("node")}>
+                    Node.js
+                  </TabButton>
+                  <TabButton active={langTab === "python"} onClick={() => setLangTab("python")}>
+                    Python
+                  </TabButton>
+                </div>
+                <div className="flex items-center gap-1 p-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                  <TabButton active={providerTab === "openai"} onClick={() => setProviderTab("openai")}>
+                    OpenAI
+                  </TabButton>
+                  <TabButton active={providerTab === "anthropic"} onClick={() => setProviderTab("anthropic")}>
+                    Anthropic
+                  </TabButton>
+                  <TabButton active={providerTab === "gemini"} onClick={() => setProviderTab("gemini")}>
+                    Gemini
+                  </TabButton>
+                </div>
+              </div>
+            </div>
+            <p className="text-[15px] text-[#555] mb-8">
+              Group multi-step LLM workflows together and attribute costs to specific customers.
+              Perfect for AI agents that make multiple API calls per task.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02]">
+                <div className="flex items-center gap-2 mb-2">
+                  <Code className="w-4 h-4 text-violet-400" />
+                  <span className="text-[14px] text-white font-medium">task_id</span>
+                </div>
+                <p className="text-[13px] text-[#555]">
+                  Groups all LLM calls in a workflow together. Track total cost and token usage per task.
+                </p>
+              </div>
+              <div className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02]">
+                <div className="flex items-center gap-2 mb-2">
+                  <Zap className="w-4 h-4 text-emerald-400" />
+                  <span className="text-[14px] text-white font-medium">customer_id</span>
+                </div>
+                <p className="text-[13px] text-[#555]">
+                  Attribute AI costs to specific customers. Essential for usage-based billing.
+                </p>
+              </div>
             </div>
 
-            {/* Step 2 - Initialize */}
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-7 h-7 rounded-full bg-violet-500/10 flex items-center justify-center text-[13px] font-medium text-violet-400">
-                  2
-                </div>
-                <h3 className="text-[17px] font-medium text-white">Initialize and wrap your client</h3>
-              </div>
-              <CodeBlock
-                code={langTab === "node" ? nodeInitCode[providerTab] : pythonInitCode[providerTab]}
-                language={langTab === "node" ? "javascript" : "python"}
-              />
-              <p className="text-[13px] text-[#555] mt-3">
-                Get your API key from{" "}
-                <a
-                  href="https://app.withorbit.io/settings"
-                  className="text-violet-400 hover:text-violet-300 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Settings
-                </a>
-                {" "}in your dashboard.
-              </p>
-            </div>
-
-            {/* Step 3 - Feature tracking */}
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-7 h-7 rounded-full bg-violet-500/10 flex items-center justify-center text-[13px] font-medium text-violet-400">
-                  3
-                </div>
-                <h3 className="text-[17px] font-medium text-white">Add feature tracking</h3>
-              </div>
-              <CodeBlock
-                code={langTab === "node" ? nodeFeatureCode[providerTab] : pythonFeatureCode[providerTab]}
-                language={langTab === "node" ? "javascript" : "python"}
-              />
-            </div>
+            <CodeBlock
+              code={langTab === "node" ? nodeTaskCode[providerTab] : pythonTaskCode[providerTab]}
+              language={langTab === "node" ? "javascript" : "python"}
+            />
           </motion.div>
         </div>
       </section>
@@ -403,7 +576,7 @@ response = wrapped.models.generate_content(
               The SDK captures metadata about each AI request. Your prompts and responses are never sent to Orbit.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
                 { label: "Feature name", desc: "Group requests by feature" },
                 { label: "Model", desc: "gpt-4o, claude-3, etc." },
@@ -411,6 +584,8 @@ response = wrapped.models.generate_content(
                 { label: "Latency", desc: "Request to response time" },
                 { label: "Cost", desc: "Estimated based on pricing" },
                 { label: "Status", desc: "Success or error" },
+                { label: "Task ID", desc: "Group multi-step workflows" },
+                { label: "Customer ID", desc: "Attribute costs per customer" },
               ].map((item, i) => (
                 <div key={i} className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02]">
                   <div className="text-[14px] text-white font-medium mb-1">{item.label}</div>

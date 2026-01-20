@@ -63,32 +63,39 @@ body {
   box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
 }
 
-/* Screenshot styling - Linear-style floating */
+/* Screenshot styling - Clean with enhanced visibility */
 .screenshot-container {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(217, 70, 239, 0.05));
-  padding: 1px;
+  background: #18181b;
+  padding: 3px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(139, 92, 246, 0.12);
+  transform: scale(1.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.screenshot-container::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 1px;
-  background: linear-gradient(145deg, rgba(139, 92, 246, 0.3), rgba(217, 70, 239, 0.1));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+.screenshot-container:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 16px 48px rgba(0, 0, 0, 0.6),
+    0 0 100px rgba(139, 92, 246, 0.18);
 }
 
 .screenshot-inner {
-  border-radius: 11px;
+  border-radius: 10px;
   overflow: hidden;
   background: #0a0a0a;
+}
+
+.screenshot-inner img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Smooth hover transitions */

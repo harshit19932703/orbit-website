@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { DollarSign, BarChart3, Clock, AlertTriangle, Shield, Code, Gauge } from "lucide-react";
+import { DollarSign, BarChart3, Clock, AlertTriangle, Shield, Code, Gauge, Workflow } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -34,12 +34,13 @@ export default function FeaturesPage() {
 
       {/* Feature 1: Feature-level visibility */}
       <section className="section border-t border-[#27272a]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="lg:col-span-2"
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-medium mb-6">
                 <BarChart3 className="w-3 h-3 mr-2" />
@@ -69,14 +70,15 @@ export default function FeaturesPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="lg:col-span-3"
             >
-              <div className="screenshot-container glow-sm">
+              <div className="screenshot-container">
                 <div className="screenshot-inner">
                   <Image
                     src="/screenshots/features 2.png"
                     alt="Feature Analytics"
-                    width={600}
-                    height={375}
+                    width={800}
+                    height={500}
                     className="w-full h-auto"
                   />
                 </div>
@@ -86,23 +88,23 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Feature 2: Cost & Usage Analytics */}
+      {/* Feature 2: Agentic Task Tracking */}
       <section className="section border-t border-[#27272a] bg-gradient-to-b from-[#0a0a0a] to-[#111113]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1"
+              className="order-2 lg:order-1 lg:col-span-3"
             >
-              <div className="screenshot-container glow-sm">
+              <div className="screenshot-container">
                 <div className="screenshot-inner">
                   <Image
-                    src="/screenshots/usage 2.png"
-                    alt="Cost & Usage Analytics"
-                    width={600}
-                    height={375}
+                    src="/screenshots/task-tracking.png"
+                    alt="Agentic Task Tracking"
+                    width={800}
+                    height={500}
                     className="w-full h-auto"
                   />
                 </div>
@@ -112,7 +114,45 @@ export default function FeaturesPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-1 lg:order-2"
+              className="order-1 lg:order-2 lg:col-span-2"
+            >
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium mb-6">
+                <Workflow className="w-3 h-3 mr-2" />
+                Agentic Workflows
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
+                Agentic task & customer tracking
+              </h2>
+              <p className="text-[#a1a1aa] text-lg mb-8">
+                Track multi-step AI workflows end-to-end. Group all LLM calls by task and attribute costs to specific customers for usage-based billing.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Group LLM calls by task_id",
+                  "Attribute costs per customer_id",
+                  "See call sequence for each task",
+                  "Total cost and tokens per workflow",
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center text-[#a1a1aa]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-3" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 3: Cost & Usage Analytics */}
+      <section className="section border-t border-[#27272a]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2"
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-6">
                 <DollarSign className="w-3 h-3 mr-2" />
@@ -138,18 +178,55 @@ export default function FeaturesPage() {
                 ))}
               </ul>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-3"
+            >
+              <div className="screenshot-container">
+                <div className="screenshot-inner">
+                  <Image
+                    src="/screenshots/usage 2.png"
+                    alt="Cost & Usage Analytics"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Feature 3: Reliability & Errors */}
-      <section className="section border-t border-[#27272a]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* Feature 4: Reliability & Errors */}
+      <section className="section border-t border-[#27272a] bg-gradient-to-b from-[#0a0a0a] to-[#111113]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-2 lg:order-1 lg:col-span-3"
+            >
+              <div className="screenshot-container">
+                <div className="screenshot-inner">
+                  <Image
+                    src="/screenshots/errors.png"
+                    alt="Error Tracking"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2 lg:col-span-2"
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium mb-6">
                 <AlertTriangle className="w-3 h-3 mr-2" />
@@ -175,54 +252,19 @@ export default function FeaturesPage() {
                 ))}
               </ul>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="screenshot-container glow-sm">
-                <div className="screenshot-inner">
-                  <Image
-                    src="/screenshots/errors.png"
-                    alt="Error Tracking"
-                    width={600}
-                    height={375}
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Feature 4: Scaling Health & Efficiency */}
-      <section className="section border-t border-[#27272a] bg-gradient-to-b from-[#111113] to-[#0a0a0a]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* Feature 5: Scaling Health & Efficiency */}
+      <section className="section border-t border-[#27272a]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1"
-            >
-              <div className="screenshot-container glow-sm">
-                <div className="screenshot-inner">
-                  <Image
-                    src="/screenshots/overview.png"
-                    alt="Scaling Health & Efficiency"
-                    width={600}
-                    height={375}
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="order-1 lg:order-2"
+              className="lg:col-span-2"
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium mb-6">
                 <Gauge className="w-3 h-3 mr-2" />
@@ -248,18 +290,55 @@ export default function FeaturesPage() {
                 ))}
               </ul>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-3"
+            >
+              <div className="screenshot-container">
+                <div className="screenshot-inner">
+                  <Image
+                    src="/screenshots/overview.png"
+                    alt="Scaling Health & Efficiency"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Feature 5: SDK-first approach */}
-      <section className="section border-t border-[#27272a]">
+      {/* Feature 6: SDK-first approach - Commented out as page is too long and it's not really a feature
+      <section className="section border-t border-[#27272a] bg-gradient-to-b from-[#0a0a0a] to-[#111113]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <div className="screenshot-container glow-sm">
+                <div className="screenshot-inner">
+                  <Image
+                    src="/screenshots/sdk-guide-cropped.png"
+                    alt="SDK Integration"
+                    width={600}
+                    height={375}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-6">
                 <Code className="w-3 h-3 mr-2" />
@@ -285,26 +364,10 @@ export default function FeaturesPage() {
                 ))}
               </ul>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="screenshot-container glow-sm">
-                <div className="screenshot-inner">
-                  <Image
-                    src="/screenshots/sdk-guide-cropped.png"
-                    alt="SDK Integration"
-                    width={600}
-                    height={375}
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
+      */}
 
       {/* More capabilities grid */}
       <section className="section border-t border-[#27272a]">

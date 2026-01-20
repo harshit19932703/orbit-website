@@ -761,15 +761,15 @@ export default function Home() {
             className="rounded-2xl border border-white/[0.1] bg-[#0c0c0c] overflow-hidden shadow-[0_0_60px_-15px_rgba(139,92,246,0.15)]"
           >
             {/* Table Header */}
-            <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] border-b border-white/[0.1] bg-white/[0.03]">
-              <div className="px-6 py-5">
-                <span className="text-[13px] text-[#888] font-semibold uppercase tracking-wider">Capability</span>
+            <div className="grid grid-cols-3 border-b border-white/[0.1] bg-white/[0.03]">
+              <div className="px-4 sm:px-6 py-4 sm:py-5">
+                <span className="text-[12px] sm:text-[13px] text-[#888] font-semibold uppercase tracking-wider">Capability</span>
               </div>
-              <div className="px-4 py-5 text-center border-l border-white/[0.08]">
-                <span className="text-[13px] text-[#888] font-semibold uppercase tracking-wider">Providers</span>
+              <div className="px-2 sm:px-4 py-4 sm:py-5 text-center border-l border-white/[0.08]">
+                <span className="text-[10px] sm:text-[13px] text-[#888] font-semibold uppercase tracking-wide sm:tracking-wider">Providers</span>
               </div>
-              <div className="px-4 py-5 text-center border-l border-violet-500/30 bg-gradient-to-b from-violet-500/[0.12] to-violet-500/[0.06]">
-                <span className="text-[13px] text-violet-300 font-semibold uppercase tracking-wider">Orbit</span>
+              <div className="px-2 sm:px-4 py-4 sm:py-5 text-center border-l border-violet-500/30 bg-gradient-to-b from-violet-500/[0.12] to-violet-500/[0.06]">
+                <span className="text-[10px] sm:text-[13px] text-violet-300 font-semibold uppercase tracking-wide sm:tracking-wider">Orbit</span>
               </div>
             </div>
 
@@ -787,29 +787,29 @@ export default function Home() {
             ].map((row, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] transition-colors hover:bg-white/[0.02] ${
+                className={`grid grid-cols-3 transition-colors hover:bg-white/[0.02] ${
                   i !== 8 ? "border-b border-white/[0.06]" : ""
                 }`}
               >
-                <div className="px-6 py-4">
-                  <span className="text-[14px] text-[#ccc]">{row.capability}</span>
+                <div className="px-4 sm:px-6 py-3 sm:py-4">
+                  <span className="text-[13px] sm:text-[14px] text-[#ccc]">{row.capability}</span>
                 </div>
-                <div className="px-4 py-4 flex items-center justify-center border-l border-white/[0.06]">
+                <div className="px-2 sm:px-4 py-3 sm:py-4 flex items-center justify-center border-l border-white/[0.08]">
                   {row.providers ? (
-                    <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                   ) : (
-                    <div className="w-6 h-6 rounded-full bg-white/[0.03] flex items-center justify-center">
-                      <span className="text-[#444] text-sm font-medium">—</span>
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/[0.03] flex items-center justify-center">
+                      <span className="text-[#444] text-xs sm:text-sm font-medium">—</span>
                     </div>
                   )}
                 </div>
-                <div className="px-4 py-4 flex items-center justify-center border-l border-violet-500/20 bg-violet-500/[0.04]">
-                  <div className="w-6 h-6 rounded-full bg-emerald-500/15 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <div className="px-2 sm:px-4 py-3 sm:py-4 flex items-center justify-center border-l border-violet-500/30 bg-violet-500/[0.04]">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
