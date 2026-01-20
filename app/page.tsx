@@ -55,10 +55,10 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8"
               >
-                Your AI is already
+                You shipped AI.
                 <br />
                 <span className="bg-gradient-to-r from-white via-[#888] to-[#444] bg-clip-text text-transparent">
-                  spending money you can&apos;t explain.
+                  Now you&apos;re flying blind.
                 </span>
               </motion.h1>
 
@@ -748,7 +748,7 @@ export default function Home() {
               <span className="text-[#555]">Orbit shows how your product uses AI.</span>
             </h2>
             <p className="text-[16px] text-[#666] max-w-[500px] mx-auto">
-              Use Orbit alongside OpenAI and Anthropic dashboards for product-level visibility.
+              Provider dashboards show total API calls. They don&apos;t show which feature failed, why, or what it cost you.
             </p>
           </motion.div>
 
@@ -758,54 +758,61 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden"
+            className="rounded-2xl border border-white/[0.1] bg-[#0c0c0c] overflow-hidden shadow-[0_0_60px_-15px_rgba(139,92,246,0.15)]"
           >
             {/* Table Header */}
-            <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_120px_120px] border-b border-white/[0.06] bg-white/[0.02]">
-              <div className="px-6 py-4">
-                <span className="text-[13px] text-[#555] font-medium">Capability</span>
+            <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] border-b border-white/[0.1] bg-white/[0.03]">
+              <div className="px-6 py-5">
+                <span className="text-[13px] text-[#888] font-semibold uppercase tracking-wider">Capability</span>
               </div>
-              <div className="px-4 py-4 text-center border-l border-white/[0.06]">
-                <span className="text-[13px] text-[#555] font-medium">Providers</span>
+              <div className="px-4 py-5 text-center border-l border-white/[0.08]">
+                <span className="text-[13px] text-[#888] font-semibold uppercase tracking-wider">Providers</span>
               </div>
-              <div className="px-4 py-4 text-center border-l border-white/[0.06] bg-violet-500/[0.05]">
-                <span className="text-[13px] text-violet-400 font-medium">Orbit</span>
+              <div className="px-4 py-5 text-center border-l border-violet-500/30 bg-gradient-to-b from-violet-500/[0.12] to-violet-500/[0.06]">
+                <span className="text-[13px] text-violet-300 font-semibold uppercase tracking-wider">Orbit</span>
               </div>
             </div>
 
             {/* Table Rows */}
             {[
               { capability: "View AI usage by model", providers: true, orbit: true },
-              { capability: "View total cost", providers: true, orbit: true },
-              { capability: "Feature-level cost", providers: false, orbit: true },
-              { capability: "Feature-level latency", providers: false, orbit: true },
-              { capability: "Feature-level errors", providers: false, orbit: true },
+              { capability: "View total spend", providers: true, orbit: true },
+              { capability: "Feature-level attribution", providers: false, orbit: true },
+              { capability: "Feature-level latency & errors", providers: false, orbit: true },
+              { capability: "Multi-provider unified view", providers: false, orbit: true },
+              { capability: "Track multi-step AI workflows", providers: false, orbit: true },
               { capability: "Unit economics (traffic vs. spend)", providers: false, orbit: true },
-              { capability: "Account-level Efficiency Score", providers: false, orbit: true },
+              { capability: "Account-level efficiency score", providers: false, orbit: true },
               { capability: "SDK-based runtime data", providers: false, orbit: true },
             ].map((row, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_120px_120px] ${
-                  i !== 7 ? "border-b border-white/[0.04]" : ""
+                className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] transition-colors hover:bg-white/[0.02] ${
+                  i !== 8 ? "border-b border-white/[0.06]" : ""
                 }`}
               >
                 <div className="px-6 py-4">
-                  <span className="text-[14px] text-[#a1a1aa]">{row.capability}</span>
+                  <span className="text-[14px] text-[#ccc]">{row.capability}</span>
                 </div>
-                <div className="px-4 py-4 flex items-center justify-center border-l border-white/[0.04]">
+                <div className="px-4 py-4 flex items-center justify-center border-l border-white/[0.06]">
                   {row.providers ? (
-                    <svg className="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
+                    <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
                   ) : (
-                    <span className="text-[#333] text-lg">—</span>
+                    <div className="w-6 h-6 rounded-full bg-white/[0.03] flex items-center justify-center">
+                      <span className="text-[#444] text-sm font-medium">—</span>
+                    </div>
                   )}
                 </div>
-                <div className="px-4 py-4 flex items-center justify-center border-l border-white/[0.04] bg-violet-500/[0.03]">
-                  <svg className="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
+                <div className="px-4 py-4 flex items-center justify-center border-l border-violet-500/20 bg-violet-500/[0.04]">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             ))}
