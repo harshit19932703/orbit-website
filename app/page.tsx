@@ -99,14 +99,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Moment Section - Terminal/Console Style */}
+      {/* The Moment Section - Two Column Layout */}
       <section className="relative py-24 lg:py-32 border-t border-white/[0.04] overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-r from-red-600/8 via-orange-600/5 to-transparent blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-red-600/8 via-orange-600/5 to-transparent blur-3xl" />
         </div>
 
-        <div className="relative max-w-[700px] mx-auto px-6">
+        <div className="relative max-w-[1200px] mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,131 +119,323 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          {/* Console/Notification Window */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="rounded-xl border border-white/[0.08] bg-[#0c0c0c] overflow-hidden"
-          >
-            {/* Window header */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02]">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+          {/* Two Column Grid */}
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Vertical separator line - only on desktop */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/[0.08] to-transparent" />
+
+            {/* Left - Slack Console */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="lg:pr-6"
+            >
+              {/* Label */}
+              <div className="mb-4">
+                <span className="text-[11px] text-red-400/80 uppercase tracking-wider font-medium">The Problem</span>
               </div>
-              <span className="text-[12px] text-[#555] ml-2 font-mono">#alerts</span>
-            </div>
 
-            {/* Messages */}
-            <div className="p-4 space-y-4">
-              {/* Alert message */}
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="flex gap-3"
-              >
-                <div className="w-9 h-9 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-red-400 text-lg">!</span>
+              <div className="rounded-xl border border-white/[0.08] bg-[#0c0c0c] overflow-hidden">
+              {/* Window header */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                  <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#28c840]" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[13px] font-semibold text-red-400">OpenAI Alert</span>
-                    <span className="text-[11px] text-[#444]">9:14 AM</span>
+                <span className="text-[12px] text-[#555] ml-2 font-mono">#alerts</span>
+              </div>
+
+              {/* Messages */}
+              <div className="p-4 pb-10 space-y-4">
+                {/* Alert message */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  className="flex gap-3"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-red-400 text-lg">!</span>
                   </div>
-                  <p className="text-[14px] text-[#999]">
-                    Usage spike detected: <span className="text-red-400 font-medium">$2,847</span> in the last 24h <span className="text-[#555]">(+312%)</span>
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Finance message */}
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-                className="flex gap-3"
-              >
-                <div className="w-9 h-9 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
-                  💰
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[13px] font-semibold text-white">Sarah (Finance)</span>
-                    <span className="text-[11px] text-[#444]">9:22 AM</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[13px] font-semibold text-red-400">OpenAI Alert</span>
+                      <span className="text-[11px] text-[#444]">9:14 AM</span>
+                    </div>
+                    <p className="text-[14px] text-[#999]">
+                      Usage spike detected: <span className="text-red-400 font-medium">$2,847</span> in the last 24h <span className="text-[#555]">(+312%)</span>
+                    </p>
                   </div>
-                  <p className="text-[14px] text-[#999]">
-                    Why is our AI bill 3x higher this month? We need answers before the board meeting.
-                  </p>
-                </div>
-              </motion.div>
+                </motion.div>
 
-              {/* Engineering message */}
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-                className="flex gap-3"
-              >
-                <div className="w-9 h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
-                  👨‍💻
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[13px] font-semibold text-white">Mike (Engineering)</span>
-                    <span className="text-[11px] text-[#444]">9:31 AM</span>
+                {/* Finance message */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
+                  className="flex gap-3"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
+                    💰
                   </div>
-                  <p className="text-[14px] text-[#999]">
-                    Checked the logs. We made 847k API calls yesterday, mostly to gpt-4o. But the logs don&apos;t tie back to features — I&apos;d have to dig through code paths manually.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Product message */}
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.8 }}
-                className="flex gap-3"
-              >
-                <div className="w-9 h-9 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
-                  📊
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[13px] font-semibold text-white">Priya (Product)</span>
-                    <span className="text-[11px] text-[#444]">9:45 AM</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[13px] font-semibold text-white">Sarah (Finance)</span>
+                      <span className="text-[11px] text-[#444]">9:22 AM</span>
+                    </div>
+                    <p className="text-[14px] text-[#999]">
+                      Why is our AI bill 3x higher this month? We need answers before the board meeting.
+                    </p>
                   </div>
-                  <p className="text-[14px] text-[#999]">
-                    Was it the new summarization feature? The chat widget? A looping workflow? <span className="text-[#555] italic">I genuinely don&apos;t know.</span>
-                  </p>
-                </div>
-              </motion.div>
+                </motion.div>
 
-              {/* Typing indicator / gap */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 1.0 }}
-                className="flex items-center gap-2 pt-2 border-t border-white/[0.04]"
-              >
-                <div className="flex gap-1 px-3 py-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" style={{ animationDelay: '0.2s' }} />
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" style={{ animationDelay: '0.4s' }} />
+                {/* Engineering message */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.6 }}
+                  className="flex gap-3"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
+                    👨‍💻
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[13px] font-semibold text-white">Mike (Engineering)</span>
+                      <span className="text-[11px] text-[#444]">9:31 AM</span>
+                    </div>
+                    <p className="text-[14px] text-[#999]">
+                      Checked the logs. We made 847k API calls yesterday, mostly to gpt-4o. But the logs don&apos;t tie back to features — I&apos;d have to dig through code paths manually.
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Product message */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.8 }}
+                  className="flex gap-3"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-[14px]">
+                    📊
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[13px] font-semibold text-white">Priya (Product)</span>
+                      <span className="text-[11px] text-[#444]">9:45 AM</span>
+                    </div>
+                    <p className="text-[14px] text-[#999]">
+                      Was it the new summarization feature? The chat widget? A looping workflow? <span className="text-[#555] italic">I genuinely don&apos;t know.</span>
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Typing indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 1.0 }}
+                  className="flex items-center gap-2 pt-2 border-t border-white/[0.04]"
+                >
+                  <div className="flex gap-1 px-3 py-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" style={{ animationDelay: '0.2s' }} />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#444] animate-pulse" style={{ animationDelay: '0.4s' }} />
+                  </div>
+                  <span className="text-[12px] text-[#444] italic">No one has the answer...</span>
+                </motion.div>
+              </div>
+              </div>
+            </motion.div>
+
+            {/* Right - Agent Workflow Visualization (n8n style) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col justify-center lg:pl-6"
+            >
+              {/* Agentic AI label */}
+              <div className="mb-4">
+                <span className="text-[11px] text-violet-400/80 uppercase tracking-wider font-medium">The Reality — Agentic AI Workflow</span>
+              </div>
+
+              {/* Task context badge */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+                  <span className="text-[12px] text-[#666]">Agent workflow running...</span>
                 </div>
-                <span className="text-[12px] text-[#444] italic">No one has the answer...</span>
+                <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06]">
+                  <span className="text-[10px] text-[#555]">Customer:</span>
+                  <span className="text-[11px] text-white font-medium">Acme Corp</span>
+                </div>
+              </div>
+
+              {/* Workflow nodes */}
+              <div className="relative">
+                {/* Trigger node */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                  className="flex items-center gap-4 mb-3"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-violet-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-[13px] text-white font-medium">User Request</div>
+                    <div className="text-[11px] text-[#555]">&quot;Analyze Q4 Report&quot;</div>
+                  </div>
+                </motion.div>
+
+                {/* Connector line */}
+                <div className="w-[2px] h-4 bg-gradient-to-b from-violet-500/30 to-emerald-500/30 ml-[23px] rounded-full" />
+
+                {/* Feature 1: doc-parser */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                  className="flex items-center gap-4 mb-3"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 relative">
+                    <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex items-center justify-between">
+                    <div>
+                      <div className="text-[13px] text-white font-medium font-mono">doc-parser</div>
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        <span className="text-[10px] text-emerald-400/80 bg-emerald-500/10 px-1.5 py-0.5 rounded font-mono">gpt-4o</span>
+                        <span className="text-[10px] text-[#555]">1 call</span>
+                      </div>
+                    </div>
+                    <span className="text-[12px] text-emerald-400 font-mono font-medium">$0.12</span>
+                  </div>
+                </motion.div>
+
+                {/* Connector line */}
+                <div className="w-[2px] h-4 bg-gradient-to-b from-emerald-500/30 to-amber-500/30 ml-[23px] rounded-full" />
+
+                {/* Feature 2: deep-analysis - with warning */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.7 }}
+                  className="flex items-center gap-4 mb-3"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center flex-shrink-0 relative">
+                    <svg className="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                    </svg>
+                    <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-500 flex items-center justify-center">
+                      <span className="text-[8px] text-white font-bold">!</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-[13px] text-white font-medium font-mono">deep-analysis</div>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <span className="text-[10px] text-amber-400/80 bg-amber-500/10 px-1.5 py-0.5 rounded font-mono">claude-3.5</span>
+                          <span className="text-[10px] text-[#555]">4 calls</span>
+                        </div>
+                      </div>
+                      <span className="text-[12px] text-amber-400 font-mono font-medium">$1.35</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1.5">
+                      <span className="text-[10px] text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">3 retries</span>
+                      <span className="text-[10px] text-red-400">$0.90 wasted</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Connector line */}
+                <div className="w-[2px] h-4 bg-gradient-to-b from-amber-500/30 to-emerald-500/30 ml-[23px] rounded-full" />
+
+                {/* Feature 3: summarizer */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.9 }}
+                  className="flex items-center gap-4 mb-6"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 relative">
+                    <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex items-center justify-between">
+                    <div>
+                      <div className="text-[13px] text-white font-medium font-mono">summarizer</div>
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        <span className="text-[10px] text-emerald-400/80 bg-emerald-500/10 px-1.5 py-0.5 rounded font-mono">gpt-4o-mini</span>
+                        <span className="text-[10px] text-[#555]">1 call</span>
+                      </div>
+                    </div>
+                    <span className="text-[12px] text-emerald-400 font-mono font-medium">$0.08</span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Summary cards */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 1.1 }}
+                className="grid grid-cols-2 gap-3"
+              >
+                {/* Task cost card */}
+                <div className="rounded-xl bg-white/[0.02] border border-white/[0.06] p-3">
+                  <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Task Cost</div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-[18px] text-red-400 font-mono font-semibold">$1.55</span>
+                    <span className="text-[11px] text-[#444] line-through">$0.65</span>
+                  </div>
+                  <div className="text-[10px] text-red-400/70 mt-1">138% over budget</div>
+                </div>
+
+                {/* Customer billing card */}
+                <div className="rounded-xl bg-white/[0.02] border border-white/[0.06] p-3">
+                  <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Bill to Customer</div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-[18px] text-[#444] font-mono font-semibold">$???</span>
+                  </div>
+                  <div className="text-[10px] text-[#444] mt-1">No task attribution</div>
+                </div>
               </motion.div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           {/* Closing statement */}
           <motion.div
@@ -253,8 +445,11 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <p className="text-[18px] md:text-[20px] text-white font-medium">
-              Orbit exists for this exact moment.
+            <p className="text-[17px] md:text-[19px] text-white font-medium mb-2">
+              Orbit ties every call to a task. Every task to a customer.
+            </p>
+            <p className="text-[15px] text-[#555]">
+              So you always have the answer.
             </p>
           </motion.div>
         </div>
