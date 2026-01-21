@@ -1,6 +1,23 @@
+# Orbit - AI Cost Tracking & Observability Platform
 # https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Sitemap
+# Disallow internal/admin paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Specific crawler optimizations
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://withorbit.io/sitemap.xml

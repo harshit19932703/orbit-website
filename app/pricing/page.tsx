@@ -1,11 +1,60 @@
 "use client";
 
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
+// FAQ data for both display and schema
+const faqs = [
+  {
+    q: "What counts as an event?",
+    a: "An event is a single AI API call tracked by the SDK. Each time your application makes a request to an AI model through the Orbit SDK, it counts as one event.",
+  },
+  {
+    q: "What happens if I exceed the free tier limits?",
+    a: "We'll notify you when you're approaching your limits. Events beyond the limit won't be tracked until the next billing cycle or until you upgrade.",
+  },
+  {
+    q: "Can I use Orbit in production on the free plan?",
+    a: "Yes, the free plan is designed for production use. It includes all core features needed to monitor your AI usage in real applications.",
+  },
+  {
+    q: "How accurate are the cost estimates?",
+    a: "Costs are calculated using standard model pricing at the time of the request. They're estimates based on token usage and may differ slightly from your actual provider bills.",
+  },
+  {
+    q: "Is my data secure?",
+    a: "Yes. We use SDK-based data collection, meaning we never see your API keys or the actual content of your AI requests. We only track metadata like tokens, latency, and errors.",
+  },
+  {
+    q: "How do I integrate Orbit with my application?",
+    a: "Integration takes one line of code. Install the SDK, wrap your AI client (OpenAI, Anthropic, or Gemini), and costs are tracked automatically. No code changes to your existing AI calls.",
+  },
+];
+
+// Generate FAQ Schema for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
 export default function PricingPage() {
   return (
-    <div className="min-h-screen pt-24">
+    <>
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <div className="min-h-screen pt-24">
       {/* Hero */}
       <section className="section-sm">
         <div className="max-w-6xl mx-auto px-6">
@@ -138,28 +187,7 @@ export default function PricingPage() {
           </motion.div>
 
           <div className="space-y-4">
-            {[
-              {
-                q: "What counts as an event?",
-                a: "An event is a single AI API call tracked by the SDK. Each time your application makes a request to an AI model through the Orbit SDK, it counts as one event.",
-              },
-              {
-                q: "What happens if I exceed the free tier limits?",
-                a: "We'll notify you when you're approaching your limits. Events beyond the limit won't be tracked until the next billing cycle or until you upgrade.",
-              },
-              {
-                q: "Can I use Orbit in production on the free plan?",
-                a: "Yes, the free plan is designed for production use. It includes all core features needed to monitor your AI usage in real applications.",
-              },
-              {
-                q: "How accurate are the cost estimates?",
-                a: "Costs are calculated using standard model pricing at the time of the request. They're estimates based on token usage and may differ slightly from your actual provider bills.",
-              },
-              {
-                q: "Is my data secure?",
-                a: "Yes. We use SDK-based data collection, meaning we never see your API keys or the actual content of your AI requests. We only track metadata like tokens, latency, and errors.",
-              },
-            ].map((item, index) => (
+            {faqs.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -205,6 +233,7 @@ export default function PricingPage() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
