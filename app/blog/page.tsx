@@ -7,6 +7,33 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 const posts = [
   {
+    slug: "openai-api-pricing-2025-complete-guide",
+    title: "OpenAI API Pricing 2025: Complete Guide to GPT-4o, o1, and o3 Costs",
+    description:
+      "The complete guide to OpenAI API pricing in 2025. Current prices for GPT-4o, GPT-4o-mini, o1, o3-mini, and all OpenAI models with cost examples.",
+    date: "2025-01-27",
+    readTime: "8 min read",
+    category: "Guide",
+  },
+  {
+    slug: "ai-api-cost-control-guide",
+    title: "AI API Cost Control: How to Track and Reduce LLM Spend",
+    description:
+      "Learn how to control AI API costs with practical strategies. Monitor spending, set budgets, and reduce LLM costs without sacrificing quality.",
+    date: "2025-01-27",
+    readTime: "10 min read",
+    category: "Guide",
+  },
+  {
+    slug: "openai-api-cost-tracking-tutorial",
+    title: "How to Track OpenAI API Costs in Your Application",
+    description:
+      "Step-by-step tutorial on tracking OpenAI API costs in production. Monitor GPT-4o usage, track spending by feature, and get real-time cost visibility.",
+    date: "2025-01-27",
+    readTime: "7 min read",
+    category: "Tutorial",
+  },
+  {
     slug: "track-agentic-ai-workflows-task-customer-attribution",
     title: "How to Track Agentic AI Workflows: Task & Customer Attribution",
     description:

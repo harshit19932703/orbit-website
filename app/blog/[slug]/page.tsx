@@ -188,6 +188,33 @@ const posts: Record<
     category: "Tutorial",
     content: <Blog9Content />,
   },
+  "openai-api-pricing-2025-complete-guide": {
+    title: "OpenAI API Pricing 2025: Complete Guide to GPT-4o, o1, and o3 Costs",
+    description:
+      "The complete guide to OpenAI API pricing in 2025. Current prices for GPT-4o, GPT-4o-mini, o1, o3-mini, and all OpenAI models with cost examples.",
+    date: "2025-01-27",
+    readTime: "8 min read",
+    category: "Guide",
+    content: <Blog10Content />,
+  },
+  "ai-api-cost-control-guide": {
+    title: "AI API Cost Control: How to Track and Reduce LLM Spend",
+    description:
+      "Learn how to control AI API costs with practical strategies. Monitor spending, set budgets, and reduce LLM costs without sacrificing quality.",
+    date: "2025-01-27",
+    readTime: "10 min read",
+    category: "Guide",
+    content: <Blog11Content />,
+  },
+  "openai-api-cost-tracking-tutorial": {
+    title: "How to Track OpenAI API Costs in Your Application",
+    description:
+      "Step-by-step tutorial on tracking OpenAI API costs in production. Monitor GPT-4o usage, track spending by feature, and get real-time cost visibility.",
+    date: "2025-01-27",
+    readTime: "7 min read",
+    category: "Tutorial",
+    content: <Blog12Content />,
+  },
 };
 
 // Reusable components for blog content
@@ -2575,6 +2602,669 @@ async function childOperation(openai, taskContext) {
           className="inline-flex items-center gap-2 bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-all text-[14px]"
         >
           Start tracking agents for free <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function Blog10Content() {
+  return (
+    <article className="prose prose-invert prose-lg max-w-none">
+      <p className="lead">
+        OpenAI&apos;s pricing changes frequently, and keeping up with the latest costs for GPT-4o, o1, o3, and other models can be challenging. Here&apos;s everything you need to know about OpenAI API pricing in 2025.
+      </p>
+
+      <p>
+        This guide covers current pricing for all OpenAI models, helps you estimate costs for your use case, and shows you how to track spending in production.
+      </p>
+
+      <h2>OpenAI API Pricing Overview (January 2025)</h2>
+
+      <p>
+        OpenAI charges per token—small units of text (roughly 4 characters or 0.75 words). Prices differ for input tokens (what you send) and output tokens (what the model generates).
+      </p>
+
+      <h3>GPT-4o Models</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input (per 1M tokens)</th>
+            <th>Output (per 1M tokens)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4o</td>
+            <td>$2.50</td>
+            <td>$10.00</td>
+          </tr>
+          <tr>
+            <td>GPT-4o-mini</td>
+            <td>$0.15</td>
+            <td>$0.60</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>GPT-4o</strong> is OpenAI&apos;s flagship model—fast, capable, and multimodal (handles text, images, and audio). It&apos;s the best choice for most production use cases.
+      </p>
+
+      <p>
+        <strong>GPT-4o-mini</strong> is the budget option. It&apos;s 16x cheaper than GPT-4o for input and handles simpler tasks effectively. Use it for classification, extraction, and basic Q&A.
+      </p>
+
+      <Callout type="tip" title="Cost Saving Tip">
+        GPT-4o-mini handles 80% of typical tasks at a fraction of the cost. Start with mini and only upgrade to GPT-4o when quality requires it.
+      </Callout>
+
+      <h3>Reasoning Models (o1, o3)</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input (per 1M tokens)</th>
+            <th>Output (per 1M tokens)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>o1</td>
+            <td>$15.00</td>
+            <td>$60.00</td>
+          </tr>
+          <tr>
+            <td>o1-mini</td>
+            <td>$3.00</td>
+            <td>$12.00</td>
+          </tr>
+          <tr>
+            <td>o3-mini</td>
+            <td>$1.10</td>
+            <td>$4.40</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The o-series models are designed for complex reasoning tasks—math, coding, and multi-step problem solving. They&apos;re significantly more expensive because they &quot;think&quot; before responding.
+      </p>
+
+      <Callout type="warning" title="Watch Out for Hidden Costs">
+        Reasoning models generate internal &quot;thinking&quot; tokens that you pay for but don&apos;t see in the output. A simple query can use 10x more tokens than expected.
+      </Callout>
+
+      <h3>Legacy Models</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input (per 1M tokens)</th>
+            <th>Output (per 1M tokens)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4 Turbo</td>
+            <td>$10.00</td>
+            <td>$30.00</td>
+          </tr>
+          <tr>
+            <td>GPT-4</td>
+            <td>$30.00</td>
+            <td>$60.00</td>
+          </tr>
+          <tr>
+            <td>GPT-3.5 Turbo</td>
+            <td>$0.50</td>
+            <td>$1.50</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        These models are still available but mostly superseded. GPT-4o is cheaper and better than GPT-4 Turbo. GPT-4o-mini is cheaper and often better than GPT-3.5 Turbo.
+      </p>
+
+      <h2>Real Cost Examples</h2>
+
+      <p>
+        Let&apos;s calculate costs for common use cases:
+      </p>
+
+      <h3>Customer Support Chatbot</h3>
+      <p>
+        Average conversation: 500 input tokens, 300 output tokens<br />
+        Daily volume: 1,000 conversations
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+        <StatCard value="$5.50/day" label="Using GPT-4o" />
+        <StatCard value="$0.33/day" label="Using GPT-4o-mini" />
+      </div>
+
+      <p>
+        Monthly cost with GPT-4o: <strong>$165</strong><br />
+        Monthly cost with GPT-4o-mini: <strong>$10</strong>
+      </p>
+
+      <h3>Document Summarization</h3>
+      <p>
+        Average document: 4,000 input tokens, 500 output tokens<br />
+        Daily volume: 500 documents
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+        <StatCard value="$7.50/day" label="Using GPT-4o" />
+        <StatCard value="$0.45/day" label="Using GPT-4o-mini" />
+      </div>
+
+      <h3>Code Generation</h3>
+      <p>
+        Average request: 800 input tokens, 1,200 output tokens<br />
+        Daily volume: 200 requests
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+        <StatCard value="$2.80/day" label="Using GPT-4o" />
+        <StatCard value="$0.17/day" label="Using GPT-4o-mini" />
+      </div>
+
+      <h2>How to Reduce OpenAI API Costs</h2>
+
+      <ol>
+        <li><strong>Use GPT-4o-mini for simple tasks</strong> — Classification, extraction, and basic Q&A work well with the smaller model</li>
+        <li><strong>Optimize prompts</strong> — Shorter prompts = fewer tokens = lower costs</li>
+        <li><strong>Cache responses</strong> — Don&apos;t pay twice for the same query</li>
+        <li><strong>Set spending limits</strong> — OpenAI&apos;s dashboard lets you set monthly caps</li>
+        <li><strong>Track costs by feature</strong> — Know which parts of your app cost the most</li>
+      </ol>
+
+      <h2>Tracking OpenAI Costs in Production</h2>
+
+      <p>
+        OpenAI&apos;s dashboard shows total usage, but not which features drive costs. To optimize effectively, you need per-feature tracking.
+      </p>
+
+      <pre><code>{`import { Orbit } from '@with-orbit/sdk';
+import OpenAI from 'openai';
+
+const orbit = new Orbit({ apiKey: process.env.ORBIT_API_KEY });
+
+// Track costs by feature
+const chatClient = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'customer-chat'
+});
+
+const summaryClient = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'doc-summary'
+});`}</code></pre>
+
+      <p>
+        Now you can see exactly how much each feature costs and optimize where it matters.
+      </p>
+
+      <div className="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-xl p-8 my-10">
+        <h3 className="text-xl font-semibold text-white mb-3">Track OpenAI Costs with Orbit</h3>
+        <p className="text-[#a1a1aa] mb-4">
+          Orbit gives you real-time visibility into OpenAI API costs. See spending by feature, model, and environment—all with a one-line SDK integration.
+        </p>
+        <ul className="text-[#a1a1aa] space-y-2 mb-6">
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Real-time cost tracking</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Per-feature cost breakdown</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Free tier: 10,000 events/month</li>
+        </ul>
+        <a
+          href="https://app.withorbit.io/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-all text-[14px]"
+        >
+          Start tracking OpenAI costs <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function Blog11Content() {
+  return (
+    <article className="prose prose-invert prose-lg max-w-none">
+      <p className="lead">
+        AI API costs can spiral quickly. What starts as a $100/month experiment becomes a $10,000 problem at scale. Controlling AI costs isn&apos;t about spending less—it&apos;s about spending smart.
+      </p>
+
+      <p>
+        This guide covers practical strategies for AI API cost control: how to track spending, set effective budgets, and reduce costs without sacrificing quality.
+      </p>
+
+      <h2>Why AI Costs Get Out of Control</h2>
+
+      <p>
+        AI pricing is different from most SaaS costs. You pay per token, and usage scales with your users. A feature that costs $1/day in development can cost $1,000/day in production.
+      </p>
+
+      <p>
+        Common reasons AI costs spike:
+      </p>
+
+      <ul>
+        <li><strong>No visibility</strong> — You don&apos;t know which features cost what</li>
+        <li><strong>Wrong models</strong> — Using GPT-4o for tasks that GPT-4o-mini handles fine</li>
+        <li><strong>Bloated prompts</strong> — System prompts with unnecessary instructions</li>
+        <li><strong>No guardrails</strong> — A bug or spike can burn through budgets</li>
+        <li><strong>Duplicate requests</strong> — Paying multiple times for the same computation</li>
+      </ul>
+
+      <Callout type="info" title="The 80/20 Rule">
+        In most applications, 80% of AI costs come from 20% of features. Find those features first.
+      </Callout>
+
+      <h2>Step 1: Get Visibility</h2>
+
+      <p>
+        You can&apos;t control what you can&apos;t see. The first step is tracking costs at the feature level, not just totals.
+      </p>
+
+      <p>
+        Provider dashboards (OpenAI, Anthropic, Google) show aggregate usage. They don&apos;t tell you:
+      </p>
+
+      <ul>
+        <li>Which feature in your app costs the most</li>
+        <li>Cost per user or customer</li>
+        <li>Whether costs are trending up or down</li>
+        <li>Which errors are wasting money</li>
+      </ul>
+
+      <p>
+        Set up tracking that tags every API call with context:
+      </p>
+
+      <pre><code>{`// Tag each API call with feature and context
+const response = await openai.chat.completions.create({
+  model: 'gpt-4o',
+  messages: [...],
+});
+
+// Track with context
+await trackUsage({
+  feature: 'customer-chat',
+  model: response.model,
+  tokens: response.usage.total_tokens,
+  cost: calculateCost(response.usage),
+  user_id: userId,
+});`}</code></pre>
+
+      <p>
+        Or use an SDK that handles this automatically:
+      </p>
+
+      <pre><code>{`import { Orbit } from '@with-orbit/sdk';
+
+const client = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'customer-chat',
+  environment: 'production'
+});
+
+// All calls automatically tracked with context`}</code></pre>
+
+      <h2>Step 2: Set Budgets and Alerts</h2>
+
+      <p>
+        Once you have visibility, set spending limits. This prevents surprises and catches issues early.
+      </p>
+
+      <h3>Daily Spending Alerts</h3>
+      <p>
+        Set alerts at 50%, 75%, and 90% of your daily budget. If Tuesday hits 75% by noon, something might be wrong.
+      </p>
+
+      <h3>Per-Feature Budgets</h3>
+      <p>
+        Allocate budgets to individual features. If your chatbot should cost $500/month and it&apos;s trending toward $2,000, you&apos;ll know immediately.
+      </p>
+
+      <h3>Rate Limits</h3>
+      <p>
+        Set per-user or per-customer rate limits. This prevents any single user from running up costs:
+      </p>
+
+      <pre><code>{`// Simple rate limiting
+const userRequests = await getRequestCount(userId, '1h');
+
+if (userRequests > MAX_REQUESTS_PER_HOUR) {
+  throw new Error('Rate limit exceeded');
+}`}</code></pre>
+
+      <Callout type="warning" title="Set Limits Before You Need Them">
+        The best time to set spending limits is before you have a problem. A runaway loop or viral feature can burn through thousands in hours.
+      </Callout>
+
+      <h2>Step 3: Optimize High-Cost Features</h2>
+
+      <p>
+        With visibility and alerts in place, focus optimization on features that matter. Prioritize by cost impact.
+      </p>
+
+      <h3>Model Selection</h3>
+      <p>
+        Not every task needs the most expensive model. Here&apos;s a simple decision framework:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Task Type</th>
+            <th>Recommended Model</th>
+            <th>Cost Reduction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Complex reasoning</td>
+            <td>GPT-4o / Claude Sonnet</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>Code generation</td>
+            <td>GPT-4o / Claude Sonnet</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>Simple Q&A</td>
+            <td>GPT-4o-mini / Gemini Flash</td>
+            <td>10-20x</td>
+          </tr>
+          <tr>
+            <td>Classification</td>
+            <td>GPT-4o-mini / Gemini Flash</td>
+            <td>10-20x</td>
+          </tr>
+          <tr>
+            <td>Summarization</td>
+            <td>GPT-4o-mini / Claude Haiku</td>
+            <td>5-10x</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Prompt Optimization</h3>
+      <p>
+        Every token costs money. Audit your prompts for bloat:
+      </p>
+
+      <ul>
+        <li>Remove unnecessary politeness (&quot;Please kindly...&quot;)</li>
+        <li>Cut redundant instructions</li>
+        <li>Use examples only when needed</li>
+        <li>Keep system prompts lean—they&apos;re sent with every request</li>
+      </ul>
+
+      <h3>Caching</h3>
+      <p>
+        If users ask similar questions, cache the responses. This works well for:
+      </p>
+
+      <ul>
+        <li>FAQ-style queries</li>
+        <li>Static content generation</li>
+        <li>Classification with limited categories</li>
+      </ul>
+
+      <h2>Step 4: Monitor Continuously</h2>
+
+      <p>
+        Cost control isn&apos;t a one-time project. Make it part of your regular process:
+      </p>
+
+      <ul>
+        <li><strong>Weekly reviews</strong> — Check cost trends and feature breakdown</li>
+        <li><strong>Monthly audits</strong> — Review model choices and prompt efficiency</li>
+        <li><strong>Alerts</strong> — Respond to anomalies immediately</li>
+      </ul>
+
+      <h2>Cost Control Checklist</h2>
+
+      <ul>
+        <li>✓ Track costs per feature (not just total)</li>
+        <li>✓ Set daily spending alerts</li>
+        <li>✓ Implement per-user rate limits</li>
+        <li>✓ Use smaller models for simple tasks</li>
+        <li>✓ Audit and optimize top-cost features</li>
+        <li>✓ Cache repeated queries where appropriate</li>
+        <li>✓ Review costs weekly</li>
+      </ul>
+
+      <div className="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-xl p-8 my-10">
+        <h3 className="text-xl font-semibold text-white mb-3">Control AI Costs with Orbit</h3>
+        <p className="text-[#a1a1aa] mb-4">
+          Orbit gives you the visibility you need to control AI API costs. Track spending by feature, set alerts, and optimize with confidence.
+        </p>
+        <ul className="text-[#a1a1aa] space-y-2 mb-6">
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Per-feature cost breakdown</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Real-time cost tracking</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Error tracking to catch wasted spend</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Free tier: 10,000 events/month</li>
+        </ul>
+        <a
+          href="https://app.withorbit.io/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-all text-[14px]"
+        >
+          Start controlling AI costs <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function Blog12Content() {
+  return (
+    <article className="prose prose-invert prose-lg max-w-none">
+      <p className="lead">
+        You&apos;re using the OpenAI API in production. Your monthly bill is growing. But which features are driving costs? This tutorial shows you how to track OpenAI API costs at the feature level.
+      </p>
+
+      <h2>What You&apos;ll Build</h2>
+
+      <p>
+        By the end of this tutorial, you&apos;ll have:
+      </p>
+
+      <ul>
+        <li>Per-feature cost tracking for all OpenAI API calls</li>
+        <li>Real-time visibility into token usage and spending</li>
+        <li>Environment separation (development vs. production)</li>
+      </ul>
+
+      <h2>Prerequisites</h2>
+
+      <ul>
+        <li>An existing app using the OpenAI API</li>
+        <li>Node.js/TypeScript (Python version coming soon)</li>
+        <li>5 minutes</li>
+      </ul>
+
+      <h2>Step 1: Install the Orbit SDK</h2>
+
+      <pre><code>{`npm install @with-orbit/sdk`}</code></pre>
+
+      <p>Or with yarn:</p>
+
+      <pre><code>{`yarn add @with-orbit/sdk`}</code></pre>
+
+      <h2>Step 2: Get Your API Key</h2>
+
+      <ol>
+        <li>Sign up at <a href="https://app.withorbit.io/signup" target="_blank" rel="noopener noreferrer">app.withorbit.io/signup</a></li>
+        <li>Go to Settings → API Keys</li>
+        <li>Create a new key (starts with <code>orb_live_</code>)</li>
+        <li>Add it to your environment variables</li>
+      </ol>
+
+      <pre><code>{`# .env
+ORBIT_API_KEY=orb_live_your_key_here`}</code></pre>
+
+      <h2>Step 3: Wrap Your OpenAI Client</h2>
+
+      <p>
+        Replace your OpenAI client initialization with the Orbit wrapper:
+      </p>
+
+      <p><strong>Before:</strong></p>
+
+      <pre><code>{`import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+const response = await openai.chat.completions.create({
+  model: 'gpt-4o',
+  messages: [{ role: 'user', content: 'Hello!' }]
+});`}</code></pre>
+
+      <p><strong>After:</strong></p>
+
+      <pre><code>{`import OpenAI from 'openai';
+import { Orbit } from '@with-orbit/sdk';
+
+const orbit = new Orbit({ apiKey: process.env.ORBIT_API_KEY });
+
+const openai = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'chat-assistant',
+  environment: 'production'
+});
+
+// Use exactly like before - tracking is automatic
+const response = await openai.chat.completions.create({
+  model: 'gpt-4o',
+  messages: [{ role: 'user', content: 'Hello!' }]
+});`}</code></pre>
+
+      <Callout type="tip" title="No Code Changes Needed">
+        The wrapped client has the exact same API as the original OpenAI client. All your existing code works unchanged.
+      </Callout>
+
+      <h2>Step 4: Tag Features</h2>
+
+      <p>
+        Create different wrapped clients for each feature in your app:
+      </p>
+
+      <pre><code>{`// Chat feature
+const chatClient = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'customer-chat',
+  environment: process.env.NODE_ENV
+});
+
+// Document summarization
+const summaryClient = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'doc-summary',
+  environment: process.env.NODE_ENV
+});
+
+// Code generation
+const codeClient = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'code-assistant',
+  environment: process.env.NODE_ENV
+});`}</code></pre>
+
+      <p>
+        Now every API call is automatically tagged with its feature and environment.
+      </p>
+
+      <h2>Step 5: Add User Context (Optional)</h2>
+
+      <p>
+        Track costs per user or customer for billing attribution:
+      </p>
+
+      <pre><code>{`const client = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'chat-assistant',
+  environment: 'production',
+  user_id: currentUser.id,
+  customer_id: currentUser.organizationId
+});`}</code></pre>
+
+      <h2>Step 6: View Your Dashboard</h2>
+
+      <p>
+        Once you&apos;ve deployed, go to <a href="https://app.withorbit.io" target="_blank" rel="noopener noreferrer">app.withorbit.io</a> to see:
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
+        <StatCard value="$1,234" label="Total spend" />
+        <StatCard value="45M" label="Total tokens" />
+        <StatCard value="12,345" label="API calls" />
+      </div>
+
+      <p>
+        Filter by feature to see exactly where your costs are going:
+      </p>
+
+      <ul>
+        <li><strong>customer-chat:</strong> $800/month (65%)</li>
+        <li><strong>doc-summary:</strong> $300/month (24%)</li>
+        <li><strong>code-assistant:</strong> $134/month (11%)</li>
+      </ul>
+
+      <h2>What Gets Tracked</h2>
+
+      <p>
+        For every OpenAI API call, Orbit automatically captures:
+      </p>
+
+      <ul>
+        <li><strong>Model</strong> — gpt-4o, gpt-4o-mini, etc.</li>
+        <li><strong>Tokens</strong> — Input, output, and total</li>
+        <li><strong>Cost</strong> — Calculated from current OpenAI pricing</li>
+        <li><strong>Latency</strong> — Response time in milliseconds</li>
+        <li><strong>Status</strong> — Success or error</li>
+        <li><strong>Feature</strong> — Your custom tag</li>
+        <li><strong>Environment</strong> — Production, staging, development</li>
+      </ul>
+
+      <Callout type="info" title="Privacy First">
+        Orbit only tracks metadata. We never see your prompts, responses, or API keys. Your data stays private.
+      </Callout>
+
+      <h2>Next Steps</h2>
+
+      <p>
+        Now that you&apos;re tracking OpenAI costs:
+      </p>
+
+      <ol>
+        <li><strong>Review weekly</strong> — Check which features cost the most</li>
+        <li><strong>Optimize</strong> — Try GPT-4o-mini for high-cost, simple tasks</li>
+        <li><strong>Set alerts</strong> — Get notified when costs spike</li>
+        <li><strong>Track errors</strong> — Failed requests still cost tokens</li>
+      </ol>
+
+      <div className="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-xl p-8 my-10">
+        <h3 className="text-xl font-semibold text-white mb-3">Start Tracking OpenAI Costs</h3>
+        <p className="text-[#a1a1aa] mb-4">
+          Get visibility into your OpenAI API spending in 5 minutes. Free tier includes 10,000 events/month.
+        </p>
+        <ul className="text-[#a1a1aa] space-y-2 mb-6">
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> One-line SDK integration</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Per-feature cost tracking</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Real-time dashboards</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> No code changes to existing calls</li>
+        </ul>
+        <a
+          href="https://app.withorbit.io/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-all text-[14px]"
+        >
+          Get started free <ArrowRight className="w-4 h-4" />
         </a>
       </div>
     </article>

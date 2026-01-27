@@ -5,6 +5,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Blog posts - all published articles
   const blogPosts = [
+    "openai-api-pricing-2025-complete-guide",
+    "ai-api-cost-control-guide",
+    "openai-api-cost-tracking-tutorial",
     "track-agentic-ai-workflows-task-customer-attribution",
     "ai-observability-what-you-need-to-know",
     "monitor-ai-api-usage-and-billing",
