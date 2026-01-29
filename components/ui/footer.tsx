@@ -81,6 +81,14 @@ export function Footer() {
                   Python SDK
                 </a>
               </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-sm text-[#71717a] hover:text-white transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

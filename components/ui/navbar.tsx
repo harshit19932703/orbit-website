@@ -69,6 +69,14 @@ export function Navbar() {
             >
               Blog
             </Link>
+            <Link
+              href="/contact"
+              className={`text-sm transition-colors ${
+                pathname === "/contact" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+              }`}
+            >
+              Contact
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -152,6 +160,15 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Blog
+              </Link>
+              <Link
+                href="/contact"
+                className={`text-sm transition-colors ${
+                  pathname === "/contact" ? "text-white" : "text-[#a1a1aa] hover:text-white"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
               </Link>
               <a
                 href="https://app.withorbit.io/signup"
