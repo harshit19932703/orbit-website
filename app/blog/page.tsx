@@ -7,11 +7,20 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 const posts = [
   {
-    slug: "openai-api-pricing-2025-complete-guide",
-    title: "OpenAI API Pricing 2025: Complete Guide to GPT-4o, o1, and o3 Costs",
+    slug: "llm-pricing-comparison-50-models",
+    title: "I Calculated What 1M Tokens Costs Across 50+ LLM Models",
     description:
-      "The complete guide to OpenAI API pricing in 2025. Current prices for GPT-4o, GPT-4o-mini, o1, o3-mini, and all OpenAI models with cost examples.",
-    date: "2025-01-27",
+      "A comprehensive cost comparison of 50+ LLM models from OpenAI, Anthropic, Google, Mistral, and more. Real pricing data for GPT-5, Claude 4.5, Gemini 3, and every major model.",
+    date: "2026-02-02",
+    readTime: "12 min read",
+    category: "Comparison",
+  },
+  {
+    slug: "openai-api-pricing-2025-complete-guide",
+    title: "OpenAI API Pricing 2026: Complete Guide to GPT-5, GPT-4.1, o3, and o4 Costs",
+    description:
+      "The complete guide to OpenAI API pricing in 2026. Current prices for GPT-5, GPT-5-mini, GPT-4.1, o3, o4-mini, and all OpenAI models with cost examples.",
+    date: "2026-01-27",
     readTime: "8 min read",
     category: "Guide",
   },
@@ -20,7 +29,7 @@ const posts = [
     title: "AI API Cost Control: How to Track and Reduce LLM Spend",
     description:
       "Learn how to control AI API costs with practical strategies. Monitor spending, set budgets, and reduce LLM costs without sacrificing quality.",
-    date: "2025-01-27",
+    date: "2026-01-27",
     readTime: "10 min read",
     category: "Guide",
   },
@@ -29,7 +38,7 @@ const posts = [
     title: "How to Track OpenAI API Costs in Your Application",
     description:
       "Step-by-step tutorial on tracking OpenAI API costs in production. Monitor GPT-4o usage, track spending by feature, and get real-time cost visibility.",
-    date: "2025-01-27",
+    date: "2026-01-27",
     readTime: "7 min read",
     category: "Tutorial",
   },
@@ -38,16 +47,16 @@ const posts = [
     title: "How to Track Agentic AI Workflows: Task & Customer Attribution",
     description:
       "Learn how to track multi-step AI agent workflows with task_id and customer_id. Group LLM calls, measure total costs per task, and attribute AI spend to customers.",
-    date: "2025-01-21",
+    date: "2026-01-21",
     readTime: "9 min read",
     category: "Tutorial",
   },
   {
     slug: "ai-observability-what-you-need-to-know",
-    title: "AI Observability: What You Need to Know in 2025",
+    title: "AI Observability: What You Need to Know in 2026",
     description:
       "Everything about AI observability and LLM monitoring. Learn what metrics to track, how to debug AI systems, and best practices for production.",
-    date: "2025-01-21",
+    date: "2026-01-21",
     readTime: "10 min read",
     category: "Guide",
   },
@@ -56,7 +65,7 @@ const posts = [
     title: "How to Monitor AI API Usage and Billing",
     description:
       "Set up AI API monitoring to track your usage and costs. Monitor spending across OpenAI, Anthropic, and Gemini with real-time dashboards.",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "8 min read",
     category: "Tutorial",
   },
@@ -65,7 +74,7 @@ const posts = [
     title: "Track LLM Costs: A Complete Guide for Developers",
     description:
       "The definitive guide to tracking LLM costs in your applications. Monitor token usage, track API spending, and optimize your AI budget.",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "11 min read",
     category: "Guide",
   },
@@ -74,7 +83,7 @@ const posts = [
     title: "AI Cost Calculator: How to Estimate LLM API Costs",
     description:
       "Use our AI cost calculator guide to estimate OpenAI, Anthropic, and Gemini API costs. Learn to calculate token costs and predict your AI bill.",
-    date: "2025-01-19",
+    date: "2026-01-19",
     readTime: "8 min read",
     category: "Tool",
   },
@@ -83,7 +92,7 @@ const posts = [
     title: "How to Track AI Spending in Production: Complete Guide",
     description:
       "Learn how to track AI spending, monitor AI costs in real-time, and get visibility into your production AI expenses across all providers.",
-    date: "2025-01-18",
+    date: "2026-01-18",
     readTime: "9 min read",
     category: "Guide",
   },
@@ -92,7 +101,7 @@ const posts = [
     title: "How to Track OpenAI API Costs by Feature",
     description:
       "Learn how to track OpenAI API costs at the feature level, not just totals. Understand which parts of your app are driving spend.",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: "8 min read",
     category: "Tutorial",
   },
@@ -101,16 +110,16 @@ const posts = [
     title: "LLM Cost Optimization: 5 Ways to Reduce AI Spend",
     description:
       "Practical strategies to reduce your AI API costs without sacrificing quality. From prompt optimization to smart model selection.",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: "10 min read",
     category: "Guide",
   },
   {
     slug: "openai-vs-anthropic-vs-gemini-pricing-comparison-2025",
-    title: "OpenAI vs Anthropic vs Gemini: Pricing Comparison 2025",
+    title: "OpenAI vs Anthropic vs Gemini: Pricing Comparison 2026",
     description:
       "A detailed comparison of pricing across major LLM providers. Understand cost per token and when to use each model.",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: "9 min read",
     category: "Comparison",
   },

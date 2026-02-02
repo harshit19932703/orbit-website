@@ -111,7 +111,7 @@ const posts: Record<
     title: "How to Track OpenAI API Costs by Feature",
     description:
       "Learn how to track OpenAI API costs at the feature level, not just totals. Understand which parts of your app are driving spend.",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: "8 min read",
     category: "Tutorial",
     content: <Blog1Content />,
@@ -120,16 +120,16 @@ const posts: Record<
     title: "LLM Cost Optimization: 5 Ways to Reduce AI Spend",
     description:
       "Practical strategies to reduce your AI API costs without sacrificing quality. From prompt optimization to smart model selection.",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: "10 min read",
     category: "Guide",
     content: <Blog2Content />,
   },
   "openai-vs-anthropic-vs-gemini-pricing-comparison-2025": {
-    title: "OpenAI vs Anthropic vs Gemini: Pricing Comparison 2025",
+    title: "OpenAI vs Anthropic vs Gemini: Pricing Comparison 2026",
     description:
       "A detailed comparison of pricing across major LLM providers. Understand cost per token and when to use each model.",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: "9 min read",
     category: "Comparison",
     content: <Blog3Content />,
@@ -138,7 +138,7 @@ const posts: Record<
     title: "How to Track AI Spending in Production: Complete Guide",
     description:
       "Learn how to track AI spending, monitor AI costs in real-time, and get visibility into your production AI expenses across all providers.",
-    date: "2025-01-18",
+    date: "2026-01-18",
     readTime: "9 min read",
     category: "Guide",
     content: <Blog4Content />,
@@ -147,7 +147,7 @@ const posts: Record<
     title: "AI Cost Calculator: How to Estimate LLM API Costs",
     description:
       "Use our AI cost calculator guide to estimate OpenAI, Anthropic, and Gemini API costs. Learn to calculate token costs and predict your AI bill.",
-    date: "2025-01-19",
+    date: "2026-01-19",
     readTime: "8 min read",
     category: "Tool",
     content: <Blog5Content />,
@@ -156,7 +156,7 @@ const posts: Record<
     title: "Track LLM Costs: A Complete Guide for Developers",
     description:
       "The definitive guide to tracking LLM costs in your applications. Monitor token usage, track API spending, and optimize your AI budget.",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "11 min read",
     category: "Guide",
     content: <Blog6Content />,
@@ -165,16 +165,16 @@ const posts: Record<
     title: "How to Monitor AI API Usage and Billing",
     description:
       "Set up AI API monitoring to track your usage and costs. Monitor spending across OpenAI, Anthropic, and Gemini with real-time dashboards.",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "8 min read",
     category: "Tutorial",
     content: <Blog7Content />,
   },
   "ai-observability-what-you-need-to-know": {
-    title: "AI Observability: What You Need to Know in 2025",
+    title: "AI Observability: What You Need to Know in 2026",
     description:
       "Everything about AI observability and LLM monitoring. Learn what metrics to track, how to debug AI systems, and best practices for production.",
-    date: "2025-01-21",
+    date: "2026-01-21",
     readTime: "10 min read",
     category: "Guide",
     content: <Blog8Content />,
@@ -183,16 +183,16 @@ const posts: Record<
     title: "How to Track Agentic AI Workflows: Task & Customer Attribution",
     description:
       "Learn how to track multi-step AI agent workflows with task_id and customer_id. Group LLM calls, measure total costs per task, and attribute AI spend to customers.",
-    date: "2025-01-21",
+    date: "2026-01-21",
     readTime: "9 min read",
     category: "Tutorial",
     content: <Blog9Content />,
   },
   "openai-api-pricing-2025-complete-guide": {
-    title: "OpenAI API Pricing 2025: Complete Guide to GPT-4o, o1, and o3 Costs",
+    title: "OpenAI API Pricing 2026: Complete Guide to GPT-5, GPT-4.1, o3, and o4 Costs",
     description:
-      "The complete guide to OpenAI API pricing in 2025. Current prices for GPT-4o, GPT-4o-mini, o1, o3-mini, and all OpenAI models with cost examples.",
-    date: "2025-01-27",
+      "The complete guide to OpenAI API pricing in 2026. Current prices for GPT-5, GPT-5-mini, GPT-4.1, o3, o4-mini, and all OpenAI models with cost examples.",
+    date: "2026-01-27",
     readTime: "8 min read",
     category: "Guide",
     content: <Blog10Content />,
@@ -201,7 +201,7 @@ const posts: Record<
     title: "AI API Cost Control: How to Track and Reduce LLM Spend",
     description:
       "Learn how to control AI API costs with practical strategies. Monitor spending, set budgets, and reduce LLM costs without sacrificing quality.",
-    date: "2025-01-27",
+    date: "2026-01-27",
     readTime: "10 min read",
     category: "Guide",
     content: <Blog11Content />,
@@ -210,10 +210,19 @@ const posts: Record<
     title: "How to Track OpenAI API Costs in Your Application",
     description:
       "Step-by-step tutorial on tracking OpenAI API costs in production. Monitor GPT-4o usage, track spending by feature, and get real-time cost visibility.",
-    date: "2025-01-27",
+    date: "2026-01-27",
     readTime: "7 min read",
     category: "Tutorial",
     content: <Blog12Content />,
+  },
+  "llm-pricing-comparison-50-models": {
+    title: "I Calculated What 1M Tokens Costs Across 50+ LLM Models",
+    description:
+      "A comprehensive cost comparison of 50+ LLM models from OpenAI, Anthropic, Google, Mistral, and more. Real pricing data for GPT-5, Claude 4.5, Gemini 3, and every major model.",
+    date: "2026-02-02",
+    readTime: "12 min read",
+    category: "Comparison",
+    content: <Blog13Content />,
   },
 };
 
@@ -751,7 +760,7 @@ function Blog3Content() {
       </p>
 
       <p>
-        Here&apos;s a comprehensive breakdown of pricing across all three providers as of January 2025, plus guidance on when to use each.
+        Here&apos;s a comprehensive breakdown of pricing across all three providers as of January 2026, plus guidance on when to use each.
       </p>
 
       <h2>The Quick Comparison</h2>
@@ -1276,7 +1285,7 @@ Example with GPT-4o:
         A token is roughly 4 characters or 0.75 words in English. The prompt &quot;Hello, how are you?&quot; is about 6 tokens. A 500-word blog post is roughly 375 tokens.
       </Callout>
 
-      <h2>Current Pricing Reference (2025)</h2>
+      <h2>Current Pricing Reference (2026)</h2>
 
       <p>
         Here are the current prices for popular models:
@@ -2090,7 +2099,7 @@ Trace: customer-support-resolution
         Good AI observability tracks metadata about requests without storing actual prompts or responses. This protects user privacy while still providing visibility.
       </Callout>
 
-      <h2>Why AI Observability Matters in 2025</h2>
+      <h2>Why AI Observability Matters in 2026</h2>
 
       <h3>AI Agents Are More Complex</h3>
 
@@ -2612,20 +2621,110 @@ function Blog10Content() {
   return (
     <article className="prose prose-invert prose-lg max-w-none">
       <p className="lead">
-        OpenAI&apos;s pricing changes frequently, and keeping up with the latest costs for GPT-4o, o1, o3, and other models can be challenging. Here&apos;s everything you need to know about OpenAI API pricing in 2025.
+        OpenAI&apos;s pricing changes frequently, and keeping up with the latest costs for GPT-5, GPT-4.1, o3, o4, and other models can be challenging. Here&apos;s everything you need to know about OpenAI API pricing in 2026.
       </p>
 
       <p>
         This guide covers current pricing for all OpenAI models, helps you estimate costs for your use case, and shows you how to track spending in production.
       </p>
 
-      <h2>OpenAI API Pricing Overview (January 2025)</h2>
+      <h2>OpenAI API Pricing Overview (January 2026)</h2>
 
       <p>
         OpenAI charges per token—small units of text (roughly 4 characters or 0.75 words). Prices differ for input tokens (what you send) and output tokens (what the model generates).
       </p>
 
-      <h3>GPT-4o Models</h3>
+      <h3>GPT-5 Series (Latest)</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input (per 1M tokens)</th>
+            <th>Output (per 1M tokens)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-5.2</td>
+            <td>$1.75</td>
+            <td>$14.00</td>
+          </tr>
+          <tr>
+            <td>GPT-5.2-pro</td>
+            <td>$21.00</td>
+            <td>$168.00</td>
+          </tr>
+          <tr>
+            <td>GPT-5.1</td>
+            <td>$1.25</td>
+            <td>$10.00</td>
+          </tr>
+          <tr>
+            <td>GPT-5</td>
+            <td>$1.25</td>
+            <td>$10.00</td>
+          </tr>
+          <tr>
+            <td>GPT-5-pro</td>
+            <td>$15.00</td>
+            <td>$120.00</td>
+          </tr>
+          <tr>
+            <td>GPT-5-mini</td>
+            <td>$0.25</td>
+            <td>$2.00</td>
+          </tr>
+          <tr>
+            <td>GPT-5-nano</td>
+            <td>$0.05</td>
+            <td>$0.40</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>GPT-5.2</strong> is OpenAI&apos;s latest flagship—even faster and more capable than GPT-5, with improved reasoning and multimodal abilities.
+      </p>
+
+      <p>
+        <strong>GPT-5-mini</strong> and <strong>GPT-5-nano</strong> offer exceptional value for simpler tasks at a fraction of the cost.
+      </p>
+
+      <Callout type="tip" title="Cost Saving Tip">
+        GPT-5-nano is 35x cheaper than GPT-5.2 for input. Perfect for classification, extraction, and basic Q&A where you don&apos;t need maximum intelligence.
+      </Callout>
+
+      <h3>GPT-4.1 Series</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input (per 1M tokens)</th>
+            <th>Output (per 1M tokens)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4.1</td>
+            <td>$2.00</td>
+            <td>$8.00</td>
+          </tr>
+          <tr>
+            <td>GPT-4.1-mini</td>
+            <td>$0.40</td>
+            <td>$1.60</td>
+          </tr>
+          <tr>
+            <td>GPT-4.1-nano</td>
+            <td>$0.10</td>
+            <td>$0.40</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>GPT-4o Series</h3>
 
       <table>
         <thead>
@@ -2649,19 +2748,7 @@ function Blog10Content() {
         </tbody>
       </table>
 
-      <p>
-        <strong>GPT-4o</strong> is OpenAI&apos;s flagship model—fast, capable, and multimodal (handles text, images, and audio). It&apos;s the best choice for most production use cases.
-      </p>
-
-      <p>
-        <strong>GPT-4o-mini</strong> is the budget option. It&apos;s 16x cheaper than GPT-4o for input and handles simpler tasks effectively. Use it for classification, extraction, and basic Q&A.
-      </p>
-
-      <Callout type="tip" title="Cost Saving Tip">
-        GPT-4o-mini handles 80% of typical tasks at a fraction of the cost. Start with mini and only upgrade to GPT-4o when quality requires it.
-      </Callout>
-
-      <h3>Reasoning Models (o1, o3)</h3>
+      <h3>Reasoning Models (o-Series)</h3>
 
       <table>
         <thead>
@@ -2673,17 +2760,37 @@ function Blog10Content() {
         </thead>
         <tbody>
           <tr>
+            <td>o4-mini</td>
+            <td>$1.10</td>
+            <td>$4.40</td>
+          </tr>
+          <tr>
+            <td>o3</td>
+            <td>$2.00</td>
+            <td>$8.00</td>
+          </tr>
+          <tr>
+            <td>o3-pro</td>
+            <td>$20.00</td>
+            <td>$80.00</td>
+          </tr>
+          <tr>
+            <td>o3-mini</td>
+            <td>$1.10</td>
+            <td>$4.40</td>
+          </tr>
+          <tr>
             <td>o1</td>
             <td>$15.00</td>
             <td>$60.00</td>
           </tr>
           <tr>
-            <td>o1-mini</td>
-            <td>$3.00</td>
-            <td>$12.00</td>
+            <td>o1-pro</td>
+            <td>$150.00</td>
+            <td>$600.00</td>
           </tr>
           <tr>
-            <td>o3-mini</td>
+            <td>o1-mini</td>
             <td>$1.10</td>
             <td>$4.40</td>
           </tr>
@@ -2691,7 +2798,7 @@ function Blog10Content() {
       </table>
 
       <p>
-        The o-series models are designed for complex reasoning tasks—math, coding, and multi-step problem solving. They&apos;re significantly more expensive because they &quot;think&quot; before responding.
+        The o-series models are designed for complex reasoning tasks—math, coding, and multi-step problem solving. They&apos;re more expensive because they &quot;think&quot; before responding.
       </p>
 
       <Callout type="warning" title="Watch Out for Hidden Costs">
@@ -3265,6 +3372,662 @@ const codeClient = orbit.wrapOpenAI(new OpenAI(), {
           className="inline-flex items-center gap-2 bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-all text-[14px]"
         >
           Get started free <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function Blog13Content() {
+  return (
+    <article className="prose prose-invert prose-lg max-w-none">
+      <p className="lead">
+        I spent weeks compiling pricing for every major LLM model while building a cost tracking tool. Here&apos;s the complete breakdown—50+ models across OpenAI, Anthropic, Google, Mistral, and more.
+      </p>
+
+      <p>
+        Most developers guess their AI costs. They pick a model, ship to production, and hope for the best. But the price difference between models is staggering—<strong>o1-pro costs 1,500x more than GPT-5-nano</strong> for output tokens.
+      </p>
+
+      <p>
+        This guide covers every major model as of February 2026, with real pricing data and practical recommendations.
+      </p>
+
+      <Callout type="info" title="How I Got This Data">
+        I compiled this while building Orbit, an LLM cost tracking tool. All prices are from official API documentation, updated February 2026.
+      </Callout>
+
+      <h2>The Complete Pricing Table</h2>
+
+      <p>
+        Prices are per 1 million tokens. Most models charge differently for input (what you send) and output (what the model generates).
+      </p>
+
+      <h3>OpenAI Models</h3>
+
+      <h4>GPT-5 Series (Latest)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-5.2</td>
+            <td>$1.75</td>
+            <td>$14.00</td>
+            <td>Most capable, latest</td>
+          </tr>
+          <tr>
+            <td>GPT-5.2-pro</td>
+            <td>$21.00</td>
+            <td>$168.00</td>
+            <td>Maximum quality</td>
+          </tr>
+          <tr>
+            <td>GPT-5</td>
+            <td>$1.25</td>
+            <td>$10.00</td>
+            <td>General purpose</td>
+          </tr>
+          <tr>
+            <td>GPT-5-pro</td>
+            <td>$15.00</td>
+            <td>$120.00</td>
+            <td>Complex reasoning</td>
+          </tr>
+          <tr>
+            <td>GPT-5-mini</td>
+            <td>$0.25</td>
+            <td>$2.00</td>
+            <td>Cost-effective</td>
+          </tr>
+          <tr>
+            <td>GPT-5-nano</td>
+            <td>$0.05</td>
+            <td>$0.40</td>
+            <td>High volume, simple tasks</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>GPT-4.1 Series</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4.1</td>
+            <td>$2.00</td>
+            <td>$8.00</td>
+            <td>Balanced performance</td>
+          </tr>
+          <tr>
+            <td>GPT-4.1-mini</td>
+            <td>$0.40</td>
+            <td>$1.60</td>
+            <td>Budget option</td>
+          </tr>
+          <tr>
+            <td>GPT-4.1-nano</td>
+            <td>$0.10</td>
+            <td>$0.40</td>
+            <td>Ultra-low cost</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>GPT-4o Series</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4o</td>
+            <td>$2.50</td>
+            <td>$10.00</td>
+            <td>Multimodal, production</td>
+          </tr>
+          <tr>
+            <td>GPT-4o-mini</td>
+            <td>$0.15</td>
+            <td>$0.60</td>
+            <td>Fast, cheap</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>O-Series (Reasoning Models)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>o4-mini</td>
+            <td>$1.10</td>
+            <td>$4.40</td>
+            <td>Latest reasoning, efficient</td>
+          </tr>
+          <tr>
+            <td>o3</td>
+            <td>$2.00</td>
+            <td>$8.00</td>
+            <td>Advanced reasoning</td>
+          </tr>
+          <tr>
+            <td>o3-pro</td>
+            <td>$20.00</td>
+            <td>$80.00</td>
+            <td>Maximum reasoning power</td>
+          </tr>
+          <tr>
+            <td>o3-mini</td>
+            <td>$1.10</td>
+            <td>$4.40</td>
+            <td>Cost-effective reasoning</td>
+          </tr>
+          <tr>
+            <td>o1</td>
+            <td>$15.00</td>
+            <td>$60.00</td>
+            <td>Complex problem-solving</td>
+          </tr>
+          <tr>
+            <td>o1-pro</td>
+            <td>$150.00</td>
+            <td>$600.00</td>
+            <td>Research-grade reasoning</td>
+          </tr>
+          <tr>
+            <td>o1-mini</td>
+            <td>$1.10</td>
+            <td>$4.40</td>
+            <td>Reasoning on a budget</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <Callout type="warning" title="Hidden Costs with Reasoning Models">
+        O-series models generate internal &quot;thinking&quot; tokens you pay for but don&apos;t see. A simple query can use 10x more tokens than expected. Always monitor actual usage.
+      </Callout>
+
+      <h3>Anthropic Models</h3>
+
+      <h4>Claude 4.5 (Latest)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Claude 4.5 Opus</td>
+            <td>$5.00</td>
+            <td>$25.00</td>
+            <td>Most capable Claude</td>
+          </tr>
+          <tr>
+            <td>Claude 4.5 Sonnet</td>
+            <td>$3.00</td>
+            <td>$15.00</td>
+            <td>Balanced performance</td>
+          </tr>
+          <tr>
+            <td>Claude 4.5 Haiku</td>
+            <td>$1.00</td>
+            <td>$5.00</td>
+            <td>Fast, cost-effective</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Claude 4 Series</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Claude 4 Opus</td>
+            <td>$15.00</td>
+            <td>$75.00</td>
+            <td>Complex tasks</td>
+          </tr>
+          <tr>
+            <td>Claude 4 Sonnet</td>
+            <td>$3.00</td>
+            <td>$15.00</td>
+            <td>Production workloads</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Claude 3.x Series</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Claude 3.7 Sonnet</td>
+            <td>$3.00</td>
+            <td>$15.00</td>
+            <td>Coding, analysis</td>
+          </tr>
+          <tr>
+            <td>Claude 3.5 Sonnet</td>
+            <td>$3.00</td>
+            <td>$15.00</td>
+            <td>General purpose</td>
+          </tr>
+          <tr>
+            <td>Claude 3.5 Haiku</td>
+            <td>$1.00</td>
+            <td>$5.00</td>
+            <td>Fast responses</td>
+          </tr>
+          <tr>
+            <td>Claude 3 Haiku</td>
+            <td>$0.25</td>
+            <td>$1.25</td>
+            <td>Cheapest Claude</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Google Gemini Models</h3>
+
+      <h4>Gemini 3 (Latest)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gemini 3 Pro</td>
+            <td>$2.00</td>
+            <td>$12.00</td>
+            <td>Latest, most capable</td>
+          </tr>
+          <tr>
+            <td>Gemini 3 Flash</td>
+            <td>$0.50</td>
+            <td>$3.00</td>
+            <td>Fast, efficient</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Gemini 2.5</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gemini 2.5 Pro</td>
+            <td>$1.25</td>
+            <td>$10.00</td>
+            <td>Complex tasks</td>
+          </tr>
+          <tr>
+            <td>Gemini 2.5 Flash</td>
+            <td>$0.30</td>
+            <td>$2.50</td>
+            <td>Balanced</td>
+          </tr>
+          <tr>
+            <td>Gemini 2.5 Flash Lite</td>
+            <td>$0.10</td>
+            <td>$0.40</td>
+            <td>Ultra-low cost</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Gemini 2.0 (Deprecating March 2026)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gemini 2.0 Flash</td>
+            <td>$0.10</td>
+            <td>$0.40</td>
+            <td>Cheapest option (for now)</td>
+          </tr>
+          <tr>
+            <td>Gemini 2.0 Flash Lite</td>
+            <td>$0.075</td>
+            <td>$0.30</td>
+            <td>Absolute minimum cost</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Mistral Models</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input/1M</th>
+            <th>Output/1M</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mistral Large</td>
+            <td>$2.00</td>
+            <td>$6.00</td>
+            <td>Complex reasoning</td>
+          </tr>
+          <tr>
+            <td>Mistral Small</td>
+            <td>$0.20</td>
+            <td>$0.60</td>
+            <td>Fast, efficient</td>
+          </tr>
+          <tr>
+            <td>Codestral</td>
+            <td>$0.20</td>
+            <td>$0.60</td>
+            <td>Code generation</td>
+          </tr>
+          <tr>
+            <td>Ministral 8B</td>
+            <td>$0.10</td>
+            <td>$0.10</td>
+            <td>Edge deployment</td>
+          </tr>
+          <tr>
+            <td>Ministral 3B</td>
+            <td>$0.04</td>
+            <td>$0.04</td>
+            <td>Ultra-light</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Surprising Findings</h2>
+
+      <h3>1. The Price Range is Insane</h3>
+      <p>
+        Output tokens range from <strong>$0.04/1M</strong> (Ministral 3B) to <strong>$600/1M</strong> (o1-pro). That&apos;s a 15,000x difference.
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+        <StatCard value="$0.04" label="Cheapest (Ministral 3B)" />
+        <StatCard value="$600" label="Most Expensive (o1-pro)" />
+      </div>
+
+      <h3>2. The &quot;Mini&quot; Model Wars</h3>
+      <p>
+        Every provider now has a mini model competing for the budget tier:
+      </p>
+      <ul>
+        <li><strong>GPT-5-nano:</strong> $0.05 input / $0.40 output</li>
+        <li><strong>Gemini 2.5 Flash Lite:</strong> $0.10 input / $0.40 output</li>
+        <li><strong>Ministral 3B:</strong> $0.04 input / $0.04 output</li>
+        <li><strong>GPT-4o-mini:</strong> $0.15 input / $0.60 output</li>
+      </ul>
+
+      <p>
+        For simple classification and extraction, these models are practically free at scale.
+      </p>
+
+      <h3>3. Reasoning Models are 10-100x More Expensive</h3>
+      <p>
+        The o-series models (o1, o3, o4) cost significantly more—and that&apos;s just the sticker price. They also generate hidden &quot;thinking&quot; tokens that inflate your actual costs.
+      </p>
+
+      <h3>4. Claude 4.5 Opus is Surprisingly Cheap</h3>
+      <p>
+        At $5/1M input and $25/1M output, Claude 4.5 Opus is cheaper than Claude 4 Opus ($15/$75). Anthropic is getting more aggressive on pricing.
+      </p>
+
+      <h3>5. Google Offers the Best Value for High-Volume</h3>
+      <p>
+        Gemini 2.0 Flash at $0.10/$0.40 is hard to beat for volume. And Gemini 2.5 Flash Lite at $0.10/$0.40 maintains quality while staying cheap.
+      </p>
+
+      <h2>Real Cost Comparisons</h2>
+
+      <p>Let&apos;s calculate actual costs for common tasks:</p>
+
+      <h3>Customer Support Bot (1M conversations/month)</h3>
+      <p>Average: 500 input tokens, 300 output tokens per conversation</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Monthly Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-5-nano</td>
+            <td>$145</td>
+          </tr>
+          <tr>
+            <td>GPT-4o-mini</td>
+            <td>$255</td>
+          </tr>
+          <tr>
+            <td>Claude 3 Haiku</td>
+            <td>$500</td>
+          </tr>
+          <tr>
+            <td>GPT-5</td>
+            <td>$3,625</td>
+          </tr>
+          <tr>
+            <td>Claude 4.5 Opus</td>
+            <td>$10,000</td>
+          </tr>
+          <tr>
+            <td>o1</td>
+            <td>$25,500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <Callout type="tip" title="Cost Savings Tip">
+        For customer support, GPT-5-nano or GPT-4o-mini handles 90% of queries at 1/100th the cost of premium models. Route complex queries to better models.
+      </Callout>
+
+      <h3>Document Summarization (100K docs/month)</h3>
+      <p>Average: 4,000 input tokens, 500 output tokens per document</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Monthly Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gemini 2.0 Flash</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td>GPT-5-mini</td>
+            <td>$200</td>
+          </tr>
+          <tr>
+            <td>Claude 3.5 Haiku</td>
+            <td>$650</td>
+          </tr>
+          <tr>
+            <td>GPT-5</td>
+            <td>$1,000</td>
+          </tr>
+          <tr>
+            <td>Claude 4.5 Opus</td>
+            <td>$3,250</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>AI Agent (50 steps per task, 10K tasks/month)</h3>
+      <p>Average: 1,000 input tokens, 500 output tokens per step</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Monthly Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4o-mini</td>
+            <td>$225</td>
+          </tr>
+          <tr>
+            <td>o3-mini</td>
+            <td>$1,650</td>
+          </tr>
+          <tr>
+            <td>Claude 4.5 Sonnet</td>
+            <td>$5,250</td>
+          </tr>
+          <tr>
+            <td>o3</td>
+            <td>$3,000</td>
+          </tr>
+          <tr>
+            <td>o1</td>
+            <td>$22,500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>My Recommendations</h2>
+
+      <h3>For Startups (Cost-Sensitive)</h3>
+      <ol>
+        <li><strong>Default to GPT-5-nano or GPT-4o-mini</strong> — Handle 80% of tasks</li>
+        <li><strong>Use Gemini 2.0/2.5 Flash for volume</strong> — Best price/performance</li>
+        <li><strong>Route complex queries to GPT-5 or Claude 4.5 Sonnet</strong></li>
+        <li><strong>Avoid reasoning models unless necessary</strong> — 10x+ cost increase</li>
+      </ol>
+
+      <h3>For Enterprise (Quality-Focused)</h3>
+      <ol>
+        <li><strong>Claude 4.5 Opus or GPT-5.2 for critical tasks</strong></li>
+        <li><strong>Claude 4.5 Sonnet or GPT-5 for general production</strong></li>
+        <li><strong>o3-mini for reasoning tasks</strong> — Good balance of capability and cost</li>
+        <li><strong>Track everything</strong> — Know your cost-per-feature</li>
+      </ol>
+
+      <h3>For AI Agents</h3>
+      <ol>
+        <li><strong>Start with GPT-4o-mini</strong> — Test your agent logic cheaply</li>
+        <li><strong>Use o3-mini for reasoning steps</strong> — Not o1 or o3-pro</li>
+        <li><strong>Batch and cache aggressively</strong> — Agents make many similar calls</li>
+        <li><strong>Set per-task budgets</strong> — Runaway agents can cost hundreds per task</li>
+      </ol>
+
+      <h2>How to Track All This</h2>
+
+      <p>
+        Knowing prices is one thing. Tracking actual costs in production is another. Provider dashboards show totals, but not which features drive costs.
+      </p>
+
+      <p>
+        I built Orbit to solve this. One-line SDK integration, and you get per-feature cost breakdowns across all providers:
+      </p>
+
+      <pre><code>{`import { Orbit } from '@with-orbit/sdk';
+import OpenAI from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
+
+const orbit = new Orbit({ apiKey: process.env.ORBIT_API_KEY });
+
+// Track OpenAI costs by feature
+const openai = orbit.wrapOpenAI(new OpenAI(), {
+  feature: 'chat-assistant'
+});
+
+// Track Anthropic costs by feature
+const anthropic = orbit.wrapAnthropic(new Anthropic(), {
+  feature: 'document-analysis'
+});
+
+// All calls automatically tracked with cost, tokens, latency`}</code></pre>
+
+      <div className="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-xl p-8 my-10">
+        <h3 className="text-xl font-semibold text-white mb-3">Track LLM Costs Across All Providers</h3>
+        <p className="text-[#a1a1aa] mb-4">
+          Orbit gives you real-time visibility into costs across OpenAI, Anthropic, Google, and more. See spending by feature, model, and environment.
+        </p>
+        <ul className="text-[#a1a1aa] space-y-2 mb-6">
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> 50+ models supported</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Per-feature cost tracking</li>
+          <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" /> Free tier: 10,000 events/month</li>
+        </ul>
+        <a
+          href="https://app.withorbit.io/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-all text-[14px]"
+        >
+          Start tracking free <ArrowRight className="w-4 h-4" />
         </a>
       </div>
     </article>
