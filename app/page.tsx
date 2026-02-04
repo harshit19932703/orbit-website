@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+
 import {
   HeroVisual,
   FeatureAnalyticsVisual,
@@ -100,7 +100,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Early Adopters */}
+      {/* Early Adopters - commented out, need permissions first
       <section className="relative py-12 border-t border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto px-6">
           <motion.div
@@ -114,7 +114,6 @@ export default function Home() {
               Trusted by early adopters
             </span>
             <div className="flex items-center gap-10 md:gap-14">
-              {/* PromptLab */}
               <a
                 href="https://promptlab.in"
                 target="_blank"
@@ -130,7 +129,6 @@ export default function Home() {
                 />
                 <span className="text-[15px] font-medium text-white/80">PromptLab</span>
               </a>
-              {/* FixFlow */}
               <a
                 href="https://fixflow.locsafe.org"
                 target="_blank"
@@ -150,6 +148,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      */}
 
       {/* The Moment Section - Two Column Layout */}
       <section className="relative py-24 lg:py-32 border-t border-white/[0.04] overflow-hidden">
