@@ -55,6 +55,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
+                  href="/calculator"
+                  className="text-sm text-[#71717a] hover:text-white transition-colors"
+                >
+                  AI Cost Calculator
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="text-sm text-[#71717a] hover:text-white transition-colors"
                 >

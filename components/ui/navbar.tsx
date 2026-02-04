@@ -77,6 +77,18 @@ export function Navbar() {
             >
               Contact
             </Link>
+            <Link
+              href="/calculator"
+              className={`text-sm transition-colors relative inline-flex items-center gap-1 ${
+                pathname === "/calculator" ? "text-emerald-400" : "text-emerald-400/80 hover:text-emerald-300"
+              }`}
+            >
+              Calculator
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -169,6 +181,19 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
+              </Link>
+              <Link
+                href="/calculator"
+                className={`text-sm transition-colors inline-flex items-center gap-1 ${
+                  pathname === "/calculator" ? "text-emerald-400" : "text-emerald-400/80 hover:text-emerald-300"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Calculator
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                </span>
               </Link>
               <a
                 href="https://app.withorbit.io/signup"

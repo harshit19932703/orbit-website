@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import {
   HeroVisual,
   FeatureAnalyticsVisual,
@@ -96,6 +97,57 @@ export default function Home() {
               <HeroVisual />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Early Adopters */}
+      <section className="relative py-12 border-t border-white/[0.04]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center gap-6"
+          >
+            <span className="text-[12px] uppercase tracking-[0.15em] text-[#444]">
+              Trusted by early adopters
+            </span>
+            <div className="flex items-center gap-10 md:gap-14">
+              {/* PromptLab */}
+              <a
+                href="https://promptlab.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 opacity-40 hover:opacity-70 transition-opacity"
+              >
+                <Image
+                  src="/logos/promptlab.png"
+                  alt="PromptLab"
+                  width={24}
+                  height={24}
+                  className="rounded-md"
+                />
+                <span className="text-[15px] font-medium text-white/80">PromptLab</span>
+              </a>
+              {/* FixFlow */}
+              <a
+                href="https://fixflow.locsafe.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 opacity-40 hover:opacity-70 transition-opacity"
+              >
+                <Image
+                  src="/logos/fixflow.svg"
+                  alt="FixFlow"
+                  width={24}
+                  height={24}
+                  className="rounded-md"
+                />
+                <span className="text-[15px] font-medium text-white/80">FixFlow</span>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
