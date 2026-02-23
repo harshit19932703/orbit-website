@@ -303,12 +303,12 @@ export function FeatureAnalyticsVisual() {
               transition={{ duration: 0.3, delay: i * 0.05 }}
               className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-2 lg:p-3"
             >
-              <div className="flex items-center justify-between mb-1 lg:mb-2">
-                <div className="flex items-center gap-1 lg:gap-1.5">
-                  <div className={`w-1.5 h-1.5 rounded-full ${f.color === 'emerald' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
-                  <span className="text-[9px] lg:text-[11px] text-white font-medium truncate max-w-[70px] lg:max-w-[100px]">{f.name}</span>
+              <div className="flex items-center justify-between mb-1 lg:mb-2 gap-1">
+                <div className="flex items-center gap-1 lg:gap-1.5 min-w-0 flex-1">
+                  <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${f.color === 'emerald' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                  <span className="text-[9px] lg:text-[11px] text-white font-medium truncate">{f.name}</span>
                 </div>
-                <span className={`text-[8px] lg:text-[10px] ${f.color === 'emerald' ? 'text-emerald-400' : 'text-amber-400'}`}>↗ {f.success}%</span>
+                <span className={`text-[8px] lg:text-[10px] whitespace-nowrap flex-shrink-0 ${f.color === 'emerald' ? 'text-emerald-400' : 'text-amber-400'}`}>↗ {f.success}%</span>
               </div>
               <div className="text-[13px] lg:text-[16px] font-semibold text-white mb-1 lg:mb-2">{f.cost}</div>
               <div className="grid grid-cols-2 gap-1 lg:gap-2 text-[8px] lg:text-[10px]">

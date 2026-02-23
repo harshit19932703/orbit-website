@@ -588,12 +588,7 @@ export default function Home() {
 
       {/* Section 2 - Customer Attribution (THE WEDGE) */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
-        {/* Highlight glow for wedge section */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-orange-600/10 via-amber-600/5 to-transparent blur-3xl" />
-        </div>
-
-        <div className="relative max-w-[1200px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left - Visual */}
             <motion.div
@@ -614,14 +609,13 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="order-1 lg:order-2"
             >
-              <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-amber-500/10 border border-orange-500/30 mb-6">
-                <span className="w-2 h-2 rounded-full bg-orange-400 mr-2 animate-pulse" />
-                <span className="text-[13px] text-orange-400 font-medium uppercase tracking-wider">The Real Question</span>
+              <div className="text-[13px] text-orange-400 font-medium uppercase tracking-wider mb-6">
+                Customer Attribution
               </div>
               <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
                 How much does each
                 <br />
-                <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">customer cost you?</span>
+                <span className="text-[#555]">customer cost you?</span>
               </h2>
               <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
                 Your AI bill arrives as one number. But some customers cost <span className="text-white font-medium">10x more</span> than others. Without attribution, you&apos;re pricing blind.
@@ -650,28 +644,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 3 - Cost Intelligence */}
+      {/* Section 3 - Scaling Health: Copy LEFT, Visual RIGHT */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left - Visual */}
+            {/* Left - Copy */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="order-2 lg:order-1"
-            >
-              <CostAnalyticsVisual />
-            </motion.div>
-
-            {/* Right - Copy */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="order-1 lg:order-2"
             >
               <div className="text-[13px] text-emerald-400 font-medium uppercase tracking-wider mb-6">
                 Scaling Health
@@ -704,20 +686,42 @@ export default function Home() {
                 ))}
               </div>
             </motion.div>
+
+            {/* Right - Visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <CostAnalyticsVisual />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Section 3 - Error Tracking */}
+      {/* Section 4 - Error Tracking: Visual LEFT, Copy RIGHT */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left - Copy */}
+            {/* Left - Visual */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
+            >
+              <ErrorTrackingVisual />
+            </motion.div>
+
+            {/* Right - Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="order-1 lg:order-2"
             >
               <div className="text-[13px] text-red-400 font-medium uppercase tracking-wider mb-6">
                 Error visibility
@@ -751,16 +755,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </motion.div>
-
-            {/* Right - Visual */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <ErrorTrackingVisual />
             </motion.div>
           </div>
         </div>
