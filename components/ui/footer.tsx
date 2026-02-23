@@ -104,9 +104,33 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-[#27272a]">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-[#52525b]">
-              © {new Date().getFullYear()} Orbit. All rights reserved.
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-xs text-[#52525b]">
+                © {new Date().getFullYear()} Orbit. All rights reserved.
+              </p>
+              <a
+                href="https://betabound.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://betabound.com/wp-content/uploads/2024/07/Betabound-Badge-2.png"
+                  alt="Betabound"
+                  className="h-6 opacity-60 hover:opacity-100 transition-opacity"
+                />
+              </a>
+              <a
+                href="https://peerlist.io/harshit19932703/project/orbit"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://peerlist.io/api/v1/projects/embed/PRJHR8DJQB9DOEA7QFMJAM8OKBMAN9?showUpvote=false&theme=dark"
+                  alt="Orbit on Peerlist"
+                  className="h-6 opacity-60 hover:opacity-100 transition-opacity"
+                />
+              </a>
+            </div>
             <div className="flex items-center gap-4">
               <Link
                 href="/privacy"
