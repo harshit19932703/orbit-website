@@ -341,9 +341,9 @@ export function CustomerAttributionVisual() {
   ];
 
   return (
-    <div className="relative w-full h-[520px]">
+    <div className="relative w-full">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-orange-500/10 rounded-full blur-[80px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[400px] h-[200px] lg:h-[300px] bg-orange-500/10 rounded-full blur-[80px]" />
 
       {/* Main customer table card */}
       <motion.div
@@ -518,8 +518,8 @@ export function CostAnalyticsVisual() {
 // Error Tracking Visual
 export function ErrorTrackingVisual() {
   return (
-    <div className="relative w-full h-[450px]">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-red-500/10 rounded-full blur-[80px]" />
+    <div className="relative w-full">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[400px] h-[200px] lg:h-[300px] bg-red-500/10 rounded-full blur-[80px]" />
 
       {/* Error overview */}
       <motion.div
@@ -527,10 +527,10 @@ export function ErrorTrackingVisual() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="absolute top-0 left-0 right-0 rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-6"
+        className="relative rounded-2xl border border-white/[0.08] bg-[#0a0a0c] p-4 lg:p-6"
       >
         {/* KPIs */}
-        <div className="grid grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-4 lg:mb-6">
           {[
             { label: "Total Errors", value: "47", color: "white" },
             { label: "Error Rate", value: "2.8%", color: "red" },
@@ -538,8 +538,8 @@ export function ErrorTrackingVisual() {
             { label: "Affected", value: "3 features", color: "amber" },
           ].map((kpi, i) => (
             <div key={i} className="text-center">
-              <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">{kpi.label}</div>
-              <div className={`text-[22px] font-medium ${kpi.color === 'red' ? 'text-red-400' : kpi.color === 'emerald' ? 'text-emerald-400' : kpi.color === 'amber' ? 'text-amber-400' : 'text-white'}`}>
+              <div className="text-[9px] lg:text-[10px] text-[#555] uppercase tracking-wider mb-1">{kpi.label}</div>
+              <div className={`text-[18px] lg:text-[22px] font-medium ${kpi.color === 'red' ? 'text-red-400' : kpi.color === 'emerald' ? 'text-emerald-400' : kpi.color === 'amber' ? 'text-amber-400' : 'text-white'}`}>
                 {kpi.value}
               </div>
             </div>
@@ -547,7 +547,7 @@ export function ErrorTrackingVisual() {
         </div>
 
         {/* Error types */}
-        <div className="text-[11px] text-[#666] uppercase tracking-wider mb-3">By Type</div>
+        <div className="text-[10px] lg:text-[11px] text-[#666] uppercase tracking-wider mb-2 lg:mb-3">By Type</div>
         <div className="space-y-2">
           {[
             { type: "model_not_found", count: 24, pct: 51 },
@@ -557,8 +557,8 @@ export function ErrorTrackingVisual() {
             <div key={i} className="flex items-center gap-3">
               <div className="flex-1">
                 <div className="flex justify-between mb-1">
-                  <span className="text-[12px] text-[#888]">{err.type}</span>
-                  <span className="text-[12px] text-white">{err.count}</span>
+                  <span className="text-[11px] lg:text-[12px] text-[#888]">{err.type}</span>
+                  <span className="text-[11px] lg:text-[12px] text-white">{err.count}</span>
                 </div>
                 <div className="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
                   <div
@@ -574,19 +574,19 @@ export function ErrorTrackingVisual() {
 
       {/* Recent error */}
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="absolute bottom-0 right-0 w-[300px] rounded-xl border border-red-500/20 bg-[#0c0c0e] p-4"
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="relative mt-4 rounded-xl border border-red-500/20 bg-[#0c0c0e] p-3 lg:p-4"
       >
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-2 lg:mb-3">
           <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-          <span className="text-[11px] text-red-400 uppercase tracking-wider">Recent Error</span>
+          <span className="text-[10px] lg:text-[11px] text-red-400 uppercase tracking-wider">Recent Error</span>
         </div>
-        <div className="text-[13px] text-white mb-1">model_not_found</div>
-        <div className="text-[12px] text-[#666] mb-2">Feature: code-generator</div>
-        <div className="text-[11px] text-[#444] font-mono bg-[#0a0a0a] rounded px-2 py-1">
+        <div className="text-[12px] lg:text-[13px] text-white mb-1">model_not_found</div>
+        <div className="text-[11px] lg:text-[12px] text-[#666] mb-2">Feature: code-generator</div>
+        <div className="text-[10px] lg:text-[11px] text-[#444] font-mono bg-[#0a0a0a] rounded px-2 py-1">
           Model &apos;gpt-5&apos; does not exist
         </div>
       </motion.div>

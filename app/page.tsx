@@ -45,10 +45,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8"
+                className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-violet-500/20 to-violet-500/5 border border-violet-500/30 mb-8 shadow-[0_0_20px_-5px_rgba(139,92,246,0.3)]"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-400 mr-3 animate-pulse" />
-                <span className="text-[13px] text-[#888]">Now in public beta</span>
+                <span className="relative w-2 h-2 mr-3">
+                  <span className="absolute inset-0 rounded-full bg-violet-400 animate-ping opacity-75" />
+                  <span className="relative block w-2 h-2 rounded-full bg-violet-400" />
+                </span>
+                <span className="text-[13px] text-white font-medium">Now in public beta</span>
               </motion.div>
 
               {/* Headline */}
