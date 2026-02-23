@@ -330,6 +330,98 @@ export function FeatureAnalyticsVisual() {
   );
 }
 
+// Customer Attribution Visual - The Wedge
+export function CustomerAttributionVisual() {
+  const customers = [
+    { name: "Acme Corp", spend: 847.20, calls: 12450, margin: 23, profitable: true },
+    { name: "TechStart Inc", spend: 423.50, calls: 8920, margin: 45, profitable: true },
+    { name: "DataFlow AI", spend: 1289.00, calls: 34200, margin: -12, profitable: false },
+    { name: "CloudSync", spend: 156.80, calls: 2100, margin: 67, profitable: true },
+    { name: "MLOps Pro", spend: 892.40, calls: 28900, margin: -8, profitable: false },
+  ];
+
+  return (
+    <div className="relative w-full h-[520px]">
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-orange-500/10 rounded-full blur-[80px]" />
+
+      {/* Main customer table card */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative rounded-2xl border border-white/[0.08] bg-[#0a0a0c] overflow-hidden"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+              <svg className="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+              </svg>
+            </div>
+            <span className="text-[14px] text-white font-medium">Customer AI Spend</span>
+          </div>
+          <span className="text-[10px] text-[#444] border border-white/[0.08] px-2 py-1 rounded">This month</span>
+        </div>
+
+        {/* Table header */}
+        <div className="grid grid-cols-4 gap-4 px-5 py-3 border-b border-white/[0.04] bg-white/[0.02]">
+          <span className="text-[10px] text-[#555] uppercase tracking-wider">Customer</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-wider text-right">AI Spend</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-wider text-right">API Calls</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-wider text-right">Margin</span>
+        </div>
+
+        {/* Customer rows */}
+        {customers.map((customer, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
+            className={`grid grid-cols-4 gap-4 px-5 py-3 border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors ${!customer.profitable ? 'bg-red-500/[0.03]' : ''}`}
+          >
+            <div className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full ${customer.profitable ? 'bg-emerald-400' : 'bg-red-400'}`} />
+              <span className="text-[13px] text-white">{customer.name}</span>
+            </div>
+            <span className="text-[13px] text-white font-mono text-right">${customer.spend.toFixed(2)}</span>
+            <span className="text-[13px] text-[#888] font-mono text-right">{customer.calls.toLocaleString()}</span>
+            <span className={`text-[13px] font-mono text-right font-medium ${customer.margin >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              {customer.margin >= 0 ? '+' : ''}{customer.margin}%
+            </span>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Bottom insight cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="grid grid-cols-3 gap-3 mt-4"
+      >
+        <div className="rounded-xl border border-white/[0.08] bg-[#0a0a0c] px-4 py-3">
+          <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Total Spend</div>
+          <div className="text-[18px] font-semibold text-white font-mono">$3,608</div>
+        </div>
+        <div className="rounded-xl border border-red-500/20 bg-red-500/[0.05] px-4 py-3">
+          <div className="text-[10px] text-red-400/70 uppercase tracking-wider mb-1">Loss-Making</div>
+          <div className="text-[18px] font-semibold text-red-400">2 accounts</div>
+        </div>
+        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.05] px-4 py-3">
+          <div className="text-[10px] text-emerald-400/70 uppercase tracking-wider mb-1">Avg Margin</div>
+          <div className="text-[18px] font-semibold text-emerald-400">+23%</div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 // Cost Analytics Visual - Scaling Health focused
 export function CostAnalyticsVisual() {
   return (

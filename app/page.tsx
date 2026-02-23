@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 import {
   HeroVisual,
   FeatureAnalyticsVisual,
+  CustomerAttributionVisual,
   CostAnalyticsVisual,
   ErrorTrackingVisual,
   IntegrationVisual,
@@ -100,7 +102,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Early Adopters - commented out, need permissions first
+      {/* Early Adopters */}
       <section className="relative py-12 border-t border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto px-6">
           <motion.div
@@ -115,19 +117,19 @@ export default function Home() {
             </span>
             <div className="flex items-center gap-10 md:gap-14">
               <a
-                href="https://promptlab.in"
+                href="https://submitly.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 opacity-40 hover:opacity-70 transition-opacity"
               >
                 <Image
-                  src="/logos/promptlab.png"
-                  alt="PromptLab"
+                  src="/logos/submitly.jpg"
+                  alt="Submitly"
                   width={24}
                   height={24}
                   className="rounded-md"
                 />
-                <span className="text-[15px] font-medium text-white/80">PromptLab</span>
+                <span className="text-[15px] font-medium text-white/80">Submitly</span>
               </a>
               <a
                 href="https://fixflow.locsafe.org"
@@ -148,7 +150,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      */}
 
       {/* The Moment Section - Two Column Layout */}
       <section className="relative py-24 lg:py-32 border-t border-white/[0.04] overflow-hidden">
@@ -476,13 +477,17 @@ export default function Home() {
                   <div className="text-[10px] text-red-400/70 mt-1">138% over budget</div>
                 </div>
 
-                {/* Customer billing card */}
-                <div className="rounded-xl bg-white/[0.02] border border-white/[0.06] p-3">
-                  <div className="text-[10px] text-[#555] uppercase tracking-wider mb-1">Bill to Customer</div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-[18px] text-[#444] font-mono font-semibold">$???</span>
+                {/* Customer billing card - highlighted as pain point */}
+                <div className="relative rounded-xl bg-gradient-to-br from-red-500/[0.08] to-orange-500/[0.04] border border-red-500/30 p-3 overflow-hidden">
+                  {/* Pulsing glow effect */}
+                  <div className="absolute inset-0 bg-red-500/10 animate-pulse" />
+                  <div className="relative">
+                    <div className="text-[10px] text-red-400/80 uppercase tracking-wider mb-1 font-medium">Bill to Customer</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[18px] text-red-400 font-mono font-semibold">$???</span>
+                    </div>
+                    <div className="text-[10px] text-red-400/70 mt-1">No customer attribution</div>
                   </div>
-                  <div className="text-[10px] text-[#444] mt-1">No task attribution</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -581,7 +586,71 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 2 - Cost Intelligence */}
+      {/* Section 2 - Customer Attribution (THE WEDGE) */}
+      <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
+        {/* Highlight glow for wedge section */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-orange-600/10 via-amber-600/5 to-transparent blur-3xl" />
+        </div>
+
+        <div className="relative max-w-[1200px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left - Visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
+            >
+              <CustomerAttributionVisual />
+            </motion.div>
+
+            {/* Right - Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-amber-500/10 border border-orange-500/30 mb-6">
+                <span className="w-2 h-2 rounded-full bg-orange-400 mr-2 animate-pulse" />
+                <span className="text-[13px] text-orange-400 font-medium uppercase tracking-wider">The Real Question</span>
+              </div>
+              <h2 className="text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-8">
+                How much does each
+                <br />
+                <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">customer cost you?</span>
+              </h2>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-6 max-w-[420px]">
+                Your AI bill arrives as one number. But some customers cost <span className="text-white font-medium">10x more</span> than others. Without attribution, you&apos;re pricing blind.
+              </p>
+              <p className="text-[16px] text-[#666] leading-[1.7] mb-10 max-w-[420px]">
+                Orbit ties every AI call to a <span className="text-white font-medium">customer ID</span> — so you know exactly who&apos;s profitable and who&apos;s burning your margin.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  { label: "Per-customer AI spend", desc: "Know the true cost of serving each account" },
+                  { label: "Usage-based billing data", desc: "Price accurately with real consumption metrics" },
+                  { label: "Margin visibility", desc: "See which customers are profitable vs. loss-making" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2 mr-4 flex-shrink-0" />
+                    <div>
+                      <span className="text-[15px] text-white">{item.label}</span>
+                      <span className="text-[15px] text-[#444]"> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3 - Cost Intelligence */}
       <section className="relative py-20 lg:py-28 border-t border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
