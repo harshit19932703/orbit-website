@@ -116,6 +116,7 @@ export default function RootLayout({
         />
         {/* Apollo.io Website Visitor Tracking */}
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"697b0b94ed79df00215f7761"})},document.head.appendChild(o)}initApollo();`,
           }}

@@ -125,13 +125,6 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 opacity-40 hover:opacity-70 transition-opacity"
               >
-                <Image
-                  src="/logos/submitly.jpg"
-                  alt="Submitly"
-                  width={24}
-                  height={24}
-                  className="rounded-md"
-                />
                 <span className="text-[15px] font-medium text-white/80">Submitly</span>
               </a>
               <a
